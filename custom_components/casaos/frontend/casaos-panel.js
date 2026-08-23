@@ -9510,26 +9510,26 @@ function ct({ store: e }) {
 //#region src/hass/store.js
 var lt = 5e3, ut = 2e4, dt = /* @__PURE__ */ new Set(["cover"]);
 function ft() {
-	let e = null, t = !1, n = null, r = "/casaos_static", i = /* @__PURE__ */ new Map(), a = /* @__PURE__ */ new Map(), o = /* @__PURE__ */ new Map(), s = /* @__PURE__ */ new Set(), c = null, l = "", u = null, d = null, f = /* @__PURE__ */ new Set(), p = null, m = 0, h = C(), g = {
-		aggiornamenti: 0,
-		ultimoAggiornamento: null
-	}, _ = 0, v = !1, y = "casaos_tema";
-	function b() {
+	let e = null, t = !1, n = null, r = "/casaos_static", i = /* @__PURE__ */ new Map(), a = /* @__PURE__ */ new Map(), o = /* @__PURE__ */ new Map(), s = /* @__PURE__ */ new Set(), c = null, l = "", u = null, d = null, f = /* @__PURE__ */ new Set(), p = null, m = "casaos_tema";
+	function h() {
 		try {
-			let e = globalThis.localStorage?.getItem(y);
+			let e = globalThis.localStorage?.getItem(m);
 			return e === "chiaro" || e === "scuro" ? e : "auto";
 		} catch {
 			return "auto";
 		}
 	}
-	let x = b(), ee = !0, S = () => x === "auto" ? ee : x === "scuro";
+	let g = h(), _ = !0, v = () => g === "auto" ? _ : g === "scuro", y = 0, b = C(), x = {
+		aggiornamenti: 0,
+		ultimoAggiornamento: null
+	}, ee = 0, S = !1;
 	function C() {
 		return {
 			utente: null,
 			amministratore: !1,
 			connesso: !1,
-			scuro: S(),
-			tema: x,
+			scuro: v(),
+			tema: g,
 			lingua: null,
 			narrow: !1,
 			versione: null,
@@ -9621,9 +9621,9 @@ function ft() {
 		for (let [t, n] of o) n.scadenza <= e && se(t);
 	}, 1e3);
 	function ce() {
-		m += 1, !v && (v = !0, _ = setTimeout(() => {
-			v = !1, g = {
-				aggiornamenti: m,
+		y += 1, !S && (S = !0, ee = setTimeout(() => {
+			S = !1, x = {
+				aggiornamenti: y,
 				ultimoAggiornamento: /* @__PURE__ */ new Date()
 			}, ne();
 		}, 1e3));
@@ -9675,43 +9675,43 @@ function ft() {
 			return e.connection.sendMessagePromise({ type: "casaos/config/entita_mancanti" });
 		},
 		collega(i) {
-			e = i, ee = typeof e?.themes?.darkMode == "boolean" ? e.themes.darkMode : globalThis.matchMedia?.("(prefers-color-scheme: dark)").matches !== !1;
+			e = i, _ = typeof e?.themes?.darkMode == "boolean" ? e.themes.darkMode : globalThis.matchMedia?.("(prefers-color-scheme: dark)").matches !== !1;
 			let a = {
 				utente: e?.user?.name ?? null,
 				amministratore: !!e?.user?.is_admin,
 				connesso: e?.connected !== !1,
-				scuro: S(),
-				tema: x,
+				scuro: v(),
+				tema: g,
 				lingua: e?.language ?? null,
 				narrow: t,
 				versione: n,
 				statico: r
 			};
-			te(a) !== te(h) && (h = a, ne());
+			te(a) !== te(b) && (b = a, ne());
 		},
 		impostaTema(e) {
 			let t = e === "chiaro" || e === "scuro" ? e : "auto";
-			if (t !== x) {
-				x = t;
+			if (t !== g) {
+				g = t;
 				try {
-					t === "auto" ? globalThis.localStorage?.removeItem(y) : globalThis.localStorage?.setItem(y, t);
+					t === "auto" ? globalThis.localStorage?.removeItem(m) : globalThis.localStorage?.setItem(m, t);
 				} catch {}
-				h = {
-					...h,
-					tema: x,
-					scuro: S()
+				b = {
+					...b,
+					tema: g,
+					scuro: v()
 				}, ne();
 			}
 		},
 		setNarrow(e) {
-			e !== t && (t = e, h = {
-				...h,
+			e !== t && (t = e, b = {
+				...b,
 				narrow: t
 			}, ne());
 		},
 		setPannello(e) {
-			n = e?.version ?? n, r = e?.static ?? r, h = {
-				...h,
+			n = e?.version ?? n, r = e?.static ?? r, b = {
+				...b,
 				versione: n,
 				statico: r
 			};
@@ -9727,8 +9727,8 @@ function ft() {
 		iscriviSessione(e) {
 			return s.add(e), () => s.delete(e);
 		},
-		sessione: () => h,
-		attivita: () => g,
+		sessione: () => b,
+		attivita: () => x,
 		hass: () => e,
 		async chiama(t, n, r, i) {
 			let a = [].concat(r?.entity_id ?? []), s = dt.has(t);
@@ -9743,7 +9743,7 @@ function ft() {
 			}
 		},
 		distruggi() {
-			clearTimeout(_), c && c(), c = null, p && p(), p = null, f.clear(), d = null, s.clear(), a.clear(), i.clear(), o.clear(), e = null;
+			clearTimeout(ee), c && c(), c = null, p && p(), p = null, f.clear(), d = null, s.clear(), a.clear(), i.clear(), o.clear(), e = null;
 		}
 	};
 }
