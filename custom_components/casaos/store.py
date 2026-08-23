@@ -37,6 +37,7 @@ def configurazione_vuota() -> dict[str, Any]:
         "scene": [],
         "clima": {"riscaldamento": None, "raffrescamento": []},
         "energia": {},
+        "meteo": None,
         "sensori": [],
     }
 
@@ -107,6 +108,12 @@ def valida(config: Any) -> dict[str, Any]:
         if not isinstance(entity_id, str) or "." not in entity_id:
             raise ErroreConfigurazione(f"energia.{nome}: entity_id malformato")
     pulita["energia"] = energia
+
+    # Una sola entità meteo: quella che l'intestazione mostra a colpo d'occhio.
+    meteo = config.get("meteo")
+    if meteo is not None and (not isinstance(meteo, str) or "." not in meteo):
+        raise ErroreConfigurazione("meteo: entity_id malformato")
+    pulita["meteo"] = meteo
 
     return pulita
 

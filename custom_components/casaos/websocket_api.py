@@ -94,6 +94,8 @@ def ws_entita_mancanti(hass: HomeAssistant, connection, msg: dict[str, Any]) -> 
         citate.append(clima["riscaldamento"]["entity_id"])
     citate += [v["entity_id"] for v in clima.get("raffrescamento", [])]
     citate += [v for v in config.get("energia", {}).values() if isinstance(v, str)]
+    if isinstance(config.get("meteo"), str):
+        citate.append(config["meteo"])
 
     mancanti = sorted({e for e in citate if hass.states.get(e) is None})
     connection.send_result(msg["id"], {"mancanti": mancanti, "citate": len(set(citate))})
