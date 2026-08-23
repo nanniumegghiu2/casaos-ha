@@ -1,0 +1,25 @@
+name: Verifica
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 4 * * 1"
+
+jobs:
+  hassfest:
+    name: Requisiti di Home Assistant
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: home-assistant/actions/hassfest@master
+
+  contenuto:
+    name: Il pannello compilato e' presente
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # HACS non compila: se il bundle manca, l'integrazione si installa e non
+      # mostra niente. Meglio accorgersene qui.
+      - run: test -s custom_components/casaos/frontend/casaos-panel.js
+      - run: echo "bundle presente, $(stat -c%s custom_components/casaos/frontend/casaos-panel.js) byte"

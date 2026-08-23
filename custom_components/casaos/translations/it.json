@@ -1,0 +1,13 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "CasaOS",
+        "description": "CasaOS aggiunge un pannello domotico alla barra laterale di Home Assistant.\n\nLa configurazione della casa si imposta dal pannello stesso: qui non serve inserire nulla."
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "CasaOS è già installato: è ammessa una sola istanza per casa."
+    }
+  }
+}

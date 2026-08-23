@@ -1,0 +1,13 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "CasaOS",
+        "description": "CasaOS adds a home control panel to the Home Assistant sidebar.\n\nThe house configuration is set from the panel itself: nothing to enter here."
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "CasaOS is already installed: only one instance per home is allowed."
+    }
+  }
+}

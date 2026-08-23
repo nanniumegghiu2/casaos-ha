@@ -1,0 +1,21 @@
+{
+  "domain": "casaos",
+  "name": "CasaOS",
+  "codeowners": [
+    "@nanniumegghiu2"
+  ],
+  "config_flow": true,
+  "dependencies": [
+    "http",
+    "frontend",
+    "panel_custom",
+    "websocket_api"
+  ],
+  "documentation": "https://github.com/nanniumegghiu2/casaos-ha",
+  "integration_type": "service",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/nanniumegghiu2/casaos-ha/issues",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "0.1.1"
+}

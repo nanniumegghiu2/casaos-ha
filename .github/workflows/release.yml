@@ -1,0 +1,37 @@
+name: Rilascio
+
+# Il canale di distribuzione E' il meccanismo di aggiornamento della flotta:
+# un tag qui, e su ogni casa compare "Aggiorna" in HACS.
+#
+# Qui il pannello NON si compila: arriva gia' compilato dall'officina, perche'
+# HACS non compila niente e il bundle deve essere committato comunque.
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  rilascio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Allinea manifest.json e const.py al tag
+        run: |
+          V="${GITHUB_REF_NAME#v}"
+          jq --arg v "$V" '.version = $v' custom_components/casaos/manifest.json > tmp
+          mv tmp custom_components/casaos/manifest.json
+          sed -i "s/^VERSION = \".*\"/VERSION = \"$V\"/" custom_components/casaos/const.py
+          grep -H version custom_components/casaos/manifest.json
+          grep -H '^VERSION' custom_components/casaos/const.py
+
+      - name: Prepara casaos.zip
+        run: cd custom_components/casaos && zip -r ../../casaos.zip .
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: casaos.zip
+          generate_release_notes: true
