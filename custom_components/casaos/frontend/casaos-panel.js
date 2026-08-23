@@ -8742,76 +8742,76 @@ function ke(e) {
 	});
 }
 function Ae(e, t, n) {
-	let r = e?.solo_fotogrammi === !0, i = e?.solo_webrtc === !0, [a, o] = (0, l.useState)("inattivo"), [s, c] = (0, l.useState)(!1), [u, d] = (0, l.useState)(() => Date.now()), f = (0, l.useRef)(null), p = (0, l.useRef)(null), m = (0, l.useRef)(null), h = (0, l.useRef)(null), g = (0, l.useCallback)(() => {
-		if (h.current) {
+	let r = t?.connection ?? null, i = e?.solo_fotogrammi === !0, a = e?.solo_webrtc === !0, [o, s] = (0, l.useState)("inattivo"), [c, u] = (0, l.useState)(!1), [d, f] = (0, l.useState)(() => Date.now()), p = (0, l.useRef)(null), m = (0, l.useRef)(null), h = (0, l.useRef)(null), g = (0, l.useRef)(null), _ = (0, l.useCallback)(() => {
+		if (g.current) {
 			try {
-				h.current.destroy();
+				g.current.destroy();
+			} catch {}
+			g.current = null;
+		}
+		if (m.current &&= (m.current.close(), null), h.current) {
+			try {
+				h.current();
 			} catch {}
 			h.current = null;
 		}
-		if (p.current &&= (p.current.close(), null), m.current) {
-			try {
-				m.current();
-			} catch {}
-			m.current = null;
-		}
-		f.current && (f.current.srcObject = null);
+		p.current && (p.current.srcObject = null);
 	}, []);
 	(0, l.useEffect)(() => {
 		if (!n) {
-			g(), o("inattivo");
+			_(), s("inattivo");
 			return;
 		}
-		return o(r ? "fotogrammi" : "connessione"), g;
+		return s(i ? "fotogrammi" : "connessione"), _;
 	}, [
 		n,
-		r,
-		g
+		i,
+		_
 	]), (0, l.useEffect)(() => {
-		if (a !== "connessione") return;
-		let e = setTimeout(() => o("hls"), Te);
+		if (o !== "connessione") return;
+		let e = setTimeout(() => s("hls"), Te);
 		return () => clearTimeout(e);
-	}, [a]), (0, l.useEffect)(() => {
-		if (a !== "fotogrammi") return;
-		let e = setInterval(() => d(Date.now()), Ee);
+	}, [o]), (0, l.useEffect)(() => {
+		if (o !== "fotogrammi") return;
+		let e = setInterval(() => f(Date.now()), Ee);
 		return () => clearInterval(e);
-	}, [a]);
-	let _ = a === "connessione" || a === "flusso";
+	}, [o]);
+	let v = o === "connessione" || o === "flusso";
 	return (0, l.useEffect)(() => {
-		if (!_ || !t?.connection || r || p.current) return;
-		let n = !1, i = [];
+		if (!v || !r || i || m.current) return;
+		let t = !1, n = [];
 		return (async () => {
 			try {
-				let r = new RTCPeerConnection({ iceServers: Oe });
-				p.current = r, r.ontrack = (e) => {
-					f.current && e.streams[0] && (f.current.srcObject = e.streams[0], f.current.play?.().catch(() => {}));
+				let i = new RTCPeerConnection({ iceServers: Oe });
+				m.current = i, i.ontrack = (e) => {
+					p.current && e.streams[0] && (p.current.srcObject = e.streams[0], p.current.play?.().catch(() => {}));
 				};
 				let a = () => {
-					if (n) return;
-					let e = r.connectionState, t = r.iceConnectionState;
-					e === "connected" || t === "connected" || t === "completed" ? o((e) => e === "connessione" ? "flusso" : e) : (e === "failed" || t === "failed") && o((e) => e === "connessione" || e === "flusso" ? "hls" : e);
+					if (t) return;
+					let e = i.connectionState, n = i.iceConnectionState;
+					e === "connected" || n === "connected" || n === "completed" ? s((e) => e === "connessione" ? "flusso" : e) : (e === "failed" || n === "failed") && s((e) => e === "connessione" || e === "flusso" ? "hls" : e);
 				};
-				r.onconnectionstatechange = a, r.oniceconnectionstatechange = a, r.addTransceiver("video", { direction: "recvonly" }), r.addTransceiver("audio", { direction: "recvonly" });
-				let s = await r.createOffer();
-				if (await r.setLocalDescription(s), await ke(r), n) return;
-				m.current = await t.connection.subscribeMessage(async (e) => {
-					if (!n) {
+				i.onconnectionstatechange = a, i.oniceconnectionstatechange = a, i.addTransceiver("video", { direction: "recvonly" }), i.addTransceiver("audio", { direction: "recvonly" });
+				let o = await i.createOffer();
+				if (await i.setLocalDescription(o), await ke(i), t) return;
+				h.current = await r.subscribeMessage(async (e) => {
+					if (!t) {
 						if (e.type === "session") {
 							e.session_id;
 							return;
 						}
 						if (e.type === "answer") {
 							try {
-								await r.setRemoteDescription({
+								await i.setRemoteDescription({
 									type: "answer",
 									sdp: e.answer
 								});
-								for (let e of i) try {
-									await r.addIceCandidate(e);
+								for (let e of n) try {
+									await i.addIceCandidate(e);
 								} catch {}
-								i.length = 0;
+								n.length = 0;
 							} catch {
-								o("hls");
+								s("hls");
 							}
 							return;
 						}
@@ -8821,38 +8821,38 @@ function Ae(e, t, n) {
 								sdpMid: e.candidate?.sdpMid ?? e.sdpMid,
 								sdpMLineIndex: e.candidate?.sdpMLineIndex ?? e.sdpMLineIndex
 							};
-							if (r.remoteDescription) try {
-								await r.addIceCandidate(t);
+							if (i.remoteDescription) try {
+								await i.addIceCandidate(t);
 							} catch {}
-							else i.push(t);
+							else n.push(t);
 							return;
 						}
-						e.type === "error" && o("hls");
+						e.type === "error" && s("hls");
 					}
 				}, {
 					type: "camera/webrtc/offer",
 					entity_id: e.entity_id,
-					offer: r.localDescription.sdp
+					offer: i.localDescription.sdp
 				});
 			} catch {
-				n || o("hls");
+				t || s("hls");
 			}
 		})(), () => {
-			n = !0, g();
+			t = !0, _();
 		};
 	}, [
-		_,
-		t,
-		e.entity_id,
+		v,
 		r,
-		g
+		e.entity_id,
+		i,
+		_
 	]), (0, l.useEffect)(() => {
-		if (a !== "flusso") return;
+		if (o !== "flusso") return;
 		let e = {
 			byte: -1,
 			fotogrammi: -1
 		}, t = 0, n = 0, r = setInterval(async () => {
-			let r = p.current;
+			let r = m.current;
 			if (!r) return;
 			let i = 0, a = 0;
 			try {
@@ -8862,64 +8862,64 @@ function Ae(e, t, n) {
 			} catch {
 				return;
 			}
-			n += 1, e.byte >= 0 && (t = i > e.byte || a > e.fotogrammi ? 0 : t + 1, (a > 0 && t >= 3 || a === 0 && n >= 12) && o("hls")), e = {
+			n += 1, e.byte >= 0 && (t = i > e.byte || a > e.fotogrammi ? 0 : t + 1, (a > 0 && t >= 3 || a === 0 && n >= 12) && s("hls")), e = {
 				byte: i,
 				fotogrammi: a
 			};
 		}, De);
 		return () => clearInterval(r);
-	}, [a]), (0, l.useEffect)(() => {
-		if (a !== "hls") return;
-		if (i) {
-			g(), o("fotogrammi");
+	}, [o]), (0, l.useEffect)(() => {
+		if (o !== "hls") return;
+		if (a) {
+			_(), s("fotogrammi");
 			return;
 		}
-		let n = !1;
-		g(), c(!1);
-		let r = f.current;
+		let t = !1;
+		_(), u(!1);
+		let n = p.current;
 		return (async () => {
 			try {
-				let { url: i } = await t.connection.sendMessagePromise({
+				let { url: i } = await r.sendMessagePromise({
 					type: "camera/stream",
 					entity_id: e.entity_id,
 					format: "hls"
 				});
-				if (n || !r) return;
+				if (t || !n) return;
 				let a = (await import("./hls-CJ-SqwmL.js")).default;
 				if (!a.isSupported()) {
-					o("fotogrammi");
+					s("fotogrammi");
 					return;
 				}
-				let s = new a({
+				let o = new a({
 					lowLatencyMode: !0,
 					backBufferLength: 10
 				});
-				h.current = s, s.loadSource(i), s.attachMedia(r), s.on(a.Events.MANIFEST_PARSED, () => r.play?.().catch(() => {})), s.on(a.Events.ERROR, (e, t) => {
-					t.fatal && o("fotogrammi");
+				g.current = o, o.loadSource(i), o.attachMedia(n), o.on(a.Events.MANIFEST_PARSED, () => n.play?.().catch(() => {})), o.on(a.Events.ERROR, (e, t) => {
+					t.fatal && s("fotogrammi");
 				});
 			} catch {
-				n || o("fotogrammi");
+				t || s("fotogrammi");
 			}
 		})(), () => {
-			if (n = !0, h.current) {
+			if (t = !0, g.current) {
 				try {
-					h.current.destroy();
+					g.current.destroy();
 				} catch {}
-				h.current = null;
+				g.current = null;
 			}
 		};
 	}, [
-		a,
-		t,
+		o,
+		r,
 		e.entity_id,
-		i,
-		g
+		a,
+		_
 	]), {
-		stato: a,
-		video: f,
-		inRiproduzione: s,
-		segnalaRiproduzione: () => c(!0),
-		istante: u
+		stato: o,
+		video: p,
+		inRiproduzione: c,
+		segnalaRiproduzione: () => u(!0),
+		istante: d
 	};
 }
 function je(e, t) {
