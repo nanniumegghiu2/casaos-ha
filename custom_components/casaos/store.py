@@ -32,6 +32,7 @@ def configurazione_vuota() -> dict[str, Any]:
         "stanze": [],
         "luci": [],
         "prese": [],
+        "dispositivi": [],
         "ingressi": {"cancelli": [], "porte": []},
         "telecamere": [],
         "scene": [],
@@ -75,9 +76,15 @@ def valida(config: Any) -> dict[str, Any]:
     for stanza in stanze:
         if not isinstance(stanza, dict) or not stanza.get("id"):
             raise ErroreConfigurazione("stanze: ogni stanza deve avere un id")
+        zona = stanza.get("zona", "interno")
+        if zona not in ("interno", "esterno"):
+            raise ErroreConfigurazione(
+                f"stanze.{stanza['id']}: zona deve essere 'interno' o 'esterno'"
+            )
+        stanza["zona"] = zona
     pulita["stanze"] = stanze
 
-    for chiave in ("luci", "prese", "telecamere", "scene", "sensori"):
+    for chiave in ("luci", "prese", "dispositivi", "telecamere", "scene", "sensori"):
         pulita[chiave] = _lista_di_entita(config.get(chiave) or [], chiave)
 
     ingressi = config.get("ingressi") or {}
