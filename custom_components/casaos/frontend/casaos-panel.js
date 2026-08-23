@@ -8930,13 +8930,12 @@ function je(e, t) {
 //#region src/componenti/Telecamere.jsx
 var Me = 15e3;
 function Ne(e, t) {
-	if (t) return "In attesa";
 	switch (e) {
 		case "connessione": return "Connessione…";
 		case "flusso": return "Diretta";
 		case "hls": return "Diretta (compatibilità)";
-		case "fotogrammi": return "Fotogrammi";
-		default: return "";
+		case "fotogrammi": return t ? "In attesa" : "Fotogrammi";
+		default: return t ? "In attesa" : "";
 	}
 }
 function Pe() {
