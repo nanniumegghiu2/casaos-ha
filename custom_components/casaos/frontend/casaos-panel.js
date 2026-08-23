@@ -8757,7 +8757,7 @@ function Ae(e, t, n) {
 		}
 		f.current && (f.current.srcObject = null);
 	}, []);
-	return (0, l.useEffect)(() => {
+	(0, l.useEffect)(() => {
 		if (!n) {
 			g(), o("inattivo");
 			return;
@@ -8775,8 +8775,10 @@ function Ae(e, t, n) {
 		if (a !== "fotogrammi") return;
 		let e = setInterval(() => d(Date.now()), Ee);
 		return () => clearInterval(e);
-	}, [a]), (0, l.useEffect)(() => {
-		if (a !== "connessione" || !t?.connection || r) return;
+	}, [a]);
+	let _ = a === "connessione" || a === "flusso";
+	return (0, l.useEffect)(() => {
+		if (!_ || !t?.connection || r || p.current) return;
 		let n = !1, i = [];
 		return (async () => {
 			try {
@@ -8839,7 +8841,7 @@ function Ae(e, t, n) {
 			n = !0, g();
 		};
 	}, [
-		a,
+		_,
 		t,
 		e.entity_id,
 		r,
