@@ -40,6 +40,7 @@ def configurazione_vuota() -> dict[str, Any]:
         "energia": {},
         "meteo": None,
         "rifiuti": None,
+        "persone": [],
         "sensori": [],
     }
 
@@ -116,6 +117,21 @@ def valida(config: Any) -> dict[str, Any]:
         if not isinstance(entity_id, str) or "." not in entity_id:
             raise ErroreConfigurazione(f"energia.{nome}: entity_id malformato")
     pulita["energia"] = energia
+
+    # Chi abita la casa: presenza e batteria del telefono. La foto è opzionale
+    # e, se manca, il pannello mostra le iniziali — non un riquadro vuoto.
+    persone = config.get("persone") or []
+    if not isinstance(persone, list):
+        raise ErroreConfigurazione("persone: atteso un elenco")
+    for voce in persone:
+        if not isinstance(voce, dict):
+            raise ErroreConfigurazione("persone: ogni voce deve essere un oggetto")
+        presenza = voce.get("presenza")
+        if not isinstance(presenza, str) or "." not in presenza:
+            raise ErroreConfigurazione(
+                f"persone: presenza mancante o malformata ({presenza!r})"
+            )
+    pulita["persone"] = persone
 
     # Il calendario della raccolta differenziata. Vive **nella configurazione e
     # non nel codice** perché cambia ogni anno e ogni comune ha il suo: si
