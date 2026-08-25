@@ -39,6 +39,7 @@ def configurazione_vuota() -> dict[str, Any]:
         "clima": {"riscaldamento": None, "raffrescamento": []},
         "energia": {},
         "meteo": None,
+        "rifiuti": None,
         "sensori": [],
     }
 
@@ -115,6 +116,26 @@ def valida(config: Any) -> dict[str, Any]:
         if not isinstance(entity_id, str) or "." not in entity_id:
             raise ErroreConfigurazione(f"energia.{nome}: entity_id malformato")
     pulita["energia"] = energia
+
+    # Il calendario della raccolta differenziata. Vive **nella configurazione e
+    # non nel codice** perché cambia ogni anno e ogni comune ha il suo: si
+    # corregge senza ricompilare niente. Si valida la forma, non il contenuto.
+    rifiuti = config.get("rifiuti")
+    if rifiuti is not None:
+        if not isinstance(rifiuti, dict):
+            raise ErroreConfigurazione("rifiuti: atteso un oggetto")
+        settimana = rifiuti.get("settimana")
+        if not isinstance(settimana, dict):
+            raise ErroreConfigurazione("rifiuti.settimana: atteso un oggetto")
+        for giorno in settimana:
+            if str(giorno) not in {"0", "1", "2", "3", "4", "5", "6"}:
+                raise ErroreConfigurazione(
+                    f"rifiuti.settimana: {giorno!r} non è un giorno (0=domenica … 6=sabato)"
+                )
+        eccezioni = rifiuti.get("eccezioni") or {}
+        if not isinstance(eccezioni, dict):
+            raise ErroreConfigurazione("rifiuti.eccezioni: atteso un oggetto data → tipo")
+    pulita["rifiuti"] = rifiuti
 
     # Una sola entità meteo: quella che l'intestazione mostra a colpo d'occhio.
     meteo = config.get("meteo")
