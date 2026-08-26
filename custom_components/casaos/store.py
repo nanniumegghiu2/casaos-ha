@@ -38,6 +38,7 @@ def configurazione_vuota() -> dict[str, Any]:
         "scene": [],
         "clima": {"riscaldamento": None, "raffrescamento": []},
         "energia": {},
+        "tariffe": None,
         "meteo": None,
         "rifiuti": None,
         "persone": [],
@@ -127,6 +128,19 @@ def valida(config: Any) -> dict[str, Any]:
         if not isinstance(entity_id, str) or "." not in entity_id:
             raise ErroreConfigurazione(f"energia.{nome}: entity_id malformato")
     pulita["energia"] = energia
+
+    # I prezzi dell'energia, per la stima della bolletta. Sono numeri che solo
+    # chi abita la casa conosce: qui si controlla che siano numeri, non che
+    # siano giusti.
+    tariffe = config.get("tariffe")
+    if tariffe is not None:
+        if not isinstance(tariffe, dict):
+            raise ErroreConfigurazione("tariffe: atteso un oggetto")
+        for chiave in ("acquisto", "vendita", "quota_fissa"):
+            valore = tariffe.get(chiave)
+            if valore is not None and not isinstance(valore, (int, float)):
+                raise ErroreConfigurazione(f"tariffe.{chiave}: atteso un numero")
+    pulita["tariffe"] = tariffe
 
     # Chi abita la casa: presenza e batteria del telefono. La foto è opzionale
     # e, se manca, il pannello mostra le iniziali — non un riquadro vuoto.
