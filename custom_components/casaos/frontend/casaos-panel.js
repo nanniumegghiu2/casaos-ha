@@ -10135,9 +10135,9 @@ function It({ posizione: e, casa: t, etichetta: n }) {
 					className: "mappa-dove",
 					children: n
 				}),
-				m !== null && /* @__PURE__ */ (0, b.jsx)("span", {
+				m !== null && m >= 60 && /* @__PURE__ */ (0, b.jsxs)("span", {
 					className: "mappa-distanza",
-					children: m < 60 ? "a casa" : `${Pt(m)} da casa`
+					children: [Pt(m), " da casa"]
 				}),
 				/* @__PURE__ */ (0, b.jsx)("span", {
 					className: "mappa-fonte",
