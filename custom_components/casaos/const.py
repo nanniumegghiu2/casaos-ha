@@ -5,7 +5,7 @@ DOMAIN = "casaos"
 # Versione: deve combaciare con manifest.json. Usata anche come cache-buster
 # sul module_url del pannello, cosi' un aggiornamento non lascia in giro il
 # vecchio bundle nella cache del browser del tablet.
-VERSION = "0.12.1"
+VERSION = "0.12.2"
 
 # Percorso HTTP da cui HA serve il bundle del pannello.
 PANEL_URL = "/casaos_static"
