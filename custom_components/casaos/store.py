@@ -41,6 +41,7 @@ def configurazione_vuota() -> dict[str, Any]:
         "meteo": None,
         "rifiuti": None,
         "persone": [],
+        "scorciatoie": [],
         "sensori": [],
     }
 
@@ -86,7 +87,16 @@ def valida(config: Any) -> dict[str, Any]:
         stanza["zona"] = zona
     pulita["stanze"] = stanze
 
-    for chiave in ("luci", "prese", "dispositivi", "telecamere", "scene", "sensori"):
+    for chiave in (
+        "luci",
+        "prese",
+        "dispositivi",
+        "telecamere",
+        "scene",
+        "sensori",
+        # Dispositivi da tenere sempre sott'occhio in una pastiglia d'angolo.
+        "scorciatoie",
+    ):
         pulita[chiave] = _lista_di_entita(config.get(chiave) or [], chiave)
 
     ingressi = config.get("ingressi") or {}

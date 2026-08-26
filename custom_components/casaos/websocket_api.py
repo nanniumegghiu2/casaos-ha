@@ -84,7 +84,15 @@ def ws_entita_mancanti(hass: HomeAssistant, connection, msg: dict[str, Any]) -> 
     config = _archivio(hass).dati
     citate: list[str] = []
 
-    for chiave in ("luci", "prese", "dispositivi", "telecamere", "scene", "sensori"):
+    for chiave in (
+        "luci",
+        "prese",
+        "dispositivi",
+        "telecamere",
+        "scene",
+        "sensori",
+        "scorciatoie",
+    ):
         citate += [v["entity_id"] for v in config.get(chiave, [])]
     ingressi = config.get("ingressi", {})
     citate += [v["entity_id"] for v in ingressi.get("cancelli", [])]
