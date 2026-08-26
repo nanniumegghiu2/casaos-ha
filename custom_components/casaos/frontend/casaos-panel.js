@@ -52,29 +52,29 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	}
 	function x(e) {
 		if (h = !1, b(e), !m) {
-			if (n(c) !== null) m = !0, ee || (ee = !0, w());
+			if (n(c) !== null) m = !0, S || (S = !0, T());
 			else {
 				var t = n(l);
-				t !== null && oe(x, t.startTime - e);
+				t !== null && ae(x, t.startTime - e);
 			}
 		}
 	}
-	var ee = !1, S = -1, C = 5, te = -1;
-	function ne() {
-		return g ? !0 : !(e.unstable_now() - te < C);
+	var S = !1, C = -1, w = 5, ee = -1;
+	function te() {
+		return g ? !0 : !(e.unstable_now() - ee < w);
 	}
-	function re() {
-		if (g = !1, ee) {
+	function ne() {
+		if (g = !1, S) {
 			var t = e.unstable_now();
-			te = t;
+			ee = t;
 			var i = !0;
 			try {
 				a: {
-					m = !1, h && (h = !1, v(S), S = -1), p = !0;
+					m = !1, h && (h = !1, v(C), C = -1), p = !0;
 					var a = f;
 					try {
 						b: {
-							for (b(t), d = n(c); d !== null && !(d.expirationTime > t && ne());) {
+							for (b(t), d = n(c); d !== null && !(d.expirationTime > t && te());) {
 								var o = d.callback;
 								if (typeof o == "function") {
 									d.callback = null, f = d.priorityLevel;
@@ -90,7 +90,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 							if (d !== null) i = !0;
 							else {
 								var u = n(l);
-								u !== null && oe(x, u.startTime - t), i = !1;
+								u !== null && ae(x, u.startTime - t), i = !1;
 							}
 						}
 						break a;
@@ -99,31 +99,31 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 					}
 				}
 			} finally {
-				i ? w() : ee = !1;
+				i ? T() : S = !1;
 			}
 		}
 	}
-	var w;
-	if (typeof y == "function") w = function() {
-		y(re);
+	var T;
+	if (typeof y == "function") T = function() {
+		y(ne);
 	};
 	else if (typeof MessageChannel < "u") {
-		var ie = new MessageChannel(), ae = ie.port2;
-		ie.port1.onmessage = re, w = function() {
-			ae.postMessage(null);
+		var re = new MessageChannel(), ie = re.port2;
+		re.port1.onmessage = ne, T = function() {
+			ie.postMessage(null);
 		};
-	} else w = function() {
-		_(re, 0);
+	} else T = function() {
+		_(ne, 0);
 	};
-	function oe(t, n) {
-		S = _(function() {
+	function ae(t, n) {
+		C = _(function() {
 			t(e.unstable_now());
 		}, n);
 	}
 	e.unstable_IdlePriority = 5, e.unstable_ImmediatePriority = 1, e.unstable_LowPriority = 4, e.unstable_NormalPriority = 3, e.unstable_Profiling = null, e.unstable_UserBlockingPriority = 2, e.unstable_cancelCallback = function(e) {
 		e.callback = null;
 	}, e.unstable_forceFrameRate = function(e) {
-		0 > e || 125 < e ? console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported") : C = 0 < e ? Math.floor(1e3 / e) : 5;
+		0 > e || 125 < e ? console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported") : w = 0 < e ? Math.floor(1e3 / e) : 5;
 	}, e.unstable_getCurrentPriorityLevel = function() {
 		return f;
 	}, e.unstable_next = function(e) {
@@ -184,8 +184,8 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			startTime: a,
 			expirationTime: s,
 			sortIndex: -1
-		}, a > o ? (r.sortIndex = a, t(l, r), n(c) === null && r === n(l) && (h ? (v(S), S = -1) : h = !0, oe(x, a - o))) : (r.sortIndex = s, t(c, r), m || p || (m = !0, ee || (ee = !0, w()))), r;
-	}, e.unstable_shouldYield = ne, e.unstable_wrapCallback = function(e) {
+		}, a > o ? (r.sortIndex = a, t(l, r), n(c) === null && r === n(l) && (h ? (v(C), C = -1) : h = !0, ae(x, a - o))) : (r.sortIndex = s, t(c, r), m || p || (m = !0, S || (S = !0, T()))), r;
+	}, e.unstable_shouldYield = te, e.unstable_wrapCallback = function(e) {
 		var t = f;
 		return function() {
 			var n = f;
@@ -228,15 +228,15 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	}
 	var x = b.prototype = new y();
 	x.constructor = b, g(x, v.prototype), x.isPureReactComponent = !0;
-	var ee = Array.isArray;
-	function S() {}
-	var C = {
+	var S = Array.isArray;
+	function C() {}
+	var w = {
 		H: null,
 		A: null,
 		T: null,
 		S: null
-	}, te = Object.prototype.hasOwnProperty;
-	function ne(e, n, r) {
+	}, ee = Object.prototype.hasOwnProperty;
+	function te(e, n, r) {
 		var i = r.ref;
 		return {
 			$$typeof: t,
@@ -246,13 +246,13 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			props: r
 		};
 	}
-	function re(e, t) {
-		return ne(e.type, t, e.props);
+	function ne(e, t) {
+		return te(e.type, t, e.props);
 	}
-	function w(e) {
+	function T(e) {
 		return typeof e == "object" && !!e && e.$$typeof === t;
 	}
-	function ie(e) {
+	function re(e) {
 		var t = {
 			"=": "=0",
 			":": "=2"
@@ -261,15 +261,15 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return t[e];
 		});
 	}
-	var ae = /\/+/g;
-	function oe(e, t) {
-		return typeof e == "object" && e && e.key != null ? ie("" + e.key) : t.toString(36);
+	var ie = /\/+/g;
+	function ae(e, t) {
+		return typeof e == "object" && e && e.key != null ? re("" + e.key) : t.toString(36);
 	}
-	function se(e) {
+	function oe(e) {
 		switch (e.status) {
 			case "fulfilled": return e.value;
 			case "rejected": throw e.reason;
-			default: switch (typeof e.status == "string" ? e.then(S, S) : (e.status = "pending", e.then(function(t) {
+			default: switch (typeof e.status == "string" ? e.then(C, C) : (e.status = "pending", e.then(function(t) {
 				e.status === "pending" && (e.status = "fulfilled", e.value = t);
 			}, function(t) {
 				e.status === "pending" && (e.status = "rejected", e.reason = t);
@@ -280,7 +280,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		}
 		throw e;
 	}
-	function ce(e, r, i, a, o) {
+	function se(e, r, i, a, o) {
 		var s = typeof e;
 		(s === "undefined" || s === "boolean") && (e = null);
 		var c = !1;
@@ -296,30 +296,30 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 				case n:
 					c = !0;
 					break;
-				case d: return c = e._init, ce(c(e._payload), r, i, a, o);
+				case d: return c = e._init, se(c(e._payload), r, i, a, o);
 			}
 		}
-		if (c) return o = o(e), c = a === "" ? "." + oe(e, 0) : a, ee(o) ? (i = "", c != null && (i = c.replace(ae, "$&/") + "/"), ce(o, r, i, "", function(e) {
+		if (c) return o = o(e), c = a === "" ? "." + ae(e, 0) : a, S(o) ? (i = "", c != null && (i = c.replace(ie, "$&/") + "/"), se(o, r, i, "", function(e) {
 			return e;
-		})) : o != null && (w(o) && (o = re(o, i + (o.key == null || e && e.key === o.key ? "" : ("" + o.key).replace(ae, "$&/") + "/") + c)), r.push(o)), 1;
+		})) : o != null && (T(o) && (o = ne(o, i + (o.key == null || e && e.key === o.key ? "" : ("" + o.key).replace(ie, "$&/") + "/") + c)), r.push(o)), 1;
 		c = 0;
 		var l = a === "" ? "." : a + ":";
-		if (ee(e)) for (var u = 0; u < e.length; u++) a = e[u], s = l + oe(a, u), c += ce(a, r, i, s, o);
-		else if (u = m(e), typeof u == "function") for (e = u.call(e), u = 0; !(a = e.next()).done;) a = a.value, s = l + oe(a, u++), c += ce(a, r, i, s, o);
+		if (S(e)) for (var u = 0; u < e.length; u++) a = e[u], s = l + ae(a, u), c += se(a, r, i, s, o);
+		else if (u = m(e), typeof u == "function") for (e = u.call(e), u = 0; !(a = e.next()).done;) a = a.value, s = l + ae(a, u++), c += se(a, r, i, s, o);
 		else if (s === "object") {
-			if (typeof e.then == "function") return ce(se(e), r, i, a, o);
+			if (typeof e.then == "function") return se(oe(e), r, i, a, o);
 			throw r = String(e), Error("Objects are not valid as a React child (found: " + (r === "[object Object]" ? "object with keys {" + Object.keys(e).join(", ") + "}" : r) + "). If you meant to render a collection of children, use an array instead.");
 		}
 		return c;
 	}
-	function le(e, t, n) {
+	function ce(e, t, n) {
 		if (e == null) return e;
 		var r = [], i = 0;
-		return ce(e, r, "", "", function(e) {
+		return se(e, r, "", "", function(e) {
 			return t.call(n, e, i++);
 		}), r;
 	}
-	function ue(e) {
+	function le(e) {
 		if (e._status === -1) {
 			var t = e._result;
 			t = t(), t.then(function(t) {
@@ -331,7 +331,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		if (e._status === 1) return e._result.default;
 		throw e._result;
 	}
-	var T = typeof reportError == "function" ? reportError : function(e) {
+	var E = typeof reportError == "function" ? reportError : function(e) {
 		if (typeof window == "object" && typeof window.ErrorEvent == "function") {
 			var t = new window.ErrorEvent("error", {
 				bubbles: !0,
@@ -345,33 +345,33 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return;
 		}
 		console.error(e);
-	}, E = {
-		map: le,
+	}, D = {
+		map: ce,
 		forEach: function(e, t, n) {
-			le(e, function() {
+			ce(e, function() {
 				t.apply(this, arguments);
 			}, n);
 		},
 		count: function(e) {
 			var t = 0;
-			return le(e, function() {
+			return ce(e, function() {
 				t++;
 			}), t;
 		},
 		toArray: function(e) {
-			return le(e, function(e) {
+			return ce(e, function(e) {
 				return e;
 			}) || [];
 		},
 		only: function(e) {
-			if (!w(e)) throw Error("React.Children.only expected to receive a single React element child.");
+			if (!T(e)) throw Error("React.Children.only expected to receive a single React element child.");
 			return e;
 		}
 	};
-	e.Activity = f, e.Children = E, e.Component = v, e.Fragment = r, e.Profiler = a, e.PureComponent = b, e.StrictMode = i, e.Suspense = l, e.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE = C, e.__COMPILER_RUNTIME = {
+	e.Activity = f, e.Children = D, e.Component = v, e.Fragment = r, e.Profiler = a, e.PureComponent = b, e.StrictMode = i, e.Suspense = l, e.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE = w, e.__COMPILER_RUNTIME = {
 		__proto__: null,
 		c: function(e) {
-			return C.H.useMemoCache(e);
+			return w.H.useMemoCache(e);
 		}
 	}, e.cache = function(e) {
 		return function() {
@@ -382,14 +382,14 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	}, e.cloneElement = function(e, t, n) {
 		if (e == null) throw Error("The argument must be a React element, but you passed " + e + ".");
 		var r = g({}, e.props), i = e.key;
-		if (t != null) for (a in t.key !== void 0 && (i = "" + t.key), t) !te.call(t, a) || a === "key" || a === "__self" || a === "__source" || a === "ref" && t.ref === void 0 || (r[a] = t[a]);
+		if (t != null) for (a in t.key !== void 0 && (i = "" + t.key), t) !ee.call(t, a) || a === "key" || a === "__self" || a === "__source" || a === "ref" && t.ref === void 0 || (r[a] = t[a]);
 		var a = arguments.length - 2;
 		if (a === 1) r.children = n;
 		else if (1 < a) {
 			for (var o = Array(a), s = 0; s < a; s++) o[s] = arguments[s + 2];
 			r.children = o;
 		}
-		return ne(e.type, i, r);
+		return te(e.type, i, r);
 	}, e.createContext = function(e) {
 		return e = {
 			$$typeof: s,
@@ -404,7 +404,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		}, e;
 	}, e.createElement = function(e, t, n) {
 		var r, i = {}, a = null;
-		if (t != null) for (r in t.key !== void 0 && (a = "" + t.key), t) te.call(t, r) && r !== "key" && r !== "__self" && r !== "__source" && (i[r] = t[r]);
+		if (t != null) for (r in t.key !== void 0 && (a = "" + t.key), t) ee.call(t, r) && r !== "key" && r !== "__self" && r !== "__source" && (i[r] = t[r]);
 		var o = arguments.length - 2;
 		if (o === 1) i.children = n;
 		else if (1 < o) {
@@ -412,7 +412,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			i.children = s;
 		}
 		if (e && e.defaultProps) for (r in o = e.defaultProps, o) i[r] === void 0 && (i[r] = o[r]);
-		return ne(e, a, i);
+		return te(e, a, i);
 	}, e.createRef = function() {
 		return { current: null };
 	}, e.forwardRef = function(e) {
@@ -420,14 +420,14 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			$$typeof: c,
 			render: e
 		};
-	}, e.isValidElement = w, e.lazy = function(e) {
+	}, e.isValidElement = T, e.lazy = function(e) {
 		return {
 			$$typeof: d,
 			_payload: {
 				_status: -1,
 				_result: e
 			},
-			_init: ue
+			_init: le
 		};
 	}, e.memo = function(e, t) {
 		return {
@@ -436,54 +436,54 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			compare: t === void 0 ? null : t
 		};
 	}, e.startTransition = function(e) {
-		var t = C.T, n = {};
-		C.T = n;
+		var t = w.T, n = {};
+		w.T = n;
 		try {
-			var r = e(), i = C.S;
-			i !== null && i(n, r), typeof r == "object" && r && typeof r.then == "function" && r.then(S, T);
+			var r = e(), i = w.S;
+			i !== null && i(n, r), typeof r == "object" && r && typeof r.then == "function" && r.then(C, E);
 		} catch (e) {
-			T(e);
+			E(e);
 		} finally {
-			t !== null && n.types !== null && (t.types = n.types), C.T = t;
+			t !== null && n.types !== null && (t.types = n.types), w.T = t;
 		}
 	}, e.unstable_useCacheRefresh = function() {
-		return C.H.useCacheRefresh();
+		return w.H.useCacheRefresh();
 	}, e.use = function(e) {
-		return C.H.use(e);
+		return w.H.use(e);
 	}, e.useActionState = function(e, t, n) {
-		return C.H.useActionState(e, t, n);
+		return w.H.useActionState(e, t, n);
 	}, e.useCallback = function(e, t) {
-		return C.H.useCallback(e, t);
+		return w.H.useCallback(e, t);
 	}, e.useContext = function(e) {
-		return C.H.useContext(e);
+		return w.H.useContext(e);
 	}, e.useDebugValue = function() {}, e.useDeferredValue = function(e, t) {
-		return C.H.useDeferredValue(e, t);
+		return w.H.useDeferredValue(e, t);
 	}, e.useEffect = function(e, t) {
-		return C.H.useEffect(e, t);
+		return w.H.useEffect(e, t);
 	}, e.useEffectEvent = function(e) {
-		return C.H.useEffectEvent(e);
+		return w.H.useEffectEvent(e);
 	}, e.useId = function() {
-		return C.H.useId();
+		return w.H.useId();
 	}, e.useImperativeHandle = function(e, t, n) {
-		return C.H.useImperativeHandle(e, t, n);
+		return w.H.useImperativeHandle(e, t, n);
 	}, e.useInsertionEffect = function(e, t) {
-		return C.H.useInsertionEffect(e, t);
+		return w.H.useInsertionEffect(e, t);
 	}, e.useLayoutEffect = function(e, t) {
-		return C.H.useLayoutEffect(e, t);
+		return w.H.useLayoutEffect(e, t);
 	}, e.useMemo = function(e, t) {
-		return C.H.useMemo(e, t);
+		return w.H.useMemo(e, t);
 	}, e.useOptimistic = function(e, t) {
-		return C.H.useOptimistic(e, t);
+		return w.H.useOptimistic(e, t);
 	}, e.useReducer = function(e, t, n) {
-		return C.H.useReducer(e, t, n);
+		return w.H.useReducer(e, t, n);
 	}, e.useRef = function(e) {
-		return C.H.useRef(e);
+		return w.H.useRef(e);
 	}, e.useState = function(e) {
-		return C.H.useState(e);
+		return w.H.useState(e);
 	}, e.useSyncExternalStore = function(e, t, n) {
-		return C.H.useSyncExternalStore(e, t, n);
+		return w.H.useSyncExternalStore(e, t, n);
 	}, e.useTransition = function() {
-		return C.H.useTransition();
+		return w.H.useTransition();
 	}, e.version = "19.2.8";
 })), i = /* @__PURE__ */ e(((e, t) => {
 	t.exports = r();
@@ -724,55 +724,55 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		}
 		return null;
 	}
-	var h = Object.assign, g = Symbol.for("react.element"), _ = Symbol.for("react.transitional.element"), v = Symbol.for("react.portal"), y = Symbol.for("react.fragment"), b = Symbol.for("react.strict_mode"), x = Symbol.for("react.profiler"), ee = Symbol.for("react.consumer"), S = Symbol.for("react.context"), C = Symbol.for("react.forward_ref"), te = Symbol.for("react.suspense"), ne = Symbol.for("react.suspense_list"), re = Symbol.for("react.memo"), w = Symbol.for("react.lazy"), ie = Symbol.for("react.activity"), ae = Symbol.for("react.memo_cache_sentinel"), oe = Symbol.iterator;
-	function se(e) {
-		return typeof e != "object" || !e ? null : (e = oe && e[oe] || e["@@iterator"], typeof e == "function" ? e : null);
+	var h = Object.assign, g = Symbol.for("react.element"), _ = Symbol.for("react.transitional.element"), v = Symbol.for("react.portal"), y = Symbol.for("react.fragment"), b = Symbol.for("react.strict_mode"), x = Symbol.for("react.profiler"), S = Symbol.for("react.consumer"), C = Symbol.for("react.context"), w = Symbol.for("react.forward_ref"), ee = Symbol.for("react.suspense"), te = Symbol.for("react.suspense_list"), ne = Symbol.for("react.memo"), T = Symbol.for("react.lazy"), re = Symbol.for("react.activity"), ie = Symbol.for("react.memo_cache_sentinel"), ae = Symbol.iterator;
+	function oe(e) {
+		return typeof e != "object" || !e ? null : (e = ae && e[ae] || e["@@iterator"], typeof e == "function" ? e : null);
 	}
-	var ce = Symbol.for("react.client.reference");
-	function le(e) {
+	var se = Symbol.for("react.client.reference");
+	function ce(e) {
 		if (e == null) return null;
-		if (typeof e == "function") return e.$$typeof === ce ? null : e.displayName || e.name || null;
+		if (typeof e == "function") return e.$$typeof === se ? null : e.displayName || e.name || null;
 		if (typeof e == "string") return e;
 		switch (e) {
 			case y: return "Fragment";
 			case x: return "Profiler";
 			case b: return "StrictMode";
-			case te: return "Suspense";
-			case ne: return "SuspenseList";
-			case ie: return "Activity";
+			case ee: return "Suspense";
+			case te: return "SuspenseList";
+			case re: return "Activity";
 		}
 		if (typeof e == "object") switch (e.$$typeof) {
 			case v: return "Portal";
-			case S: return e.displayName || "Context";
-			case ee: return (e._context.displayName || "Context") + ".Consumer";
-			case C:
+			case C: return e.displayName || "Context";
+			case S: return (e._context.displayName || "Context") + ".Consumer";
+			case w:
 				var t = e.render;
 				return e = e.displayName, e ||= (e = t.displayName || t.name || "", e === "" ? "ForwardRef" : "ForwardRef(" + e + ")"), e;
-			case re: return t = e.displayName || null, t === null ? le(e.type) || "Memo" : t;
-			case w:
+			case ne: return t = e.displayName || null, t === null ? ce(e.type) || "Memo" : t;
+			case T:
 				t = e._payload, e = e._init;
 				try {
-					return le(e(t));
+					return ce(e(t));
 				} catch {}
 		}
 		return null;
 	}
-	var ue = Array.isArray, T = r.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, E = a.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, de = {
+	var le = Array.isArray, E = r.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, D = a.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ue = {
 		pending: !1,
 		data: null,
 		method: null,
 		action: null
-	}, fe = [], pe = -1;
-	function me(e) {
+	}, de = [], fe = -1;
+	function pe(e) {
 		return { current: e };
 	}
-	function D(e) {
-		0 > pe || (e.current = fe[pe], fe[pe] = null, pe--);
+	function me(e) {
+		0 > fe || (e.current = de[fe], de[fe] = null, fe--);
 	}
 	function O(e, t) {
-		pe++, fe[pe] = e.current, e.current = t;
+		fe++, de[fe] = e.current, e.current = t;
 	}
-	var he = me(null), ge = me(null), _e = me(null), ve = me(null);
+	var he = pe(null), ge = pe(null), _e = pe(null), ve = pe(null);
 	function ye(e, t) {
 		switch (O(_e, t), O(ge, e), O(he, null), t.nodeType) {
 			case 9:
@@ -790,10 +790,10 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 				default: e = 0;
 			}
 		}
-		D(he), O(he, e);
+		me(he), O(he, e);
 	}
 	function be() {
-		D(he), D(ge), D(_e);
+		me(he), me(ge), me(_e);
 	}
 	function xe(e) {
 		e.memoizedState !== null && O(ve, e);
@@ -801,7 +801,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		t !== n && (O(ge, e), O(he, n));
 	}
 	function Se(e) {
-		ge.current === e && (D(he), D(ge)), ve.current === e && (D(ve), Qf._currentValue = de);
+		ge.current === e && (me(he), me(ge)), ve.current === e && (me(ve), Qf._currentValue = ue);
 	}
 	var Ce, we;
 	function Te(e) {
@@ -1088,15 +1088,15 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		return e &= -e, 2 < e ? 8 < e ? e & 134217727 ? 32 : 268435456 : 8 : 2;
 	}
 	function pt() {
-		var e = E.p;
+		var e = D.p;
 		return e === 0 ? (e = window.event, e === void 0 ? 32 : mp(e.type)) : e;
 	}
 	function mt(e, t) {
-		var n = E.p;
+		var n = D.p;
 		try {
-			return E.p = e, t();
+			return D.p = e, t();
 		} finally {
-			E.p = n;
+			D.p = n;
 		}
 	}
 	var ht = Math.random().toString(36).slice(2), k = "__reactFiber$" + ht, gt = "__reactProps$" + ht, _t = "__reactContainer$" + ht, vt = "__reactEvents$" + ht, yt = "__reactListeners$" + ht, bt = "__reactHandles$" + ht, xt = "__reactResources$" + ht, St = "__reactMarker$" + ht;
@@ -1310,7 +1310,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		if (t == null) {
 			if (r != null) {
 				if (n != null) throw Error(s(92));
-				if (ue(r)) {
+				if (le(r)) {
 					if (1 < r.length) throw Error(s(93));
 					r = r[0];
 				}
@@ -2023,29 +2023,29 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		if (r = e, typeof e == "function") _i(e) && (o = 1);
 		else if (typeof e == "string") o = Uf(e, n, he.current) ? 26 : e === "html" || e === "head" || e === "body" ? 27 : 5;
 		else a: switch (e) {
-			case ie: return e = gi(31, n, t, i), e.elementType = ie, e.lanes = a, e;
+			case re: return e = gi(31, n, t, i), e.elementType = re, e.lanes = a, e;
 			case y: return xi(n.children, i, a, t);
 			case b:
 				o = 8, i |= 24;
 				break;
 			case x: return e = gi(12, n, t, i | 2), e.elementType = x, e.lanes = a, e;
-			case te: return e = gi(13, n, t, i), e.elementType = te, e.lanes = a, e;
-			case ne: return e = gi(19, n, t, i), e.elementType = ne, e.lanes = a, e;
+			case ee: return e = gi(13, n, t, i), e.elementType = ee, e.lanes = a, e;
+			case te: return e = gi(19, n, t, i), e.elementType = te, e.lanes = a, e;
 			default:
 				if (typeof e == "object" && e) switch (e.$$typeof) {
-					case S:
+					case C:
 						o = 10;
 						break a;
-					case ee:
+					case S:
 						o = 9;
 						break a;
-					case C:
+					case w:
 						o = 11;
 						break a;
-					case re:
+					case ne:
 						o = 14;
 						break a;
-					case w:
+					case T:
 						o = 16, r = null;
 						break a;
 				}
@@ -2189,12 +2189,12 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	function Zi(e) {
 		Hi === null ? Hi = [e] : Hi.push(e);
 	}
-	var Qi = me(null), $i = null, ea = null;
+	var Qi = pe(null), $i = null, ea = null;
 	function ta(e, t, n) {
 		O(Qi, t._currentValue), t._currentValue = n;
 	}
 	function na(e) {
-		e._currentValue = Qi.current, D(Qi);
+		e._currentValue = Qi.current, me(Qi);
 	}
 	function ra(e, t, n) {
 		for (; e !== null;) {
@@ -2304,7 +2304,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			});
 		};
 	}, fa = t.unstable_scheduleCallback, pa = t.unstable_NormalPriority, N = {
-		$$typeof: S,
+		$$typeof: C,
 		Consumer: null,
 		Provider: null,
 		_currentValue: null,
@@ -2361,11 +2361,11 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			for (r.status = "rejected", r.reason = e, e = 0; e < n.length; e++) (0, n[e])(void 0);
 		}), r;
 	}
-	var Ca = T.S;
-	T.S = function(e, t) {
+	var Ca = E.S;
+	E.S = function(e, t) {
 		tu = Fe(), typeof t == "object" && t && typeof t.then == "function" && ba(e, t), Ca !== null && Ca(e, t);
 	};
-	var wa = me(null);
+	var wa = pe(null);
 	function Ta() {
 		var e = wa.current;
 		return e === null ? G.pooledCache : e;
@@ -2469,7 +2469,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		}
 		function l(e, t, n, r) {
 			var a = n.type;
-			return a === y ? d(e, t, n.props.children, r, n.key) : t !== null && (t.elementType === a || typeof a == "object" && a && a.$$typeof === w && Pa(a) === t.type) ? (t = i(t, n.props), Va(t, n), t.return = e, t) : (t = bi(n.type, n.key, n.props, null, e.mode, r), Va(t, n), t.return = e, t);
+			return a === y ? d(e, t, n.props.children, r, n.key) : t !== null && (t.elementType === a || typeof a == "object" && a && a.$$typeof === T && Pa(a) === t.type) ? (t = i(t, n.props), Va(t, n), t.return = e, t) : (t = bi(n.type, n.key, n.props, null, e.mode, r), Va(t, n), t.return = e, t);
 		}
 		function u(e, t, n, r) {
 			return t === null || t.tag !== 4 || t.stateNode.containerInfo !== n.containerInfo || t.stateNode.implementation !== n.implementation ? (t = wi(n, e.mode, r), t.return = e, t) : (t = i(t, n.children || []), t.return = e, t);
@@ -2483,11 +2483,11 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 				switch (t.$$typeof) {
 					case _: return n = bi(t.type, t.key, t.props, null, e.mode, n), Va(n, t), n.return = e, n;
 					case v: return t = wi(t, e.mode, n), t.return = e, t;
-					case w: return t = Pa(t), f(e, t, n);
+					case T: return t = Pa(t), f(e, t, n);
 				}
-				if (ue(t) || se(t)) return t = xi(t, e.mode, n, null), t.return = e, t;
+				if (le(t) || oe(t)) return t = xi(t, e.mode, n, null), t.return = e, t;
 				if (typeof t.then == "function") return f(e, Ba(t), n);
-				if (t.$$typeof === S) return f(e, la(e, t), n);
+				if (t.$$typeof === C) return f(e, la(e, t), n);
 				Ha(e, t);
 			}
 			return null;
@@ -2499,11 +2499,11 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 				switch (n.$$typeof) {
 					case _: return n.key === i ? l(e, t, n, r) : null;
 					case v: return n.key === i ? u(e, t, n, r) : null;
-					case w: return n = Pa(n), p(e, t, n, r);
+					case T: return n = Pa(n), p(e, t, n, r);
 				}
-				if (ue(n) || se(n)) return i === null ? d(e, t, n, r, null) : null;
+				if (le(n) || oe(n)) return i === null ? d(e, t, n, r, null) : null;
 				if (typeof n.then == "function") return p(e, t, Ba(n), r);
-				if (n.$$typeof === S) return p(e, t, la(e, n), r);
+				if (n.$$typeof === C) return p(e, t, la(e, n), r);
 				Ha(e, n);
 			}
 			return null;
@@ -2514,11 +2514,11 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 				switch (r.$$typeof) {
 					case _: return e = e.get(r.key === null ? n : r.key) || null, l(t, e, r, i);
 					case v: return e = e.get(r.key === null ? n : r.key) || null, u(t, e, r, i);
-					case w: return r = Pa(r), m(e, t, n, r, i);
+					case T: return r = Pa(r), m(e, t, n, r, i);
 				}
-				if (ue(r) || se(r)) return e = e.get(n) || null, d(t, e, r, i, null);
+				if (le(r) || oe(r)) return e = e.get(n) || null, d(t, e, r, i, null);
 				if (typeof r.then == "function") return m(e, t, n, Ba(r), i);
-				if (r.$$typeof === S) return m(e, t, n, la(t, r), i);
+				if (r.$$typeof === C) return m(e, t, n, la(t, r), i);
 				Ha(t, r);
 			}
 			return null;
@@ -2576,7 +2576,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 											n(e, r.sibling), c = i(r, a.props.children), c.return = e, e = c;
 											break a;
 										}
-									} else if (r.elementType === l || typeof l == "object" && l && l.$$typeof === w && Pa(l) === r.type) {
+									} else if (r.elementType === l || typeof l == "object" && l && l.$$typeof === T && Pa(l) === r.type) {
 										n(e, r.sibling), c = i(r, a.props), Va(c, a), c.return = e, e = c;
 										break a;
 									}
@@ -2604,15 +2604,15 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 							c = wi(a, e.mode, c), c.return = e, e = c;
 						}
 						return o(e);
-					case w: return a = Pa(a), b(e, r, a, c);
+					case T: return a = Pa(a), b(e, r, a, c);
 				}
-				if (ue(a)) return h(e, r, a, c);
-				if (se(a)) {
-					if (l = se(a), typeof l != "function") throw Error(s(150));
+				if (le(a)) return h(e, r, a, c);
+				if (oe(a)) {
+					if (l = oe(a), typeof l != "function") throw Error(s(150));
 					return a = l.call(a), g(e, r, a, c);
 				}
 				if (typeof a.then == "function") return b(e, r, Ba(a), c);
-				if (a.$$typeof === S) return b(e, r, la(e, a), c);
+				if (a.$$typeof === C) return b(e, r, la(e, a), c);
 				Ha(e, a);
 			}
 			return typeof a == "string" && a !== "" || typeof a == "number" || typeof a == "bigint" ? (a = "" + a, r !== null && r.tag === 6 ? (n(e, r.sibling), c = i(r, a), c.return = e, e = c) : (n(e, r), c = Si(a, e.mode, c), c.return = e, e = c), o(e)) : n(e, r);
@@ -2780,7 +2780,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		var n = e.callbacks;
 		if (n !== null) for (e.callbacks = null, e = 0; e < n.length; e++) no(n[e], t);
 	}
-	var io = me(null), ao = me(0);
+	var io = pe(null), ao = pe(0);
 	function oo(e, t) {
 		e = Gl, O(ao, e), O(io, t), Gl = e | t.baseLanes;
 	}
@@ -2788,9 +2788,9 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		O(ao, Gl), O(io, io.current);
 	}
 	function co() {
-		Gl = ao.current, D(io), D(ao);
+		Gl = ao.current, me(io), me(ao);
 	}
-	var lo = me(null), uo = null;
+	var lo = pe(null), uo = null;
 	function fo(e) {
 		var t = e.alternate;
 		O(P, P.current & 1), O(lo, e), uo === null && (t === null || io.current !== null || t.memoizedState !== null) && (uo = e);
@@ -2805,9 +2805,9 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		O(P, P.current), O(lo, lo.current);
 	}
 	function go(e) {
-		D(lo), uo === e && (uo = null), D(P);
+		me(lo), uo === e && (uo = null), me(P);
 	}
-	var P = me(0);
+	var P = pe(0);
 	function _o(e) {
 		for (var t = e; t !== null;) {
 			if (t.tag === 13) {
@@ -2838,10 +2838,10 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		return !0;
 	}
 	function Do(e, t, n, r, i, a) {
-		return vo = a, F = t, t.memoizedState = null, t.updateQueue = null, t.lanes = 0, T.H = e === null || e.memoizedState === null ? Us : Ws, xo = !1, a = n(r, i), xo = !1, bo && (a = ko(t, n, r, i)), Oo(e), a;
+		return vo = a, F = t, t.memoizedState = null, t.updateQueue = null, t.lanes = 0, E.H = e === null || e.memoizedState === null ? Us : Ws, xo = !1, a = n(r, i), xo = !1, bo && (a = ko(t, n, r, i)), Oo(e), a;
 	}
 	function Oo(e) {
-		T.H = Hs;
+		E.H = Hs;
 		var t = I !== null && I.next !== null;
 		if (vo = 0, L = I = F = null, yo = !1, Co = 0, wo = null, t) throw Error(s(300));
 		e === null || B || (e = e.dependencies, e !== null && oa(e) && (B = !0));
@@ -2855,12 +2855,12 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 				var a = e.updateQueue;
 				a.lastEffect = null, a.events = null, a.stores = null, a.memoCache != null && (a.memoCache.index = 0);
 			}
-			T.H = Gs, a = t(n, r);
+			E.H = Gs, a = t(n, r);
 		} while (bo);
 		return a;
 	}
 	function Ao() {
-		var e = T.H, t = e.useState()[0];
+		var e = E.H, t = e.useState()[0];
 		return t = typeof t.then == "function" ? Io(t) : t, e = e.useState()[0], (I === null ? null : I.memoizedState) !== e && (F.flags |= 1024), t;
 	}
 	function jo() {
@@ -2919,12 +2919,12 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	}
 	function Io(e) {
 		var t = Co;
-		return Co += 1, wo === null && (wo = []), e = Na(wo, e, t), t = F, (L === null ? t.memoizedState : L.next) === null && (t = t.alternate, T.H = t === null || t.memoizedState === null ? Us : Ws), e;
+		return Co += 1, wo === null && (wo = []), e = Na(wo, e, t), t = F, (L === null ? t.memoizedState : L.next) === null && (t = t.alternate, E.H = t === null || t.memoizedState === null ? Us : Ws), e;
 	}
 	function Lo(e) {
 		if (typeof e == "object" && e) {
 			if (typeof e.then == "function") return Io(e);
-			if (e.$$typeof === S) return ca(e);
+			if (e.$$typeof === C) return ca(e);
 		}
 		throw Error(s(438, String(e)));
 	}
@@ -2942,7 +2942,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		if (t ??= {
 			data: [],
 			index: 0
-		}, n === null && (n = Fo(), F.updateQueue = n), n.memoCache = t, n = t.data[t.index], n === void 0) for (n = t.data[t.index] = Array(e), r = 0; r < e; r++) n[r] = ae;
+		}, n === null && (n = Fo(), F.updateQueue = n), n.memoCache = t, n = t.data[t.index], n === void 0) for (n = t.data[t.index] = Array(e), r = 0; r < e; r++) n[r] = ie;
 		return t.index++, n;
 	}
 	function zo(e, t) {
@@ -3105,21 +3105,21 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 					a.listeners.push(e);
 				}
 			};
-			T.T === null ? a.isTransition = !1 : n(!0), r(a), n = t.pending, n === null ? (a.next = t.pending = a, Qo(t, a)) : (a.next = n.next, t.pending = n.next = a);
+			E.T === null ? a.isTransition = !1 : n(!0), r(a), n = t.pending, n === null ? (a.next = t.pending = a, Qo(t, a)) : (a.next = n.next, t.pending = n.next = a);
 		}
 	}
 	function Qo(e, t) {
 		var n = t.action, r = t.payload, i = e.state;
 		if (t.isTransition) {
-			var a = T.T, o = {};
-			T.T = o;
+			var a = E.T, o = {};
+			E.T = o;
 			try {
-				var s = n(i, r), c = T.S;
+				var s = n(i, r), c = E.S;
 				c !== null && c(o, s), $o(e, t, s);
 			} catch (n) {
 				ts(e, t, n);
 			} finally {
-				a !== null && o.types !== null && (a.types = o.types), T.T = a;
+				a !== null && o.types !== null && (a.types = o.types), E.T = a;
 			}
 		} else try {
 			a = n(i, r), $o(e, t, a);
@@ -3333,12 +3333,12 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		return Ar(n, t) ? n : io.current === null ? !(vo & 42) || vo & 1073741824 && !(q & 261930) ? (B = !0, e.memoizedState = n) : (e = mu(), F.lanes |= e, Kl |= e, t) : (e = ws(e, n, r), Ar(e, t) || (B = !0), e);
 	}
 	function Es(e, t, n, r, i) {
-		var a = E.p;
-		E.p = a !== 0 && 8 > a ? a : 8;
-		var o = T.T, s = {};
-		T.T = s, Rs(e, !1, t, n);
+		var a = D.p;
+		D.p = a !== 0 && 8 > a ? a : 8;
+		var o = E.T, s = {};
+		E.T = s, Rs(e, !1, t, n);
 		try {
-			var c = i(), l = T.S;
+			var c = i(), l = E.S;
 			l !== null && l(s, c), typeof c == "object" && c && typeof c.then == "function" ? Ls(e, t, Sa(c, r), pu(e)) : Ls(e, t, r, pu(e));
 		} catch (n) {
 			Ls(e, t, {
@@ -3347,14 +3347,14 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 				reason: n
 			}, pu());
 		} finally {
-			E.p = a, o !== null && s.types !== null && (o.types = s.types), T.T = o;
+			D.p = a, o !== null && s.types !== null && (o.types = s.types), E.T = o;
 		}
 	}
 	function Ds() {}
 	function Os(e, t, n, r) {
 		if (e.tag !== 5) throw Error(s(476));
 		var i = ks(e).queue;
-		Es(e, i, t, de, n === null ? Ds : function() {
+		Es(e, i, t, ue, n === null ? Ds : function() {
 			return As(e), n(r);
 		});
 	}
@@ -3362,15 +3362,15 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		var t = e.memoizedState;
 		if (t !== null) return t;
 		t = {
-			memoizedState: de,
-			baseState: de,
+			memoizedState: ue,
+			baseState: ue,
 			baseQueue: null,
 			queue: {
 				pending: null,
 				lanes: 0,
 				dispatch: null,
 				lastRenderedReducer: zo,
-				lastRenderedState: de
+				lastRenderedState: ue
 			},
 			next: null
 		};
@@ -4180,16 +4180,16 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 					else {
 						if (e != null) {
 							var i = e.$$typeof;
-							if (i === C) {
+							if (i === w) {
 								t.tag = 11, t = cc(null, t, e, r, n);
 								break a;
 							}
-							if (i === re) {
+							if (i === ne) {
 								t.tag = 14, t = lc(null, t, e, r, n);
 								break a;
 							}
 						}
-						throw t = le(e) || e, Error(s(306, t, ""));
+						throw t = ce(e) || e, Error(s(306, t, ""));
 					}
 				}
 				return t;
@@ -4435,7 +4435,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			case 4: return be(), e === null && Sd(t.stateNode.containerInfo), V(t), null;
 			case 10: return na(t.type), V(t), null;
 			case 19:
-				if (D(P), r = t.memoizedState, r === null) return V(t), null;
+				if (me(P), r = t.memoizedState, r === null) return V(t), null;
 				if (i = !!(t.flags & 128), a = r.rendering, a === null) {
 					if (i) Bc(r, !1);
 					else {
@@ -4458,7 +4458,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 				}
 				return r.tail === null ? (V(t), null) : (e = r.tail, r.rendering = e, r.tail = e.sibling, r.renderingStartTime = Fe(), e.sibling = null, n = P.current, O(P, i ? n & 1 | 2 : n & 1), M && Ii(t, r.treeForkCount), e);
 			case 22:
-			case 23: return go(t), co(), r = t.memoizedState !== null, e === null ? r && (t.flags |= 8192) : e.memoizedState !== null !== r && (t.flags |= 8192), r ? n & 536870912 && !(t.flags & 128) && (V(t), t.subtreeFlags & 6 && (t.flags |= 8192)) : V(t), n = t.updateQueue, n !== null && zc(t, n.retryQueue), n = null, e !== null && e.memoizedState !== null && e.memoizedState.cachePool !== null && (n = e.memoizedState.cachePool.pool), r = null, t.memoizedState !== null && t.memoizedState.cachePool !== null && (r = t.memoizedState.cachePool.pool), r !== n && (t.flags |= 2048), e !== null && D(wa), null;
+			case 23: return go(t), co(), r = t.memoizedState !== null, e === null ? r && (t.flags |= 8192) : e.memoizedState !== null !== r && (t.flags |= 8192), r ? n & 536870912 && !(t.flags & 128) && (V(t), t.subtreeFlags & 6 && (t.flags |= 8192)) : V(t), n = t.updateQueue, n !== null && zc(t, n.retryQueue), n = null, e !== null && e.memoizedState !== null && e.memoizedState.cachePool !== null && (n = e.memoizedState.cachePool.pool), r = null, t.memoizedState !== null && t.memoizedState.cachePool !== null && (r = t.memoizedState.cachePool.pool), r !== n && (t.flags |= 2048), e !== null && me(wa), null;
 			case 24: return n = null, e !== null && (n = e.memoizedState.cache), t.memoizedState.cache !== n && (t.flags |= 2048), na(N), V(t), null;
 			case 25: return null;
 			case 30: return null;
@@ -4484,11 +4484,11 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 					Yi();
 				}
 				return e = t.flags, e & 65536 ? (t.flags = e & -65537 | 128, t) : null;
-			case 19: return D(P), null;
+			case 19: return me(P), null;
 			case 4: return be(), null;
 			case 10: return na(t.type), null;
 			case 22:
-			case 23: return go(t), co(), e !== null && D(wa), e = t.flags, e & 65536 ? (t.flags = e & -65537 | 128, t) : null;
+			case 23: return go(t), co(), e !== null && me(wa), e = t.flags, e & 65536 ? (t.flags = e & -65537 | 128, t) : null;
 			case 24: return na(N), null;
 			case 25: return null;
 			default: return null;
@@ -4514,14 +4514,14 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 				go(t);
 				break;
 			case 19:
-				D(P);
+				me(P);
 				break;
 			case 10:
 				na(t.type);
 				break;
 			case 22:
 			case 23:
-				go(t), co(), e !== null && D(wa);
+				go(t), co(), e !== null && me(wa);
 				break;
 			case 24: na(N);
 		}
@@ -5473,7 +5473,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		}
 	}, Bl = typeof WeakMap == "function" ? WeakMap : Map, W = 0, G = null, K = null, q = 0, J = 0, Vl = null, Hl = !1, Ul = !1, Wl = !1, Gl = 0, Y = 0, Kl = 0, ql = 0, Jl = 0, Yl = 0, Xl = 0, Zl = null, Ql = null, $l = !1, eu = 0, tu = 0, nu = Infinity, ru = null, iu = null, X = 0, au = null, ou = null, su = 0, cu = 0, lu = null, uu = null, du = 0, fu = null;
 	function pu() {
-		return W & 2 && q !== 0 ? q & -q : T.T === null ? pt() : dd();
+		return W & 2 && q !== 0 ? q & -q : E.T === null ? pt() : dd();
 	}
 	function mu() {
 		if (Yl === 0) {
@@ -5624,19 +5624,19 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		return Gl = t, ci(), n;
 	}
 	function Cu(e, t) {
-		F = null, T.H = Hs, t === Oa || t === Aa ? (t = Ia(), J = 3) : t === ka ? (t = Ia(), J = 4) : J = t === oc ? 8 : typeof t == "object" && t && typeof t.then == "function" ? 6 : 1, Vl = t, K === null && (Y = 1, ec(e, Ei(t, e.current)));
+		F = null, E.H = Hs, t === Oa || t === Aa ? (t = Ia(), J = 3) : t === ka ? (t = Ia(), J = 4) : J = t === oc ? 8 : typeof t == "object" && t && typeof t.then == "function" ? 6 : 1, Vl = t, K === null && (Y = 1, ec(e, Ei(t, e.current)));
 	}
 	function wu() {
 		var e = lo.current;
 		return e === null ? !0 : (q & 4194048) === q ? uo === null : (q & 62914560) === q || q & 536870912 ? e === uo : !1;
 	}
 	function Tu() {
-		var e = T.H;
-		return T.H = Hs, e === null ? Hs : e;
+		var e = E.H;
+		return E.H = Hs, e === null ? Hs : e;
 	}
 	function Eu() {
-		var e = T.A;
-		return T.A = zl, e;
+		var e = E.A;
+		return E.A = zl, e;
 	}
 	function Du() {
 		Y = 4, Hl || (q & 4194048) !== q && lo.current !== null || (Ul = !0), !(Kl & 134217727) && !(ql & 134217727) || G === null || yu(G, q, Yl, !1);
@@ -5675,7 +5675,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 				Cu(e, t);
 			}
 		while (1);
-		return t && e.shellSuspendCounter++, ea = $i = null, W = r, T.H = i, T.A = a, K === null && (G = null, q = 0, ci()), o;
+		return t && e.shellSuspendCounter++, ea = $i = null, W = r, E.H = i, E.A = a, K === null && (G = null, q = 0, ci()), o;
 	}
 	function ku() {
 		for (; K !== null;) Mu(K);
@@ -5748,7 +5748,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 				Cu(e, t);
 			}
 		while (1);
-		return ea = $i = null, T.H = r, T.A = i, W = n, K === null ? (G = null, q = 0, ci(), Y) : 0;
+		return ea = $i = null, E.H = r, E.A = i, W = n, K === null ? (G = null, q = 0, ci(), Y) : 0;
 	}
 	function ju() {
 		for (; K !== null && !Ne();) Mu(K);
@@ -5834,11 +5834,11 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			if (a = t.lanes | t.childLanes, a |= si, st(e, n, a, o, c, l), e === G && (K = G = null, q = 0), ou = t, au = e, su = n, cu = a, lu = i, uu = r, t.subtreeFlags & 10256 || t.flags & 10256 ? (e.callbackNode = null, e.callbackPriority = 0, Xu(ze, function() {
 				return Uu(), null;
 			})) : (e.callbackNode = null, e.callbackPriority = 0), r = !!(t.flags & 13878), t.subtreeFlags & 13878 || r) {
-				r = T.T, T.T = null, i = E.p, E.p = 2, o = W, W |= 4;
+				r = E.T, E.T = null, i = D.p, D.p = 2, o = W, W |= 4;
 				try {
 					sl(e, t, n);
 				} finally {
-					W = o, E.p = i, T.T = r;
+					W = o, D.p = i, E.T = r;
 				}
 			}
 			X = 1, Ru(), zu(), Bu();
@@ -5849,9 +5849,9 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			X = 0;
 			var e = au, t = ou, n = !!(t.flags & 13878);
 			if (t.subtreeFlags & 13878 || n) {
-				n = T.T, T.T = null;
-				var r = E.p;
-				E.p = 2;
+				n = E.T, E.T = null;
+				var r = D.p;
+				D.p = 2;
 				var i = W;
 				W |= 4;
 				try {
@@ -5886,7 +5886,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 					}
 					sp = !!Rd, zd = Rd = null;
 				} finally {
-					W = i, E.p = r, T.T = n;
+					W = i, D.p = r, E.T = n;
 				}
 			}
 			e.current = t, X = 2;
@@ -5897,15 +5897,15 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			X = 0;
 			var e = au, t = ou, n = !!(t.flags & 8772);
 			if (t.subtreeFlags & 8772 || n) {
-				n = T.T, T.T = null;
-				var r = E.p;
-				E.p = 2;
+				n = E.T, E.T = null;
+				var r = D.p;
+				D.p = 2;
 				var i = W;
 				W |= 4;
 				try {
 					cl(e, t.alternate, t);
 				} finally {
-					W = i, E.p = r, T.T = n;
+					W = i, D.p = r, E.T = n;
 				}
 			}
 			X = 3;
@@ -5921,14 +5921,14 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 				Ge.onCommitFiberRoot(We, t, void 0, (t.current.flags & 128) == 128);
 			} catch {}
 			if (r !== null) {
-				t = T.T, i = E.p, E.p = 2, T.T = null;
+				t = E.T, i = D.p, D.p = 2, E.T = null;
 				try {
 					for (var a = e.onRecoverableError, o = 0; o < r.length; o++) {
 						var s = r[o];
 						a(s.value, { componentStack: s.stack });
 					}
 				} finally {
-					T.T = t, E.p = i;
+					E.T = t, D.p = i;
 				}
 			}
 			su & 3 && Hu(), rd(e), i = e.pendingLanes, n & 261930 && i & 42 ? e === fu ? du++ : (du = 0, fu = e) : du = 0, id(0, !1);
@@ -5944,9 +5944,9 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		if (X !== 5) return !1;
 		var e = au, t = cu;
 		cu = 0;
-		var n = ft(su), r = T.T, i = E.p;
+		var n = ft(su), r = E.T, i = D.p;
 		try {
-			E.p = 32 > n ? 32 : n, T.T = null, n = lu, lu = null;
+			D.p = 32 > n ? 32 : n, E.T = null, n = lu, lu = null;
 			var a = au, o = su;
 			if (X = 0, ou = au = null, su = 0, W & 6) throw Error(s(331));
 			var c = W;
@@ -5955,7 +5955,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			} catch {}
 			return !0;
 		} finally {
-			E.p = i, T.T = r, Vu(e, t);
+			D.p = i, E.T = r, Vu(e, t);
 		}
 	}
 	function Wu(e, t, n) {
@@ -7203,8 +7203,8 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	function gf(e) {
 		return typeof e.getRootNode == "function" ? e.getRootNode() : e.nodeType === 9 ? e : e.ownerDocument;
 	}
-	var _f = E.d;
-	E.d = {
+	var _f = D.d;
+	D.d = {
 		f: vf,
 		r: yf,
 		D: Sf,
@@ -7593,11 +7593,11 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		}
 	}
 	var Qf = {
-		$$typeof: S,
+		$$typeof: C,
 		Provider: null,
 		Consumer: null,
-		_currentValue: de,
-		_currentValue2: de,
+		_currentValue: ue,
+		_currentValue2: ue,
 		_threadCount: 0
 	};
 	function $f(e, t, n, r, i, a, o, s, c) {
@@ -7641,23 +7641,23 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	}
 	var sp = !0;
 	function cp(e, t, n, r) {
-		var i = T.T;
-		T.T = null;
-		var a = E.p;
+		var i = E.T;
+		E.T = null;
+		var a = D.p;
 		try {
-			E.p = 2, up(e, t, n, r);
+			D.p = 2, up(e, t, n, r);
 		} finally {
-			E.p = a, T.T = i;
+			D.p = a, E.T = i;
 		}
 	}
 	function lp(e, t, n, r) {
-		var i = T.T;
-		T.T = null;
-		var a = E.p;
+		var i = E.T;
+		E.T = null;
+		var a = D.p;
 		try {
-			E.p = 8, up(e, t, n, r);
+			D.p = 8, up(e, t, n, r);
 		} finally {
-			E.p = a, T.T = i;
+			D.p = a, E.T = i;
 		}
 	}
 	function up(e, t, n, r) {
@@ -8001,7 +8001,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	};
 	var Lp = r.version;
 	if (Lp !== "19.2.8") throw Error(s(527, Lp, "19.2.8"));
-	E.findDOMNode = function(e) {
+	D.findDOMNode = function(e) {
 		var t = e._reactInternals;
 		if (t === void 0) throw typeof e.render == "function" ? Error(s(188)) : (e = Object.keys(e).join(","), Error(s(268, e)));
 		return e = p(t), e = e === null ? null : m(e), e = e === null ? null : e.stateNode, e;
@@ -8010,7 +8010,7 @@ var e = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		bundleType: 0,
 		version: "19.2.8",
 		rendererPackageName: "react-dom",
-		currentDispatcherRef: T,
+		currentDispatcherRef: E,
 		reconcilerVersion: "19.2.8"
 	};
 	if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u") {
@@ -8072,23 +8072,23 @@ var y = /* @__PURE__ */ e(((e) => {
 })), b = (/* @__PURE__ */ e(((e, t) => {
 	t.exports = y();
 })))(), x = (0, l.createContext)(null);
-function ee({ store: e, children: t }) {
+function S({ store: e, children: t }) {
 	return /* @__PURE__ */ (0, b.jsx)(x.Provider, {
 		value: e,
 		children: t
 	});
 }
-function S() {
+function C() {
 	let e = (0, l.useContext)(x);
 	if (!e) throw Error("useStore va usato dentro <FornitoreStore>");
 	return e;
 }
-function C(e) {
-	let t = S(), n = (0, l.useCallback)((n) => e ? t.iscriviEntita(e, n) : () => {}, [t, e]), r = (0, l.useCallback)(() => e ? t.entita(e) : void 0, [t, e]);
+function w(e) {
+	let t = C(), n = (0, l.useCallback)((n) => e ? t.iscriviEntita(e, n) : () => {}, [t, e]), r = (0, l.useCallback)(() => e ? t.entita(e) : void 0, [t, e]);
 	return (0, l.useSyncExternalStore)(n, r);
 }
-function te(e) {
-	let t = S(), n = (e || []).join(","), r = (0, l.useMemo)(() => n ? n.split(",") : [], [n]), i = (0, l.useCallback)((e) => {
+function ee(e) {
+	let t = C(), n = (e || []).join(","), r = (0, l.useMemo)(() => n ? n.split(",") : [], [n]), i = (0, l.useCallback)((e) => {
 		let n = r.map((n) => t.iscriviEntita(n, e));
 		return () => {
 			for (let e of n) e();
@@ -8110,23 +8110,23 @@ function te(e) {
 		};
 	}, [o]);
 }
-function ne() {
+function te() {
 	return (0, l.useSyncExternalStore)(v, _);
 }
-function re() {
-	let e = S();
+function ne() {
+	let e = C();
 	return (0, l.useSyncExternalStore)(e.iscriviConfig, e.configurazione);
 }
-function w() {
-	let e = S();
+function T() {
+	let e = C();
 	return (0, l.useSyncExternalStore)(e.iscriviSessione, e.sessione);
 }
-function ie() {
-	let e = S();
+function re() {
+	let e = C();
 	return (0, l.useSyncExternalStore)(e.iscriviSessione, e.attivita);
 }
-function ae() {
-	let e = S();
+function ie() {
+	let e = C();
 	return (0, l.useMemo)(() => ({
 		chiama: (t, n, r, i) => e.chiama(t, n, r, i),
 		commuta(t, n) {
@@ -8152,7 +8152,7 @@ function ae() {
 }
 //#endregion
 //#region src/componenti/Luci.jsx
-function oe({ accesa: e }) {
+function ae({ accesa: e }) {
 	return /* @__PURE__ */ (0, b.jsxs)("svg", {
 		className: "lampadina",
 		viewBox: "0 0 24 26",
@@ -8176,7 +8176,7 @@ function oe({ accesa: e }) {
 		]
 	});
 }
-function se({ acceso: e, indisponibile: t }) {
+function oe({ acceso: e, indisponibile: t }) {
 	return /* @__PURE__ */ (0, b.jsx)("span", {
 		className: "interruttore",
 		"data-acceso": e ? "si" : "no",
@@ -8184,8 +8184,8 @@ function se({ acceso: e, indisponibile: t }) {
 		children: /* @__PURE__ */ (0, b.jsx)("span", { className: "interruttore-pallino" })
 	});
 }
-function ce({ entity_id: e, nome: t }) {
-	let n = C(e), { commuta: r } = ae(), i = !n || n.state === "unavailable" || n.state === "unknown", a = n?.state === "on", o = !!n?._previsto, s = n?.attributes?.brightness, c = a ? s ? Math.max(.35, s / 255) : 1 : 0, l = i ? "Non disponibile" : a ? s ? `Accesa · ${Math.round(s / 255 * 100)}%` : "Accesa" : "Spenta";
+function se({ entity_id: e, nome: t }) {
+	let n = w(e), { commuta: r } = ie(), i = !n || n.state === "unavailable" || n.state === "unknown", a = n?.state === "on", o = !!n?._previsto, s = n?.attributes?.brightness, c = a ? s ? Math.max(.35, s / 255) : 1 : 0, l = i ? "Non disponibile" : a ? s ? `Accesa · ${Math.round(s / 255 * 100)}%` : "Accesa" : "Spenta";
 	return /* @__PURE__ */ (0, b.jsxs)("button", {
 		type: "button",
 		className: "voce tap-target",
@@ -8196,7 +8196,7 @@ function ce({ entity_id: e, nome: t }) {
 		onClick: () => r(e, a),
 		"aria-pressed": a,
 		children: [
-			/* @__PURE__ */ (0, b.jsx)(oe, { accesa: a }),
+			/* @__PURE__ */ (0, b.jsx)(ae, { accesa: a }),
 			/* @__PURE__ */ (0, b.jsxs)("span", {
 				className: "voce-testo",
 				children: [/* @__PURE__ */ (0, b.jsx)("span", {
@@ -8207,14 +8207,14 @@ function ce({ entity_id: e, nome: t }) {
 					children: l
 				})]
 			}),
-			/* @__PURE__ */ (0, b.jsx)(se, {
+			/* @__PURE__ */ (0, b.jsx)(oe, {
 				acceso: a,
 				indisponibile: i
 			})
 		]
 	});
 }
-function le({ nome: e, dispositivi: t }) {
+function ce({ nome: e, dispositivi: t }) {
 	return /* @__PURE__ */ (0, b.jsxs)("section", {
 		className: "gruppo",
 		children: [/* @__PURE__ */ (0, b.jsx)("h3", {
@@ -8222,21 +8222,21 @@ function le({ nome: e, dispositivi: t }) {
 			children: e
 		}), /* @__PURE__ */ (0, b.jsx)("div", {
 			className: "gruppo-corpo",
-			children: t.map((e) => /* @__PURE__ */ (0, b.jsx)(ce, { ...e }, e.entity_id))
+			children: t.map((e) => /* @__PURE__ */ (0, b.jsx)(se, { ...e }, e.entity_id))
 		})]
 	});
 }
-function ue({ casa: e }) {
+function le({ casa: e }) {
 	let t = [...e.luci || [], ...e.prese || []], n = e.stanze || [], r = n.map((e) => ({
 		...e,
 		dispositivi: t.filter((t) => t.stanza === e.id)
 	})).filter((e) => e.dispositivi.length > 0), i = new Set(n.map((e) => e.id)), a = t.filter((e) => !e.stanza || !i.has(e.stanza));
 	return /* @__PURE__ */ (0, b.jsxs)("div", {
 		className: "elenco-stanze",
-		children: [r.map((e) => /* @__PURE__ */ (0, b.jsx)(le, {
+		children: [r.map((e) => /* @__PURE__ */ (0, b.jsx)(ce, {
 			nome: e.nome,
 			dispositivi: e.dispositivi
-		}, e.id)), a.length > 0 && /* @__PURE__ */ (0, b.jsx)(le, {
+		}, e.id)), a.length > 0 && /* @__PURE__ */ (0, b.jsx)(ce, {
 			nome: "Senza stanza",
 			dispositivi: a
 		})]
@@ -8244,12 +8244,12 @@ function ue({ casa: e }) {
 }
 //#endregion
 //#region src/componenti/SegniStanza.jsx
-var T = "segno-nucleo", E = {
+var E = "segno-nucleo", D = {
 	salone: /* @__PURE__ */ (0, b.jsxs)(b.Fragment, { children: [
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M6 20v-5a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v5" }),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M4 20h24v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" }),
 		/* @__PURE__ */ (0, b.jsx)("path", {
-			className: T,
+			className: E,
 			d: "M9 12v-2a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"
 		}),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M8 27v2M24 27v2" })
@@ -8263,13 +8263,13 @@ var T = "segno-nucleo", E = {
 			rx: "3"
 		}),
 		/* @__PURE__ */ (0, b.jsx)("circle", {
-			className: T,
+			className: E,
 			cx: "11.5",
 			cy: "15",
 			r: "3"
 		}),
 		/* @__PURE__ */ (0, b.jsx)("circle", {
-			className: T,
+			className: E,
 			cx: "20.5",
 			cy: "15",
 			r: "3"
@@ -8285,7 +8285,7 @@ var T = "segno-nucleo", E = {
 			rx: "3"
 		}),
 		/* @__PURE__ */ (0, b.jsx)("circle", {
-			className: T,
+			className: E,
 			cx: "16",
 			cy: "18",
 			r: "6"
@@ -8302,7 +8302,7 @@ var T = "segno-nucleo", E = {
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M16 4v6" }),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M8 12a8 8 0 0 1 16 0z" }),
 		/* @__PURE__ */ (0, b.jsxs)("g", {
-			className: T,
+			className: E,
 			children: [/* @__PURE__ */ (0, b.jsx)("path", { d: "M11 17v2M16 18v2.5M21 17v2" }), /* @__PURE__ */ (0, b.jsx)("path", { d: "M12.5 23v2M19.5 23v2" })]
 		})
 	] }),
@@ -8310,7 +8310,7 @@ var T = "segno-nucleo", E = {
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M6 16h20a10 10 0 0 1-10 10 10 10 0 0 1-10-10z" }),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M16 16v-4a4 4 0 0 1 4-4h2" }),
 		/* @__PURE__ */ (0, b.jsx)("path", {
-			className: T,
+			className: E,
 			d: "M22 6v4"
 		}),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M4 16h24" })
@@ -8319,7 +8319,7 @@ var T = "segno-nucleo", E = {
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M4 24v-9a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v9" }),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M4 20h24" }),
 		/* @__PURE__ */ (0, b.jsx)("path", {
-			className: T,
+			className: E,
 			d: "M8 13v-3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"
 		}),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M4 24v3M28 24v3" })
@@ -8328,24 +8328,24 @@ var T = "segno-nucleo", E = {
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M5 25v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7" }),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M5 22h18" }),
 		/* @__PURE__ */ (0, b.jsx)("path", {
-			className: T,
+			className: E,
 			d: "M9 16v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"
 		}),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M27 6v10" }),
 		/* @__PURE__ */ (0, b.jsx)("path", {
-			className: T,
+			className: E,
 			d: "M27 6l-5 2 5 2z"
 		})
 	] }),
 	armadio: /* @__PURE__ */ (0, b.jsxs)(b.Fragment, { children: [/* @__PURE__ */ (0, b.jsx)("path", {
-		className: T,
+		className: E,
 		d: "M16 7a2.5 2.5 0 1 1 2.5 2.5c-1.4 0-2.5.9-2.5 2.5"
 	}), /* @__PURE__ */ (0, b.jsx)("path", { d: "M16 12L5 21a1.5 1.5 0 0 0 1 2.6h20a1.5 1.5 0 0 0 1-2.6z" })] }),
 	ingresso: /* @__PURE__ */ (0, b.jsxs)(b.Fragment, { children: [
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M7 28V13a9 9 0 0 1 18 0v15" }),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M4 28h24" }),
 		/* @__PURE__ */ (0, b.jsx)("circle", {
-			className: T,
+			className: E,
 			cx: "20.5",
 			cy: "18",
 			r: "1.4"
@@ -8357,7 +8357,7 @@ var T = "segno-nucleo", E = {
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M4 12h24" }),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M11 21l-3 7M21 21l3 7" }),
 		/* @__PURE__ */ (0, b.jsxs)("g", {
-			className: T,
+			className: E,
 			children: [/* @__PURE__ */ (0, b.jsx)("path", { d: "M12 8c0-2 2-2 2-4 1.5 1.5 1 3 0 4" }), /* @__PURE__ */ (0, b.jsx)("path", { d: "M18 8c0-2 2-2 2-4 1.5 1.5 1 3 0 4" })]
 		})
 	] }),
@@ -8365,11 +8365,11 @@ var T = "segno-nucleo", E = {
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M4 27L16 5l12 22" }),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M9 16h14" }),
 		/* @__PURE__ */ (0, b.jsx)("path", {
-			className: T,
+			className: E,
 			d: "M12 16v7M20 16v7"
 		}),
 		/* @__PURE__ */ (0, b.jsx)("path", {
-			className: T,
+			className: E,
 			d: "M11 23h10"
 		})
 	] }),
@@ -8379,14 +8379,14 @@ var T = "segno-nucleo", E = {
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M25 12v4" }),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M8 19h16a8 8 0 0 1-8 8 8 8 0 0 1-8-8z" }),
 		/* @__PURE__ */ (0, b.jsx)("path", {
-			className: T,
+			className: E,
 			d: "M6 19h20"
 		})
 	] }),
 	piscina: /* @__PURE__ */ (0, b.jsxs)(b.Fragment, { children: [
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M4 13h24v11a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z" }),
 		/* @__PURE__ */ (0, b.jsxs)("g", {
-			className: T,
+			className: E,
 			children: [/* @__PURE__ */ (0, b.jsx)("path", { d: "M6 18c2.5-2 4.5 2 7 0s4.5 2 7 0 4.5 2 6 0" }), /* @__PURE__ */ (0, b.jsx)("path", { d: "M6 23c2.5-2 4.5 2 7 0s4.5 2 7 0 4.5 2 6 0" })]
 		}),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M21 13V8a3 3 0 0 1 3-3M24 13V8" })
@@ -8394,32 +8394,32 @@ var T = "segno-nucleo", E = {
 	viale: /* @__PURE__ */ (0, b.jsxs)(b.Fragment, { children: [
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M12 28L14.5 8h3L20 28" }),
 		/* @__PURE__ */ (0, b.jsx)("path", {
-			className: T,
+			className: E,
 			d: "M14 22h4M14.6 17h2.8M15 12h2"
 		}),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M6 26v-4M6 22a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" }),
 		/* @__PURE__ */ (0, b.jsx)("path", { d: "M26 26v-5M26 21a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" })
 	] }),
 	stanza: /* @__PURE__ */ (0, b.jsxs)(b.Fragment, { children: [/* @__PURE__ */ (0, b.jsx)("path", { d: "M5 27V9l11-5 11 5v18z" }), /* @__PURE__ */ (0, b.jsx)("path", {
-		className: T,
+		className: E,
 		d: "M13 27v-8h6v8"
 	})] })
 };
-function de(e = "", t = "") {
+function ue(e = "", t = "") {
 	let n = `${e} ${t}`.toLowerCase();
-	return /salone|soggiorno|salotto/.test(n) ? E.salone : /cucina.*ester|ester.*cucina/.test(n) ? E.cucina_esterna : /lavanderia|lavatrice/.test(n) ? E.lavanderia : /cucina/.test(n) ? E.cucina : /cabina|armadio|guardaroba/.test(n) ? E.armadio : /cameretta|bimb|bambin/.test(n) ? E.cameretta : /camera|letto/.test(n) ? E.letto : /bagno.*(camera|padronale)/.test(n) ? E.lavabo : /bagno|doccia|wc/.test(n) ? E.doccia : /bbq|barbecue|griglia|brace/.test(n) ? E.bbq : /gioch|altalena|play/.test(n) ? E.giochi : /piscina|pool/.test(n) ? E.piscina : /viale|vialetto|giardino|verde/.test(n) ? E.viale : /ingresso|entrata|portone/.test(n) ? E.ingresso : E.stanza;
+	return /salone|soggiorno|salotto/.test(n) ? D.salone : /cucina.*ester|ester.*cucina/.test(n) ? D.cucina_esterna : /lavanderia|lavatrice/.test(n) ? D.lavanderia : /cucina/.test(n) ? D.cucina : /cabina|armadio|guardaroba/.test(n) ? D.armadio : /cameretta|bimb|bambin/.test(n) ? D.cameretta : /camera|letto/.test(n) ? D.letto : /bagno.*(camera|padronale)/.test(n) ? D.lavabo : /bagno|doccia|wc/.test(n) ? D.doccia : /bbq|barbecue|griglia|brace/.test(n) ? D.bbq : /gioch|altalena|play/.test(n) ? D.giochi : /piscina|pool/.test(n) ? D.piscina : /viale|vialetto|giardino|verde/.test(n) ? D.viale : /ingresso|entrata|portone/.test(n) ? D.ingresso : D.stanza;
 }
-function fe({ id: e, nome: t }) {
+function de({ id: e, nome: t }) {
 	return /* @__PURE__ */ (0, b.jsx)("svg", {
 		className: "segno-stanza",
 		viewBox: "0 0 32 32",
 		"aria-hidden": "true",
-		children: de(e, t)
+		children: ue(e, t)
 	});
 }
 //#endregion
 //#region src/famiglie.js
-var pe = /\b(luc[ei]|lucer|led|lamp|lampad|lampion|lume|faret|fanal|illumin|plafon|appliqu|abat|neon|spot|strisci|segna.?pass|piantana|candel|lanterna)/i, me = /\b(motion|detection|rileva|sensor|allarm|sirena|presa|socket|caric)/i, D = /* @__PURE__ */ new Set([
+var fe = /\b(luc[ei]|lucer|led|lamp|lampad|lampion|lume|faret|fanal|illumin|plafon|appliqu|abat|neon|spot|strisci|segna.?pass|piantana|candel|lanterna)/i, pe = /\b(motion|detection|rileva|sensor|allarm|sirena|presa|socket|caric)/i, me = /* @__PURE__ */ new Set([
 	"switch",
 	"fan",
 	"vacuum",
@@ -8435,9 +8435,9 @@ function O(e) {
 	if (t === "cover" || t === "valve") return "infissi";
 	if (t === "switch") {
 		let t = `${e?.nome || ""} ${e?.entity_id || ""}`;
-		if (pe.test(t) && !me.test(t)) return "luci";
+		if (fe.test(t) && !pe.test(t)) return "luci";
 	}
-	return D.has(t) ? "elettrodomestici" : "altro";
+	return me.has(t) ? "elettrodomestici" : "altro";
 }
 var he = {
 	luci: "Luci",
@@ -8486,7 +8486,7 @@ function ve(e) {
 	];
 }
 function ye({ entity_id: e, nome: t }) {
-	let n = C(e), { chiama: r } = ae(), i = String(e).split(".")[0], a = !n || n.state === "unavailable" || n.state === "unknown", o = n?.state === "on" || n?.state === "open", s = !!n?._previsto, c = a ? "Non disponibile" : i === "cover" ? n.state === "open" ? "Aperto" : n.state === "closed" ? "Chiuso" : n.state : o ? "Acceso" : "Spento";
+	let n = w(e), { chiama: r } = ie(), i = String(e).split(".")[0], a = !n || n.state === "unavailable" || n.state === "unknown", o = n?.state === "on" || n?.state === "open", s = !!n?._previsto, c = a ? "Non disponibile" : i === "cover" ? n.state === "open" ? "Aperto" : n.state === "closed" ? "Chiuso" : n.state : o ? "Acceso" : "Spento";
 	return /* @__PURE__ */ (0, b.jsx)("button", {
 		type: "button",
 		className: "voce tap-target",
@@ -8514,7 +8514,7 @@ function ye({ entity_id: e, nome: t }) {
 	});
 }
 function be({ stanza: e, oggetti: t, onChiudi: n }) {
-	let { chiama: r } = ae(), i = t.filter((e) => e.famiglia === "luci"), { accese: a } = te(i.map((e) => e.entity_id));
+	let { chiama: r } = ie(), i = t.filter((e) => e.famiglia === "luci"), { accese: a } = ee(i.map((e) => e.entity_id));
 	return (0, l.useEffect)(() => {
 		let e = (e) => e.key === "Escape" && n();
 		return window.addEventListener("keydown", e), () => window.removeEventListener("keydown", e);
@@ -8533,7 +8533,7 @@ function be({ stanza: e, oggetti: t, onChiudi: n }) {
 					children: [/* @__PURE__ */ (0, b.jsx)("span", {
 						className: "dettaglio-segno",
 						"data-accesa": a > 0 ? "si" : "no",
-						children: /* @__PURE__ */ (0, b.jsx)(fe, {
+						children: /* @__PURE__ */ (0, b.jsx)(de, {
 							id: e.id,
 							nome: e.nome
 						})
@@ -8576,7 +8576,7 @@ function be({ stanza: e, oggetti: t, onChiudi: n }) {
 							children: n.length === 0 ? /* @__PURE__ */ (0, b.jsx)("p", {
 								className: "famiglia-vuota",
 								children: "Ancora niente qui"
-							}) : n.map((t) => e.id === "luci" ? /* @__PURE__ */ (0, b.jsx)(ce, {
+							}) : n.map((t) => e.id === "luci" ? /* @__PURE__ */ (0, b.jsx)(se, {
 								entity_id: t.entity_id,
 								nome: t.nome
 							}, t.entity_id) : /* @__PURE__ */ (0, b.jsx)(ye, {
@@ -8591,7 +8591,7 @@ function be({ stanza: e, oggetti: t, onChiudi: n }) {
 	});
 }
 function xe({ stanza: e, oggetti: t, onApri: n, indice: r }) {
-	let { accese: i, intensita: a } = te((0, l.useMemo)(() => t.filter((e) => e.famiglia === "luci").map((e) => e.entity_id), [t])), o = i > 0;
+	let { accese: i, intensita: a } = ee((0, l.useMemo)(() => t.filter((e) => e.famiglia === "luci").map((e) => e.entity_id), [t])), o = i > 0;
 	return /* @__PURE__ */ (0, b.jsxs)("button", {
 		type: "button",
 		className: "tessera-stanza tap-target anima-entrata",
@@ -8603,7 +8603,7 @@ function xe({ stanza: e, oggetti: t, onApri: n, indice: r }) {
 		onClick: () => n(e),
 		"aria-label": `${e.nome}${o ? `, ${i} luci accese` : ""}`,
 		children: [
-			/* @__PURE__ */ (0, b.jsx)(fe, {
+			/* @__PURE__ */ (0, b.jsx)(de, {
 				id: e.id,
 				nome: e.nome
 			}),
@@ -8656,7 +8656,7 @@ function Se({ casa: e }) {
 //#region src/componenti/Ingressi.jsx
 var Ce = 4e3;
 function we({ entity_id: e, nome: t, tipo: n }) {
-	let r = C(e), { chiama: i } = ae(), [a, o] = (0, l.useState)(!1), [s, c] = (0, l.useState)(!1);
+	let r = w(e), { chiama: i } = ie(), [a, o] = (0, l.useState)(!1), [s, c] = (0, l.useState)(!1);
 	(0, l.useEffect)(() => {
 		if (!s) return;
 		let e = setTimeout(() => c(!1), Ce);
@@ -8709,7 +8709,7 @@ function we({ entity_id: e, nome: t, tipo: n }) {
 	});
 }
 function Te({ entity_id: e, nome: t }) {
-	let n = C(e), r = n?.state === "on", i = !n || n.state === "unavailable";
+	let n = w(e), r = n?.state === "on", i = !n || n.state === "unavailable";
 	return /* @__PURE__ */ (0, b.jsxs)("span", {
 		className: "porta",
 		"data-stato": i ? "assente" : r ? "aperta" : "chiusa",
@@ -8826,7 +8826,7 @@ function Me({ posizione: e, titolo: t, valore: n, nota: r, tono: i }) {
 	});
 }
 function Ne({ solare: e, consumo: t, batteria: n, carica: r, rete: i, regime: a = "strumento" }) {
-	let { statico: o } = w(), s = a === "scena" ? 1 : 3, c = (e) => e === null ? "—" : `${Math.abs(e).toFixed(1)} kW`, l = n !== null && n > 0, u = i !== null && i > 0, d = (e) => e === null || Math.abs(e) < De, f = d(n) ? r === null ? "a riposo" : `a riposo · ${r}%` : `${l ? "in carica" : "in scarica"}${r === null ? "" : ` · ${r}%`}`, p = d(i) ? "a riposo" : u ? "cessione" : "prelievo";
+	let { statico: o } = T(), s = a === "scena" ? 1 : 3, c = (e) => e === null ? "—" : `${Math.abs(e).toFixed(1)} kW`, l = n !== null && n > 0, u = i !== null && i > 0, d = (e) => e === null || Math.abs(e) < De, f = d(n) ? r === null ? "a riposo" : `a riposo · ${r}%` : `${l ? "in carica" : "in scarica"}${r === null ? "" : ` · ${r}%`}`, p = d(i) ? "a riposo" : u ? "cessione" : "prelievo";
 	return /* @__PURE__ */ (0, b.jsx)("div", {
 		className: "scena-3d",
 		children: /* @__PURE__ */ (0, b.jsxs)("div", {
@@ -8982,7 +8982,7 @@ function Le(e) {
 	return Number.isFinite(t) ? t : null;
 }
 function Re({ casa: e, regime: t }) {
-	let n = e.energia || {}, r = Ie(C(n.solare)), i = Ie(C(n.casa)), a = Ie(C(n.batteria)), o = Le(C(n.batteria_carica)), s = Ie(C(n.rete)), c = Le(C(n.prodotta_oggi)), l = Le(C(n.consumata_oggi)), u = Le(C(n.importata_oggi)), d = l && l > 0 && u !== null ? Math.max(0, Math.min(100, Math.round((1 - u / l) * 100))) : null;
+	let n = e.energia || {}, r = Ie(w(n.solare)), i = Ie(w(n.casa)), a = Ie(w(n.batteria)), o = Le(w(n.batteria_carica)), s = Ie(w(n.rete)), c = Le(w(n.prodotta_oggi)), l = Le(w(n.consumata_oggi)), u = Le(w(n.importata_oggi)), d = l && l > 0 && u !== null ? Math.max(0, Math.min(100, Math.round((1 - u / l) * 100))) : null;
 	return /* @__PURE__ */ (0, b.jsxs)("div", {
 		className: "energia",
 		children: [/* @__PURE__ */ (0, b.jsx)(Ne, {
@@ -9129,7 +9129,7 @@ function ze({ chiusura: e }) {
 }
 var Be = 800;
 function Ve() {
-	let e = ne(), t = (0, l.useRef)(0);
+	let e = te(), t = (0, l.useRef)(0);
 	if ((0, l.useEffect)(() => {
 		t.current = Date.now();
 	}, [e]), !e || e.tipo !== "cancello") return null;
@@ -9398,7 +9398,7 @@ function Ze() {
 	});
 }
 function Qe({ camera: e, onApri: t }) {
-	let n = C(e.entity_id), [r, i] = (0, l.useState)(() => Date.now()), [a, o] = (0, l.useState)(!1);
+	let n = w(e.entity_id), [r, i] = (0, l.useState)(() => Date.now()), [a, o] = (0, l.useState)(!1);
 	(0, l.useEffect)(() => {
 		let e = setInterval(() => {
 			o(!1), i(Date.now());
@@ -9429,7 +9429,7 @@ function Qe({ camera: e, onApri: t }) {
 	});
 }
 function $e({ camera: e, onChiudi: t }) {
-	let { stato: n, video: r, segnalaRiproduzione: i, istante: a } = qe(e, S().hass(), !0), o = C(e.entity_id), s = !o || o.state === "unavailable", c = n === "flusso" || n === "hls", l = Je(o, a);
+	let { stato: n, video: r, segnalaRiproduzione: i, istante: a } = qe(e, C().hass(), !0), o = w(e.entity_id), s = !o || o.state === "unavailable", c = n === "flusso" || n === "hls", l = Je(o, a);
 	return /* @__PURE__ */ (0, b.jsx)("div", {
 		className: "velo-camera",
 		onClick: t,
@@ -9478,7 +9478,7 @@ function $e({ camera: e, onChiudi: t }) {
 	});
 }
 function et({ casa: e }) {
-	let { narrow: t } = w(), [n, r] = (0, l.useState)(null), i = e.telecamere || [];
+	let { narrow: t } = T(), [n, r] = (0, l.useState)(null), i = e.telecamere || [];
 	if (i.length === 0) return /* @__PURE__ */ (0, b.jsx)("p", {
 		className: "testo",
 		children: "Nessuna telecamera in configurazione."
@@ -9594,7 +9594,7 @@ var ot = {
 	"windy-variant": "ventoso"
 };
 function st(e) {
-	let t = S(), [n, r] = (0, l.useState)(null);
+	let t = C(), [n, r] = (0, l.useState)(null);
 	return (0, l.useEffect)(() => {
 		let n = t.hass()?.connection;
 		if (!n || !e) return;
@@ -9619,7 +9619,7 @@ function st(e) {
 }
 var ct = (e) => Number.isFinite(Number(e)) ? Math.round(Number(e)) : null;
 function lt({ entityId: e }) {
-	let t = C(e), n = st(e);
+	let t = w(e), n = st(e);
 	if (!t) return null;
 	let r = ct(t.attributes?.temperature), i = t.state, a = ct(n?.max), o = ct(n?.min);
 	return /* @__PURE__ */ (0, b.jsxs)("div", {
@@ -9704,7 +9704,7 @@ function ft({ tema: e }) {
 	});
 }
 function pt() {
-	let e = S(), { tema: t } = w(), n = t ?? "auto";
+	let e = C(), { tema: t } = T(), n = t ?? "auto";
 	return /* @__PURE__ */ (0, b.jsx)("button", {
 		type: "button",
 		className: "scelta-tema tap-target",
@@ -10201,7 +10201,7 @@ function zt({ nome: e, presenza: t, casa: n, onChiudi: r }) {
 	});
 }
 function Bt({ persona: e, interattivo: t, casa: n }) {
-	let r = C(e.presenza), i = C(e.batteria), a = C(e.stato_batteria), o = e.nome || r?.attributes?.friendly_name || "—", s = e.foto || r?.attributes?.entity_picture || null, c = r?.state === "home", u = Number(i?.state), d = Number.isFinite(u) ? Math.round(u) : null, f = a?.state === "charging", p = d !== null && d <= 20 && !f, [m, h] = (0, l.useState)(!1);
+	let r = w(e.presenza), i = w(e.batteria), a = w(e.stato_batteria), o = e.nome || r?.attributes?.friendly_name || "—", s = e.foto || r?.attributes?.entity_picture || null, c = r?.state === "home", u = Number(i?.state), d = Number.isFinite(u) ? Math.round(u) : null, f = a?.state === "charging", p = d !== null && d <= 20 && !f, [m, h] = (0, l.useState)(!1);
 	return /* @__PURE__ */ (0, b.jsxs)("div", {
 		className: "persona",
 		"data-casa": c ? "si" : "no",
@@ -10284,7 +10284,7 @@ function Bt({ persona: e, interattivo: t, casa: n }) {
 	});
 }
 function Vt({ persone: e, interattivo: t = !1 }) {
-	let n = C("zone.home");
+	let n = w("zone.home");
 	return e?.length ? /* @__PURE__ */ (0, b.jsx)("div", {
 		className: "elenco-persone",
 		children: e.map((e) => /* @__PURE__ */ (0, b.jsx)(Bt, {
@@ -10326,7 +10326,7 @@ function Ut({ icona: e }) {
 	});
 }
 function Wt({ nome: e, stato: t, entity_id: n, onChiudi: r }) {
-	let { chiama: i } = ae(), [a, o] = (0, l.useState)(!1);
+	let { chiama: i } = ie(), [a, o] = (0, l.useState)(!1);
 	(0, l.useEffect)(() => {
 		let e = (e) => e.key === "Escape" && r();
 		return window.addEventListener("keydown", e), () => window.removeEventListener("keydown", e);
@@ -10371,7 +10371,7 @@ function Wt({ nome: e, stato: t, entity_id: n, onChiudi: r }) {
 	});
 }
 function Gt({ voce: e }) {
-	let t = C(e.entity_id), [n, r] = (0, l.useState)(!1), i = !t || t.state === "unavailable" || t.state === "unknown", a = t?.state === "on", o = e.nome || t?.attributes?.friendly_name || e.entity_id;
+	let t = w(e.entity_id), [n, r] = (0, l.useState)(!1), i = !t || t.state === "unavailable" || t.state === "unknown", a = t?.state === "on", o = e.nome || t?.attributes?.friendly_name || e.entity_id;
 	return /* @__PURE__ */ (0, b.jsxs)(b.Fragment, { children: [/* @__PURE__ */ (0, b.jsx)("button", {
 		type: "button",
 		className: "pastiglia-scorciatoia tap-target",
@@ -10409,24 +10409,42 @@ function Yt(e, t) {
 	let n = e.getFullYear(), r = String(e.getMonth() + 1).padStart(2, "0"), i = String(e.getDate()).padStart(2, "0");
 	return t === "mese" ? `${n}-${r}` : t === "giorno" ? `${n}-${r}-${i}` : `${n}-${r}-${i} ${String(e.getHours()).padStart(2, "0")}`;
 }
-async function Xt(e, t, n) {
-	let r = Jt(t), i = Object.values(r).filter(Boolean);
-	if (i.length === 0) return {
+function Xt(e, t = /* @__PURE__ */ new Date()) {
+	let n = new Date(t), r = new Date(t);
+	return e === "giorno" ? (n.setHours(0, 0, 0, 0), r.setHours(23, 59, 59, 999), {
+		da: n,
+		a: r,
+		periodoHA: "hour",
+		raggruppa: "ora"
+	}) : e === "mese" ? (n.setDate(1), n.setHours(0, 0, 0, 0), r.setMonth(r.getMonth() + 1, 0), r.setHours(23, 59, 59, 999), {
+		da: n,
+		a: r,
+		periodoHA: "day",
+		raggruppa: "giorno"
+	}) : (n.setMonth(0, 1), n.setHours(0, 0, 0, 0), r.setMonth(11, 31), r.setHours(23, 59, 59, 999), {
+		da: n,
+		a: r,
+		periodoHA: "day",
+		raggruppa: "mese"
+	});
+}
+async function Zt(e, t, n, r = /* @__PURE__ */ new Date()) {
+	let i = Jt(t), a = Object.values(i).filter(Boolean);
+	if (a.length === 0) return {
 		punti: [],
 		totali: {}
 	};
-	let a = /* @__PURE__ */ new Date(/* @__PURE__ */ new Date()), o = "day", s = "giorno";
-	n === "oggi" ? (a.setHours(0, 0, 0, 0), o = "hour", s = "ora") : n === "mese" ? (a.setDate(1), a.setHours(0, 0, 0, 0)) : (a.setMonth(a.getMonth() - 11), a.setDate(1), a.setHours(0, 0, 0, 0), s = "mese");
-	let c = await e.sendMessagePromise({
+	let { da: o, a: s, periodoHA: c, raggruppa: l } = Xt(n, r), u = await e.sendMessagePromise({
 		type: "recorder/statistics_during_period",
-		start_time: a.toISOString(),
-		statistic_ids: i,
-		period: o,
+		start_time: o.toISOString(),
+		end_time: s.toISOString(),
+		statistic_ids: a,
+		period: c,
 		types: ["change"]
-	}), l = /* @__PURE__ */ new Map();
-	for (let [e, t] of Object.entries(r)) if (t) for (let n of c[t] ?? []) {
-		let t = new Date(n.start), r = Yt(t, s);
-		l.has(r) || l.set(r, {
+	}), d = /* @__PURE__ */ new Map();
+	for (let [e, t] of Object.entries(i)) if (t) for (let n of u[t] ?? []) {
+		let t = new Date(n.start), r = Yt(t, l);
+		d.has(r) || d.set(r, {
 			chiave: r,
 			quando: t,
 			produzione: 0,
@@ -10435,27 +10453,27 @@ async function Xt(e, t, n) {
 			immissione: 0
 		});
 		let i = Number(n.change);
-		Number.isFinite(i) && i > 0 && (l.get(r)[e] += i);
+		Number.isFinite(i) && i > 0 && (d.get(r)[e] += i);
 	}
-	let u = [...l.values()].sort((e, t) => e.quando - t.quando), d = {
+	let f = [...d.values()].sort((e, t) => e.quando - t.quando), p = {
 		produzione: 0,
 		consumo: 0,
 		prelievo: 0,
 		immissione: 0
 	};
-	for (let e of u) for (let t of qt) d[t] += e[t];
+	for (let e of f) for (let t of qt) p[t] += e[t];
 	return {
-		punti: u,
-		totali: d
+		punti: f,
+		totali: p
 	};
 }
-function Zt({ consumo: e, prelievo: t }) {
+function Qt({ consumo: e, prelievo: t }) {
 	return !e || e <= 0 ? null : Math.max(0, Math.min(100, Math.round((e - t) / e * 100)));
 }
-function Qt({ produzione: e, immissione: t }) {
+function $t({ produzione: e, immissione: t }) {
 	return !e || e <= 0 ? null : Math.max(0, Math.min(100, Math.round((e - t) / e * 100)));
 }
-function $t({ prelievo: e, immissione: t }, n, r = /* @__PURE__ */ new Date()) {
+function en({ prelievo: e, immissione: t }, n, r = /* @__PURE__ */ new Date()) {
 	let i = (e, t = 0) => Number.isFinite(Number(e)) ? Number(e) : t, a = i(n?.energia), o = i(n?.rete);
 	if (a <= 0 && o <= 0) return null;
 	let s = i(n?.accisa), c = i(n?.iva, 10) / 100, l = i(n?.quota_fissa), u = i(n?.quota_potenza), d = i(n?.potenza_impegnata), f = i(n?.canone_tv), p = i(n?.vendita), m = new Date(r.getFullYear(), r.getMonth() + 1, 0).getDate(), h = Math.min(r.getDate(), m), g = (e, t) => {
@@ -10479,19 +10497,16 @@ function $t({ prelievo: e, immissione: t }, n, r = /* @__PURE__ */ new Date()) {
 		giorniNelMese: m
 	};
 }
-function en(e, t, n = /* @__PURE__ */ new Date()) {
-	let r = t === "oggi" ? "ora" : t === "mese" ? "giorno" : "mese", i = new Map(e.map((e) => [e.chiave, e])), a = [];
-	if (t === "oggi") for (let e = 0; e < 24; e += 1) {
+function tn(e, t, n = /* @__PURE__ */ new Date()) {
+	let r = t === "giorno" ? "ora" : t === "mese" ? "giorno" : "mese", i = new Map(e.map((e) => [e.chiave, e])), a = [];
+	if (t === "giorno") for (let e = 0; e < 24; e += 1) {
 		let t = new Date(n);
 		t.setHours(e, 0, 0, 0), a.push(t);
 	}
 	else if (t === "mese") {
 		let e = new Date(n.getFullYear(), n.getMonth() + 1, 0).getDate();
 		for (let t = 1; t <= e; t += 1) a.push(new Date(n.getFullYear(), n.getMonth(), t));
-	} else for (let e = 11; e >= 0; --e) {
-		let t = new Date(n.getFullYear(), n.getMonth() - e, 1);
-		a.push(t);
-	}
+	} else for (let e = 0; e < 12; e += 1) a.push(new Date(n.getFullYear(), e, 1));
 	return a.map((e) => {
 		let t = Yt(e, r), n = i.get(t);
 		return n ? {
@@ -10510,7 +10525,7 @@ function en(e, t, n = /* @__PURE__ */ new Date()) {
 }
 //#endregion
 //#region src/componenti/PannelloEnergia.jsx
-var tn = [
+var nn = [
 	{
 		id: "produzione",
 		nome: "Prodotta",
@@ -10526,10 +10541,10 @@ var tn = [
 		nome: "Venduta",
 		colore: "var(--cs-energy-battery)"
 	}
-], nn = [
+], rn = [
 	{
-		id: "oggi",
-		nome: "Oggi"
+		id: "giorno",
+		nome: "Giorno"
 	},
 	{
 		id: "mese",
@@ -10539,7 +10554,108 @@ var tn = [
 		id: "anno",
 		nome: "Anno"
 	}
-], rn = [
+], an = (e, t) => e.getFullYear() === t.getFullYear() && e.getMonth() === t.getMonth() && e.getDate() === t.getDate(), on = (e, t) => e.getFullYear() === t.getFullYear() && e.getMonth() === t.getMonth();
+function sn(e, t, n) {
+	return e === "giorno" ? an(t, n) ? "oggi" : t.toLocaleDateString("it-IT", {
+		weekday: "long",
+		day: "numeric",
+		month: "long"
+	}) : e === "mese" ? t.toLocaleDateString("it-IT", {
+		month: "long",
+		year: "numeric"
+	}) : String(t.getFullYear());
+}
+function cn(e, t, n, r) {
+	let i = new Date(t);
+	return e === "giorno" ? i.setDate(i.getDate() + n) : e === "mese" ? i.setMonth(i.getMonth() + n, 1) : i.setFullYear(i.getFullYear() + n, 0, 1), i > r ? new Date(r) : i;
+}
+function ln(e, t, n) {
+	return e === "giorno" ? an(t, n) : e === "mese" ? on(t, n) : t.getFullYear() === n.getFullYear();
+}
+var un = (e) => String(e).padStart(2, "0"), dn = (e, t) => t === "giorno" ? `${e.getFullYear()}-${un(e.getMonth() + 1)}-${un(e.getDate())}` : `${e.getFullYear()}-${un(e.getMonth() + 1)}`;
+function fn({ vista: e, rif: t, adesso: n, onCambia: r }) {
+	let i = (t) => {
+		if (!t) return;
+		if (e === "anno") return r(new Date(Number(t), 0, 1));
+		let [n, i, a] = t.split("-").map(Number);
+		r(new Date(n, i - 1, a || 1));
+	}, a = [];
+	for (let e = n.getFullYear(); e >= n.getFullYear() - 5; --e) a.push(e);
+	return /* @__PURE__ */ (0, b.jsxs)("div", {
+		className: "periodo",
+		children: [
+			/* @__PURE__ */ (0, b.jsx)("button", {
+				type: "button",
+				className: "periodo-freccia tap-target",
+				onClick: () => r(cn(e, t, -1, n)),
+				"aria-label": "Periodo precedente",
+				children: "‹"
+			}),
+			/* @__PURE__ */ (0, b.jsx)("span", {
+				className: "periodo-nome",
+				children: sn(e, t, n)
+			}),
+			/* @__PURE__ */ (0, b.jsx)("button", {
+				type: "button",
+				className: "periodo-freccia tap-target",
+				onClick: () => r(cn(e, t, 1, n)),
+				disabled: ln(e, t, n),
+				"aria-label": "Periodo successivo",
+				children: "›"
+			}),
+			/* @__PURE__ */ (0, b.jsxs)("span", {
+				className: "periodo-calendario tap-target",
+				title: "Scegli il periodo",
+				children: [/* @__PURE__ */ (0, b.jsxs)("svg", {
+					viewBox: "0 0 24 24",
+					"aria-hidden": "true",
+					children: [
+						/* @__PURE__ */ (0, b.jsx)("rect", {
+							x: "3.5",
+							y: "5",
+							width: "17",
+							height: "15.5",
+							rx: "2.5"
+						}),
+						/* @__PURE__ */ (0, b.jsx)("path", { d: "M3.5 9.5h17M8 3v4M16 3v4" }),
+						/* @__PURE__ */ (0, b.jsx)("circle", {
+							cx: "8.5",
+							cy: "13.5",
+							r: "1.1"
+						}),
+						/* @__PURE__ */ (0, b.jsx)("circle", {
+							cx: "12",
+							cy: "13.5",
+							r: "1.1"
+						}),
+						/* @__PURE__ */ (0, b.jsx)("circle", {
+							cx: "15.5",
+							cy: "13.5",
+							r: "1.1"
+						})
+					]
+				}), e === "anno" ? /* @__PURE__ */ (0, b.jsx)("select", {
+					className: "periodo-campo",
+					value: t.getFullYear(),
+					onChange: (e) => i(e.target.value),
+					"aria-label": "Scegli l'anno",
+					children: a.map((e) => /* @__PURE__ */ (0, b.jsx)("option", {
+						value: e,
+						children: e
+					}, e))
+				}) : /* @__PURE__ */ (0, b.jsx)("input", {
+					className: "periodo-campo",
+					type: e === "giorno" ? "date" : "month",
+					value: dn(t, e),
+					max: dn(n, e),
+					onChange: (e) => i(e.target.value),
+					"aria-label": e === "giorno" ? "Scegli il giorno" : "Scegli il mese"
+				})]
+			})
+		]
+	});
+}
+var pn = [
 	"gen",
 	"feb",
 	"mar",
@@ -10553,12 +10669,12 @@ var tn = [
 	"nov",
 	"dic"
 ];
-function an(e, t) {
+function mn(e, t) {
 	let n = e.quando;
-	return t === "oggi" ? String(n.getHours()).padStart(2, "0") : t === "mese" ? String(n.getDate()) : rn[n.getMonth()];
+	return t === "oggi" ? String(n.getHours()).padStart(2, "0") : t === "mese" ? String(n.getDate()) : pn[n.getMonth()];
 }
-var on = (e) => e >= 100 ? e.toFixed(0) : e.toFixed(1), sn = (e) => `${e < 0 ? "−" : ""}${Math.abs(e).toFixed(2).replace(".", ",")} €`;
-function cn() {
+var hn = (e) => e >= 100 ? e.toFixed(0) : e.toFixed(1), gn = (e) => `${e < 0 ? "−" : ""}${Math.abs(e).toFixed(2).replace(".", ",")} €`;
+function _n() {
 	let e = (0, l.useRef)(null), [t, n] = (0, l.useState)({
 		w: 0,
 		h: 0
@@ -10573,13 +10689,13 @@ function cn() {
 		return r.observe(t), () => r.disconnect();
 	}, []), [e, t];
 }
-function ln(e, t) {
+function vn(e, t) {
 	return Math.max(1, Math.ceil(e / Math.max(2, Math.floor(t / 34))));
 }
-function un({ punti: e, vista: t }) {
-	let [n, { w: r, h: i }] = cn(), a = (0, l.useMemo)(() => {
+function yn({ punti: e, vista: t }) {
+	let [n, { w: r, h: i }] = _n(), a = (0, l.useMemo)(() => {
 		let t = 0;
-		for (let n of e) for (let e of tn) n[e.id] > t && (t = n[e.id]);
+		for (let n of e) for (let e of nn) n[e.id] > t && (t = n[e.id]);
 		return Math.max(.1, t);
 	}, [e]), o = {
 		sx: 42,
@@ -10605,7 +10721,7 @@ function un({ punti: e, vista: t }) {
 			};
 		}
 		return null;
-	}, m = ln(e.length, s);
+	}, m = vn(e.length, s);
 	return /* @__PURE__ */ (0, b.jsx)("div", {
 		className: "grafico",
 		ref: n,
@@ -10632,14 +10748,14 @@ function un({ punti: e, vista: t }) {
 					y: d(a * e),
 					textAnchor: "end",
 					dominantBaseline: "middle",
-					children: on(a * e)
+					children: hn(a * e)
 				})] }, e)),
-				tn.map((e) => f(e.id).map((t, n) => /* @__PURE__ */ (0, b.jsx)("path", {
+				nn.map((e) => f(e.id).map((t, n) => /* @__PURE__ */ (0, b.jsx)("path", {
 					className: "grafico-linea",
 					d: t,
 					style: { stroke: e.colore }
 				}, `${e.id}-${n}`))),
-				tn.map((e) => {
+				nn.map((e) => {
 					let t = p(e.id);
 					return t ? /* @__PURE__ */ (0, b.jsx)("circle", {
 						className: "grafico-punto",
@@ -10654,13 +10770,13 @@ function un({ punti: e, vista: t }) {
 					x: u(n),
 					y: i - 6,
 					textAnchor: "middle",
-					children: an(e, t)
+					children: mn(e, t)
 				}, e.chiave) : null)
 			]
 		})
 	});
 }
-function dn({ titolo: e, valore: t, unita: n, nota: r, tono: i, barra: a }) {
+function bn({ titolo: e, valore: t, unita: n, nota: r, tono: i, barra: a }) {
 	return /* @__PURE__ */ (0, b.jsxs)("div", {
 		className: "tessera-energia",
 		"data-tono": i,
@@ -10688,58 +10804,67 @@ function dn({ titolo: e, valore: t, unita: n, nota: r, tono: i, barra: a }) {
 		]
 	});
 }
-function fn({ casa: e }) {
-	let t = S(), n = w(), [r, i] = (0, l.useState)("mese"), [a, o] = (0, l.useState)(null), [s, c] = (0, l.useState)(null), [u, d] = (0, l.useState)(null), f = e?.energia;
+function xn({ casa: e }) {
+	let t = C(), n = T(), [r, i] = (0, l.useState)("mese"), [a, o] = (0, l.useState)(() => /* @__PURE__ */ new Date()), [s, c] = (0, l.useState)(null), [u, d] = (0, l.useState)(null), [f, p] = (0, l.useState)(null), m = (0, l.useMemo)(() => /* @__PURE__ */ new Date(), []), h = e?.energia;
 	if ((0, l.useEffect)(() => {
 		let e = t.hass()?.connection;
-		if (!e || !f) return;
+		if (!e || !h) return;
 		let n = !0;
-		return o(null), c(null), Xt(e, f, r).then((e) => n && o(e)).catch((e) => n && c(e.message)), Xt(e, f, "mese").then((e) => n && d(e.totali)).catch(() => {}), () => {
+		return c(null), d(null), Zt(e, h, r, a).then((e) => n && c(e)).catch((e) => n && d(e.message)), Zt(e, h, "mese", a).then((e) => n && p(e.totali)).catch(() => {}), () => {
 			n = !1;
 		};
 	}, [
 		t,
-		f,
+		h,
 		r,
+		a,
 		n.connesso
-	]), !f || Object.keys(f).length === 0) return /* @__PURE__ */ (0, b.jsx)("p", {
+	]), !h || Object.keys(h).length === 0) return /* @__PURE__ */ (0, b.jsx)("p", {
 		className: "testo-secondario",
 		children: "Il fotovoltaico non è configurato."
 	});
-	let p = a?.totali, m = p ? Zt(p) : null, h = p ? Qt(p) : null, g = u ? $t(u, e?.tariffe) : null;
+	let g = s?.totali, _ = g ? Qt(g) : null, v = g ? $t(g) : null, y = on(a, m), x = new Date(a.getFullYear(), a.getMonth() + 1, 0), S = f ? en(f, e?.tariffe, y ? m : x) : null;
 	return /* @__PURE__ */ (0, b.jsxs)("div", {
 		className: "energia-sezione",
 		children: [
 			/* @__PURE__ */ (0, b.jsxs)("div", {
 				className: "energia-testa",
-				children: [/* @__PURE__ */ (0, b.jsx)("nav", {
-					className: "viste",
-					"aria-label": "Periodo",
-					children: nn.map((e) => /* @__PURE__ */ (0, b.jsx)("button", {
-						type: "button",
-						className: "vista tap-target",
-						"data-scelta": r === e.id ? "si" : "no",
-						"aria-pressed": r === e.id,
-						onClick: () => i(e.id),
-						children: e.nome
-					}, e.id))
+				children: [/* @__PURE__ */ (0, b.jsxs)("div", {
+					className: "energia-comandi",
+					children: [/* @__PURE__ */ (0, b.jsx)("nav", {
+						className: "viste",
+						"aria-label": "Periodo",
+						children: rn.map((e) => /* @__PURE__ */ (0, b.jsx)("button", {
+							type: "button",
+							className: "vista tap-target",
+							"data-scelta": r === e.id ? "si" : "no",
+							"aria-pressed": r === e.id,
+							onClick: () => i(e.id),
+							children: e.nome
+						}, e.id))
+					}), /* @__PURE__ */ (0, b.jsx)(fn, {
+						vista: r,
+						rif: a,
+						adesso: m,
+						onCambia: o
+					})]
 				}), /* @__PURE__ */ (0, b.jsx)("div", {
 					className: "legenda",
-					children: tn.map((e) => /* @__PURE__ */ (0, b.jsx)("span", {
+					children: nn.map((e) => /* @__PURE__ */ (0, b.jsx)("span", {
 						className: "legenda-voce",
 						style: { "--tinta": e.colore },
 						children: e.nome
 					}, e.id))
 				})]
 			}),
-			s && /* @__PURE__ */ (0, b.jsxs)("p", {
+			u && /* @__PURE__ */ (0, b.jsxs)("p", {
 				className: "imp-errore",
-				children: ["Non riesco a leggere le statistiche: ", s]
+				children: ["Non riesco a leggere le statistiche: ", u]
 			}),
 			/* @__PURE__ */ (0, b.jsx)("div", {
 				className: "energia-grafico",
-				children: a ? /* @__PURE__ */ (0, b.jsx)(un, {
-					punti: en(a.punti, r),
+				children: s ? /* @__PURE__ */ (0, b.jsx)(yn, {
+					punti: tn(s.punti, r),
 					vista: r
 				}) : /* @__PURE__ */ (0, b.jsx)("p", {
 					className: "testo-secondario",
@@ -10749,119 +10874,144 @@ function fn({ casa: e }) {
 			/* @__PURE__ */ (0, b.jsxs)("div", {
 				className: "energia-numeri",
 				children: [
-					/* @__PURE__ */ (0, b.jsx)(dn, {
+					/* @__PURE__ */ (0, b.jsx)(bn, {
 						titolo: "Prodotta",
-						valore: p ? on(p.produzione) : "—",
+						valore: g ? hn(g.produzione) : "—",
 						unita: "kWh",
 						tono: "produzione"
 					}),
-					/* @__PURE__ */ (0, b.jsx)(dn, {
+					/* @__PURE__ */ (0, b.jsx)(bn, {
 						titolo: "Consumata",
-						valore: p ? on(p.consumo) : "—",
+						valore: g ? hn(g.consumo) : "—",
 						unita: "kWh",
 						tono: "consumo"
 					}),
-					/* @__PURE__ */ (0, b.jsx)(dn, {
+					/* @__PURE__ */ (0, b.jsx)(bn, {
 						titolo: "Presa dalla rete",
-						valore: p ? on(p.prelievo) : "—",
+						valore: g ? hn(g.prelievo) : "—",
 						unita: "kWh",
 						tono: "prelievo"
 					}),
-					/* @__PURE__ */ (0, b.jsx)(dn, {
+					/* @__PURE__ */ (0, b.jsx)(bn, {
 						titolo: "Venduta alla rete",
-						valore: p ? on(p.immissione) : "—",
+						valore: g ? hn(g.immissione) : "—",
 						unita: "kWh",
 						tono: "immissione"
 					}),
-					/* @__PURE__ */ (0, b.jsx)(dn, {
+					/* @__PURE__ */ (0, b.jsx)(bn, {
 						titolo: "Autosufficienza",
-						valore: m ?? "—",
+						valore: _ ?? "—",
 						unita: "%",
-						barra: m,
+						barra: _,
 						nota: "quanta corrente è venuta dal tetto",
 						tono: "produzione"
 					}),
-					/* @__PURE__ */ (0, b.jsx)(dn, {
+					/* @__PURE__ */ (0, b.jsx)(bn, {
 						titolo: "Autoconsumo",
-						valore: h ?? "—",
+						valore: v ?? "—",
 						unita: "%",
-						barra: h,
+						barra: v,
 						nota: "quanta prodotta è restata in casa",
 						tono: "consumo"
 					})
 				]
 			}),
-			g ? /* @__PURE__ */ (0, b.jsxs)("div", {
+			S ? /* @__PURE__ */ (0, b.jsxs)("div", {
 				className: "bolletta",
 				children: [
 					/* @__PURE__ */ (0, b.jsxs)("div", {
 						className: "bolletta-cifre",
-						children: [
-							/* @__PURE__ */ (0, b.jsxs)("div", {
-								className: "bolletta-voce",
-								children: [
-									/* @__PURE__ */ (0, b.jsx)("span", {
-										className: "tessera-titolo",
-										children: "Maturato finora"
-									}),
-									/* @__PURE__ */ (0, b.jsx)("span", {
-										className: "bolletta-valore",
-										children: sn(g.totale)
-									}),
-									/* @__PURE__ */ (0, b.jsxs)("span", {
-										className: "tessera-nota",
-										children: [
-											g.giorniPassati,
-											" giorni su ",
-											g.giorniNelMese,
-											" · ",
-											on(u.prelievo),
-											" kWh presi dalla rete"
-										]
-									})
-								]
-							}),
-							/* @__PURE__ */ (0, b.jsxs)("div", {
-								className: "bolletta-voce",
-								"data-forte": "si",
-								children: [
-									/* @__PURE__ */ (0, b.jsx)("span", {
-										className: "tessera-titolo",
-										children: "Prossima bolletta, stimata"
-									}),
-									/* @__PURE__ */ (0, b.jsx)("span", {
-										className: "bolletta-valore",
-										children: sn(g.proiezione)
-									}),
-									/* @__PURE__ */ (0, b.jsxs)("span", {
-										className: "tessera-nota",
-										children: [
-											"al ritmo di adesso, ~",
-											on(g.kwhAttesi),
-											" kWh nel mese"
-										]
-									})
-								]
-							}),
-							/* @__PURE__ */ (0, b.jsxs)("div", {
-								className: "bolletta-dettaglio",
-								children: [
-									/* @__PURE__ */ (0, b.jsxs)("span", { children: ["Consumi ", /* @__PURE__ */ (0, b.jsx)("b", { children: sn(g.consumi) })] }),
-									/* @__PURE__ */ (0, b.jsxs)("span", { children: ["Quote fisse ", /* @__PURE__ */ (0, b.jsx)("b", { children: sn(g.fissi) })] }),
-									/* @__PURE__ */ (0, b.jsxs)("span", { children: ["Accise ", /* @__PURE__ */ (0, b.jsx)("b", { children: sn(g.accise) })] }),
-									/* @__PURE__ */ (0, b.jsxs)("span", { children: ["IVA ", /* @__PURE__ */ (0, b.jsx)("b", { children: sn(g.totale - g.canone - g.imponibile) })] }),
-									g.canone > 0 && /* @__PURE__ */ (0, b.jsxs)("span", { children: ["Canone TV ", /* @__PURE__ */ (0, b.jsx)("b", { children: sn(g.canone) })] })
-								]
-							})
-						]
+						children: [y ? /* @__PURE__ */ (0, b.jsxs)(b.Fragment, { children: [/* @__PURE__ */ (0, b.jsxs)("div", {
+							className: "bolletta-voce",
+							children: [
+								/* @__PURE__ */ (0, b.jsx)("span", {
+									className: "tessera-titolo",
+									children: "Maturato finora"
+								}),
+								/* @__PURE__ */ (0, b.jsx)("span", {
+									className: "bolletta-valore",
+									children: gn(S.totale)
+								}),
+								/* @__PURE__ */ (0, b.jsxs)("span", {
+									className: "tessera-nota",
+									children: [
+										S.giorniPassati,
+										" giorni su ",
+										S.giorniNelMese,
+										" ·",
+										" ",
+										hn(f.prelievo),
+										" kWh presi dalla rete"
+									]
+								})
+							]
+						}), /* @__PURE__ */ (0, b.jsxs)("div", {
+							className: "bolletta-voce",
+							"data-forte": "si",
+							children: [
+								/* @__PURE__ */ (0, b.jsx)("span", {
+									className: "tessera-titolo",
+									children: "Prossima bolletta, stimata"
+								}),
+								/* @__PURE__ */ (0, b.jsx)("span", {
+									className: "bolletta-valore",
+									children: gn(S.proiezione)
+								}),
+								/* @__PURE__ */ (0, b.jsxs)("span", {
+									className: "tessera-nota",
+									children: [
+										"al ritmo di adesso, ~",
+										hn(S.kwhAttesi),
+										" kWh nel mese"
+									]
+								})
+							]
+						})] }) : /* @__PURE__ */ (0, b.jsxs)("div", {
+							className: "bolletta-voce",
+							"data-forte": "si",
+							children: [
+								/* @__PURE__ */ (0, b.jsxs)("span", {
+									className: "tessera-titolo",
+									children: [
+										"Costo stimato di",
+										" ",
+										a.toLocaleDateString("it-IT", {
+											month: "long",
+											year: "numeric"
+										})
+									]
+								}),
+								/* @__PURE__ */ (0, b.jsx)("span", {
+									className: "bolletta-valore",
+									children: gn(S.totale)
+								}),
+								/* @__PURE__ */ (0, b.jsxs)("span", {
+									className: "tessera-nota",
+									children: [
+										"mese completo · ",
+										hn(f.prelievo),
+										" kWh presi dalla rete"
+									]
+								})
+							]
+						}), /* @__PURE__ */ (0, b.jsxs)("div", {
+							className: "bolletta-dettaglio",
+							children: [
+								/* @__PURE__ */ (0, b.jsxs)("span", { children: ["Consumi ", /* @__PURE__ */ (0, b.jsx)("b", { children: gn(S.consumi) })] }),
+								/* @__PURE__ */ (0, b.jsxs)("span", { children: ["Quote fisse ", /* @__PURE__ */ (0, b.jsx)("b", { children: gn(S.fissi) })] }),
+								/* @__PURE__ */ (0, b.jsxs)("span", { children: ["Accise ", /* @__PURE__ */ (0, b.jsx)("b", { children: gn(S.accise) })] }),
+								/* @__PURE__ */ (0, b.jsxs)("span", { children: ["IVA ", /* @__PURE__ */ (0, b.jsx)("b", { children: gn(S.totale - S.canone - S.imponibile) })] }),
+								S.canone > 0 && /* @__PURE__ */ (0, b.jsxs)("span", { children: ["Canone TV ", /* @__PURE__ */ (0, b.jsx)("b", { children: gn(S.canone) })] })
+							]
+						})]
 					}),
-					g.venduta > 0 && /* @__PURE__ */ (0, b.jsxs)("p", {
+					S.venduta > 0 && /* @__PURE__ */ (0, b.jsxs)("p", {
 						className: "bolletta-gse",
 						children: [
 							"A parte, dal fotovoltaico: ",
-							/* @__PURE__ */ (0, b.jsx)("b", { children: sn(g.venduta) }),
+							/* @__PURE__ */ (0, b.jsx)("b", { children: gn(S.venduta) }),
 							" di energia immessa in rete questo mese (",
-							on(u.immissione),
+							hn(f.immissione),
 							" kWh). Il GSE la liquida separatamente, non scende dalla bolletta."
 						]
 					}),
@@ -10879,8 +11029,8 @@ function fn({ casa: e }) {
 }
 //#endregion
 //#region src/componenti/Salvaschermo.jsx
-var pn = (e) => String(e).padStart(2, "0");
-function mn() {
+var Sn = (e) => String(e).padStart(2, "0");
+function Cn() {
 	let [e, t] = (0, l.useState)(() => /* @__PURE__ */ new Date());
 	return (0, l.useEffect)(() => {
 		let e = setInterval(() => t(/* @__PURE__ */ new Date()), 1e3);
@@ -10890,12 +11040,12 @@ function mn() {
 		children: [/* @__PURE__ */ (0, b.jsxs)("span", {
 			className: "riposo-cifre",
 			children: [
-				pn(e.getHours()),
+				Sn(e.getHours()),
 				/* @__PURE__ */ (0, b.jsx)("span", {
 					className: "riposo-duepunti",
 					children: ":"
 				}),
-				pn(e.getMinutes())
+				Sn(e.getMinutes())
 			]
 		}), /* @__PURE__ */ (0, b.jsx)("span", {
 			className: "riposo-data",
@@ -10907,8 +11057,8 @@ function mn() {
 		})]
 	});
 }
-function hn({ onSveglia: e }) {
-	let t = re(), n = w();
+function wn({ onSveglia: e }) {
+	let t = ne(), n = T();
 	(0, l.useEffect)(() => {
 		let t = [
 			"pointerdown",
@@ -10935,7 +11085,7 @@ function hn({ onSveglia: e }) {
 			/* @__PURE__ */ (0, b.jsxs)("div", {
 				className: "riposo-sinistra",
 				children: [
-					/* @__PURE__ */ (0, b.jsx)(mn, {}),
+					/* @__PURE__ */ (0, b.jsx)(Cn, {}),
 					t?.meteo && /* @__PURE__ */ (0, b.jsx)("div", {
 						className: "riposo-meteo",
 						children: /* @__PURE__ */ (0, b.jsx)(lt, { entityId: t.meteo })
@@ -10965,7 +11115,7 @@ function hn({ onSveglia: e }) {
 }
 //#endregion
 //#region src/hass/registri.js
-var gn = [
+var Tn = [
 	"light",
 	"switch",
 	"cover",
@@ -10978,10 +11128,10 @@ var gn = [
 	"water_heater",
 	"valve"
 ];
-function _n(e) {
+function En(e) {
 	return !!(e?.entity_category || e?.hidden_by || e?.disabled_by);
 }
-var vn = {
+var Dn = {
 	quot: "\"",
 	amp: "&",
 	apos: "'",
@@ -10989,8 +11139,8 @@ var vn = {
 	lt: "<",
 	gt: ">",
 	nbsp: " "
-}, yn = (e) => String(e || "").replace(/&(quot|amp|apos|#39|lt|gt|nbsp);/g, (e, t) => vn[t] ?? e);
-async function bn(e) {
+}, On = (e) => String(e || "").replace(/&(quot|amp|apos|#39|lt|gt|nbsp);/g, (e, t) => Dn[t] ?? e);
+async function kn(e) {
 	let [t, n, r, i] = await Promise.all([
 		e.sendMessagePromise({ type: "get_states" }),
 		e.sendMessagePromise({ type: "config/entity_registry/list" }).catch(() => []),
@@ -10999,12 +11149,12 @@ async function bn(e) {
 	]), a = new Map(n.map((e) => [e.entity_id, e])), o = new Map(r.map((e) => [e.id, e])), s = new Map(i.map((e) => [e.area_id, e.name])), c = [];
 	for (let e of t) {
 		let t = e.entity_id.split(".")[0], n = a.get(e.entity_id);
-		if (_n(n)) continue;
+		if (En(n)) continue;
 		let r = n?.area_id ?? (n?.device_id ? o.get(n.device_id)?.area_id : null);
 		c.push({
 			entity_id: e.entity_id,
 			dominio: t,
-			nome: yn(e.attributes?.friendly_name) || e.entity_id,
+			nome: On(e.attributes?.friendly_name) || e.entity_id,
 			stato: e.state,
 			areaHA: r ? s.get(r) ?? null : null,
 			dispositivo: n?.device_id ? o.get(n.device_id) : null
@@ -11015,26 +11165,26 @@ async function bn(e) {
 		aree: i.map((e) => e.name)
 	};
 }
-var xn = (e) => String(e || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
-function Sn(e, t) {
+var An = (e) => String(e || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+function jn(e, t) {
 	if (!e) return null;
-	let n = xn(e), r = t.find((e) => xn(e.nome) === n || xn(e.id) === n);
+	let n = An(e), r = t.find((e) => An(e.nome) === n || An(e.id) === n);
 	if (r) return r.id;
-	let i = t.find((e) => xn(e.nome).startsWith(n) || n.startsWith(xn(e.nome)));
+	let i = t.find((e) => An(e.nome).startsWith(n) || n.startsWith(An(e.nome)));
 	return i ? i.id : null;
 }
-function Cn(e, t) {
-	let n = xn(t).trim();
+function Mn(e, t) {
+	let n = An(t).trim();
 	if (!n) return e;
 	let r = n.split(/\s+/);
 	return e.filter((e) => {
-		let t = xn(`${e.nome} ${e.entity_id} ${e.areaHA || ""}`);
+		let t = An(`${e.nome} ${e.entity_id} ${e.areaHA || ""}`);
 		return r.every((e) => t.includes(e));
 	});
 }
 //#endregion
 //#region src/componenti/Impostazioni.jsx
-var wn = [
+var Nn = [
 	{
 		id: "luci",
 		nome: "Luci"
@@ -11051,14 +11201,14 @@ var wn = [
 		id: "altro",
 		nome: "Altro"
 	}
-], Tn = [{
+], Pn = [{
 	id: "interno",
 	nome: "Interno"
 }, {
 	id: "esterno",
 	nome: "Esterno"
 }];
-function En(e) {
+function Fn(e) {
 	let t = {};
 	for (let n of e?.luci || []) t[n.entity_id] = {
 		stanza: n.stanza || "",
@@ -11084,7 +11234,7 @@ function En(e) {
 		perEntita: t
 	};
 }
-function Dn(e, t, n) {
+function In(e, t, n) {
 	let r = new Map(n.map((e) => [e.entity_id, e])), i = [], a = [];
 	for (let [e, n] of Object.entries(t.perEntita)) {
 		if (!n.stanza) continue;
@@ -11112,7 +11262,7 @@ function Dn(e, t, n) {
 		dispositivi: a
 	};
 }
-function On({ voce: e, assegnazione: t, stanze: n, suggerita: r, bloccato: i, onCambia: a }) {
+function Ln({ voce: e, assegnazione: t, stanze: n, suggerita: r, bloccato: i, onCambia: a }) {
 	let o = t || {
 		stanza: "",
 		categoria: "",
@@ -11177,7 +11327,7 @@ function On({ voce: e, assegnazione: t, stanze: n, suggerita: r, bloccato: i, on
 					children: [/* @__PURE__ */ (0, b.jsxs)("option", {
 						value: "",
 						children: ["automatica · ", he[s]]
-					}), wn.map((e) => /* @__PURE__ */ (0, b.jsx)("option", {
+					}), Nn.map((e) => /* @__PURE__ */ (0, b.jsx)("option", {
 						value: e.id,
 						children: e.nome
 					}, e.id))]
@@ -11200,16 +11350,16 @@ function On({ voce: e, assegnazione: t, stanze: n, suggerita: r, bloccato: i, on
 		]
 	});
 }
-function kn(e, t) {
+function Rn(e, t) {
 	let n = e.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "") || "stanza", r = n, i = 2;
 	for (; t.has(r);) r = `${n}_${i}`, i += 1;
 	return r;
 }
-function An({ bozza: e, bloccato: t, conta: n, onCambia: r }) {
+function zn({ bozza: e, bloccato: t, conta: n, onCambia: r }) {
 	let [i, a] = (0, l.useState)(""), o = () => {
 		let t = i.trim();
 		if (!t) return;
-		let n = kn(t, new Set(e.stanze.map((e) => e.id)));
+		let n = Rn(t, new Set(e.stanze.map((e) => e.id)));
 		r({
 			...e,
 			stanze: [...e.stanze, {
@@ -11238,7 +11388,7 @@ function An({ bozza: e, bloccato: t, conta: n, onCambia: r }) {
 	};
 	return /* @__PURE__ */ (0, b.jsxs)("div", {
 		className: "elenco-stanze-imp",
-		children: [Tn.map((r) => /* @__PURE__ */ (0, b.jsxs)("section", {
+		children: [Pn.map((r) => /* @__PURE__ */ (0, b.jsxs)("section", {
 			className: "gruppo-stanze",
 			children: [
 				/* @__PURE__ */ (0, b.jsx)("h3", {
@@ -11270,7 +11420,7 @@ function An({ bozza: e, bloccato: t, conta: n, onCambia: r }) {
 							disabled: t,
 							onChange: (t) => s(e.id, { zona: t.target.value }),
 							"aria-label": `Zona di ${e.nome}`,
-							children: Tn.map((e) => /* @__PURE__ */ (0, b.jsx)("option", {
+							children: Pn.map((e) => /* @__PURE__ */ (0, b.jsx)("option", {
 								value: e.id,
 								children: e.nome
 							}, e.id))
@@ -11305,7 +11455,7 @@ function An({ bozza: e, bloccato: t, conta: n, onCambia: r }) {
 		})]
 	});
 }
-var jn = [
+var Bn = [
 	{
 		gruppo: "Al kWh consumato",
 		campi: [
@@ -11373,7 +11523,7 @@ var jn = [
 		}]
 	}
 ];
-function Mn({ bozza: e, bloccato: t, onCambia: n }) {
+function Vn({ bozza: e, bloccato: t, onCambia: n }) {
 	let r = e.tariffe || {}, i = (t, i) => {
 		let a = i === "" ? null : Number(String(i).replace(",", "."));
 		n({
@@ -11386,7 +11536,7 @@ function Mn({ bozza: e, bloccato: t, onCambia: n }) {
 	};
 	return /* @__PURE__ */ (0, b.jsxs)("div", {
 		className: "elenco-stanze-imp",
-		children: [jn.map((e) => /* @__PURE__ */ (0, b.jsxs)("section", {
+		children: [Bn.map((e) => /* @__PURE__ */ (0, b.jsxs)("section", {
 			className: "gruppo-stanze",
 			children: [/* @__PURE__ */ (0, b.jsx)("h3", {
 				className: "gruppo-stanze-titolo",
@@ -11420,8 +11570,8 @@ function Mn({ bozza: e, bloccato: t, onCambia: n }) {
 		})]
 	});
 }
-function Nn() {
-	let e = S(), { barraHA: t } = w();
+function Hn() {
+	let e = C(), { barraHA: t } = T();
 	return /* @__PURE__ */ (0, b.jsx)("div", {
 		className: "elenco-stanze-imp",
 		children: /* @__PURE__ */ (0, b.jsxs)("section", {
@@ -11457,37 +11607,37 @@ function Nn() {
 		})
 	});
 }
-function Pn({ onChiudi: e }) {
-	let t = S(), n = re(), r = !w().amministratore, [i, a] = (0, l.useState)("dispositivi"), [o, s] = (0, l.useState)(null), [c, u] = (0, l.useState)(null), [d, f] = (0, l.useState)(!1), [p, m] = (0, l.useState)(""), [h, g] = (0, l.useState)(!0), [_, v] = (0, l.useState)(!1), [y, x] = (0, l.useState)(() => En(n)), ee = (0, l.useRef)(JSON.stringify(En(n))), C = JSON.stringify(y) !== ee.current;
+function Un({ onChiudi: e }) {
+	let t = C(), n = ne(), r = !T().amministratore, [i, a] = (0, l.useState)("dispositivi"), [o, s] = (0, l.useState)(null), [c, u] = (0, l.useState)(null), [d, f] = (0, l.useState)(!1), [p, m] = (0, l.useState)(""), [h, g] = (0, l.useState)(!0), [_, v] = (0, l.useState)(!1), [y, x] = (0, l.useState)(() => Fn(n)), S = (0, l.useRef)(JSON.stringify(Fn(n))), w = JSON.stringify(y) !== S.current;
 	(0, l.useEffect)(() => {
 		let e = !0, n = t.hass()?.connection;
-		if (n) return bn(n).then((t) => e && s(t)).catch((t) => e && u(`Non riesco a leggere le entità: ${t.message}`)), () => {
+		if (n) return kn(n).then((t) => e && s(t)).catch((t) => e && u(`Non riesco a leggere le entità: ${t.message}`)), () => {
 			e = !1;
 		};
 	}, [t]), (0, l.useEffect)(() => {
 		let t = (t) => t.key === "Escape" && e();
 		return window.addEventListener("keydown", t), () => window.removeEventListener("keydown", t);
 	}, [e]);
-	let te = (0, l.useMemo)(() => {
+	let ee = (0, l.useMemo)(() => {
 		if (!o) return [];
 		let e = o.elenco;
-		return _ || (e = e.filter((e) => gn.includes(e.dominio))), h && (e = e.filter((e) => !y.perEntita[e.entity_id]?.stanza)), Cn(e, p);
+		return _ || (e = e.filter((e) => Tn.includes(e.dominio))), h && (e = e.filter((e) => !y.perEntita[e.entity_id]?.stanza)), Mn(e, p);
 	}, [
 		o,
 		_,
 		h,
 		p,
 		y.perEntita
-	]), ne = (0, l.useMemo)(() => {
+	]), te = (0, l.useMemo)(() => {
 		let e = {};
 		for (let t of Object.values(y.perEntita)) t.stanza && (e[t.stanza] = (e[t.stanza] || 0) + 1);
 		return e;
-	}, [y.perEntita]), ie = (0, l.useMemo)(() => {
+	}, [y.perEntita]), re = (0, l.useMemo)(() => {
 		if (!o) return /* @__PURE__ */ new Map();
 		let e = /* @__PURE__ */ new Map();
 		for (let t of o.elenco) {
 			if (y.perEntita[t.entity_id]?.stanza) continue;
-			let n = Sn(t.areaHA, y.stanze);
+			let n = jn(t.areaHA, y.stanze);
 			n && e.set(t.entity_id, y.stanze.find((e) => e.id === n));
 		}
 		return e;
@@ -11495,10 +11645,10 @@ function Pn({ onChiudi: e }) {
 		o,
 		y.stanze,
 		y.perEntita
-	]), ae = (0, l.useCallback)(() => {
+	]), ie = (0, l.useCallback)(() => {
 		let e = { ...y.perEntita };
-		for (let t of te) {
-			let n = ie.get(t.entity_id);
+		for (let t of ee) {
+			let n = re.get(t.entity_id);
 			n && (e[t.entity_id] = {
 				...e[t.entity_id] || {
 					categoria: "",
@@ -11513,13 +11663,13 @@ function Pn({ onChiudi: e }) {
 		});
 	}, [
 		y,
-		te,
-		ie
-	]), oe = te.filter((e) => ie.has(e.entity_id)).length;
-	async function se() {
+		ee,
+		re
+	]), ae = ee.filter((e) => re.has(e.entity_id)).length;
+	async function oe() {
 		f(!0), u(null);
 		try {
-			await t.salvaConfigurazione(Dn(n, y, o?.elenco || [])), ee.current = JSON.stringify(y), e();
+			await t.salvaConfigurazione(In(n, y, o?.elenco || [])), S.current = JSON.stringify(y), e();
 		} catch (e) {
 			u(/rev/i.test(e.message) ? "Qualcun altro ha modificato la configurazione nel frattempo. Chiudi e riapri le impostazioni per ripartire da quella aggiornata." : `Salvataggio non riuscito: ${e.message}`);
 		} finally {
@@ -11565,9 +11715,9 @@ function Pn({ onChiudi: e }) {
 							children: [!r && /* @__PURE__ */ (0, b.jsx)("button", {
 								type: "button",
 								className: "btn btn-forte tap-target",
-								onClick: se,
-								disabled: !C || d,
-								children: d ? "Salvo…" : C ? "Salva" : "Salvato"
+								onClick: oe,
+								disabled: !w || d,
+								children: d ? "Salvo…" : w ? "Salva" : "Salvato"
 							}), /* @__PURE__ */ (0, b.jsx)("button", {
 								type: "button",
 								className: "btn tap-target",
@@ -11608,13 +11758,13 @@ function Pn({ onChiudi: e }) {
 								onChange: (e) => v(e.target.checked)
 							}), "Tutte le entità"]
 						}),
-						oe > 0 && !r && /* @__PURE__ */ (0, b.jsxs)("button", {
+						ae > 0 && !r && /* @__PURE__ */ (0, b.jsxs)("button", {
 							type: "button",
 							className: "btn tap-target",
-							onClick: ae,
+							onClick: ie,
 							children: [
 								"Usa le stanze di Home Assistant (",
-								oe,
+								ae,
 								")"
 							]
 						})
@@ -11626,15 +11776,15 @@ function Pn({ onChiudi: e }) {
 							className: "testo-secondario",
 							children: "Leggo le entità…"
 						}),
-						o && te.length === 0 && /* @__PURE__ */ (0, b.jsx)("p", {
+						o && ee.length === 0 && /* @__PURE__ */ (0, b.jsx)("p", {
 							className: "testo-secondario",
 							children: h ? "Niente da assegnare: tutti i dispositivi visibili sono già in una stanza." : "Nessun dispositivo corrisponde alla ricerca."
 						}),
-						te.map((e) => /* @__PURE__ */ (0, b.jsx)(On, {
+						ee.map((e) => /* @__PURE__ */ (0, b.jsx)(Ln, {
 							voce: e,
 							assegnazione: y.perEntita[e.entity_id],
 							stanze: y.stanze,
-							suggerita: ie.get(e.entity_id),
+							suggerita: re.get(e.entity_id),
 							bloccato: r,
 							onCambia: (t) => x((n) => ({
 								...n,
@@ -11647,22 +11797,22 @@ function Pn({ onChiudi: e }) {
 					]
 				})] }) : i === "stanze" ? /* @__PURE__ */ (0, b.jsx)("div", {
 					className: "imp-corpo",
-					children: /* @__PURE__ */ (0, b.jsx)(An, {
+					children: /* @__PURE__ */ (0, b.jsx)(zn, {
 						bozza: y,
 						bloccato: r,
-						conta: ne,
+						conta: te,
 						onCambia: x
 					})
 				}) : i === "energia" ? /* @__PURE__ */ (0, b.jsx)("div", {
 					className: "imp-corpo",
-					children: /* @__PURE__ */ (0, b.jsx)(Mn, {
+					children: /* @__PURE__ */ (0, b.jsx)(Vn, {
 						bozza: y,
 						bloccato: r,
 						onCambia: x
 					})
 				}) : /* @__PURE__ */ (0, b.jsx)("div", {
 					className: "imp-corpo",
-					children: /* @__PURE__ */ (0, b.jsx)(Nn, {})
+					children: /* @__PURE__ */ (0, b.jsx)(Hn, {})
 				})
 			]
 		})
@@ -11670,8 +11820,8 @@ function Pn({ onChiudi: e }) {
 }
 //#endregion
 //#region src/App.jsx
-var Fn = (e) => String(e).padStart(2, "0"), In = 6e4, Ln = 9e4, Rn = 1200;
-function zn(e) {
+var Wn = (e) => String(e).padStart(2, "0"), Gn = 6e4, Kn = 9e4, qn = 1200;
+function Jn(e) {
 	if (!e) return [];
 	let t = [
 		...(e.luci || []).map((e) => e.entity_id),
@@ -11695,10 +11845,10 @@ function zn(e) {
 	];
 	return e.clima?.riscaldamento?.entity_id && t.push(e.clima.riscaldamento.entity_id), [...new Set(t.filter((e) => typeof e == "string" && e.includes(".")))];
 }
-var Bn = (e) => !!(e && ((e.luci || []).length || (e.prese || []).length || (e.stanze || []).length || (e.dispositivi || []).length || (e.ingressi?.cancelli || []).length || Object.keys(e.energia || {}).length));
-function Vn() {
+var Yn = (e) => !!(e && ((e.luci || []).length || (e.prese || []).length || (e.stanze || []).length || (e.dispositivi || []).length || (e.ingressi?.cancelli || []).length || Object.keys(e.energia || {}).length));
+function Xn() {
 	let [e, t] = (0, l.useState)("strumento"), [n, r] = (0, l.useState)(!1), i = (0, l.useRef)(0), a = (0, l.useRef)(0), o = (0, l.useCallback)(() => {
-		t("strumento"), r(!1), clearTimeout(i.current), clearTimeout(a.current), i.current = setTimeout(() => t("scena"), In), a.current = setTimeout(() => r(!0), Ln);
+		t("strumento"), r(!1), clearTimeout(i.current), clearTimeout(a.current), i.current = setTimeout(() => t("scena"), Gn), a.current = setTimeout(() => r(!0), Kn);
 	}, []);
 	return (0, l.useEffect)(() => {
 		let e = [
@@ -11718,7 +11868,7 @@ function Vn() {
 		risveglia: o
 	};
 }
-function Hn({ onApri: e }) {
+function Zn({ onApri: e }) {
 	return /* @__PURE__ */ (0, b.jsx)("button", {
 		type: "button",
 		className: "scelta-tema tap-target",
@@ -11737,7 +11887,7 @@ function Hn({ onApri: e }) {
 		})
 	});
 }
-function Un() {
+function Qn() {
 	let [e, t] = (0, l.useState)(() => /* @__PURE__ */ new Date());
 	return (0, l.useEffect)(() => {
 		let e = setInterval(() => t(/* @__PURE__ */ new Date()), 1e3);
@@ -11747,9 +11897,9 @@ function Un() {
 		children: [/* @__PURE__ */ (0, b.jsxs)("span", {
 			className: "ora-cifre",
 			children: [
-				Fn(e.getHours()),
+				Wn(e.getHours()),
 				":",
-				Fn(e.getMinutes())
+				Wn(e.getMinutes())
 			]
 		}), /* @__PURE__ */ (0, b.jsx)("span", {
 			className: "ora-data",
@@ -11761,7 +11911,7 @@ function Un() {
 		})]
 	});
 }
-function Wn({ titolo: e, indice: t, espandi: n, children: r }) {
+function $n({ titolo: e, indice: t, espandi: n, children: r }) {
 	return /* @__PURE__ */ (0, b.jsxs)("section", {
 		className: "carta anima-entrata",
 		"data-espandi": n ? "si" : "no",
@@ -11775,7 +11925,7 @@ function Wn({ titolo: e, indice: t, espandi: n, children: r }) {
 		})]
 	});
 }
-function Gn() {
+function er() {
 	return /* @__PURE__ */ (0, b.jsxs)("section", {
 		className: "carta anima-entrata",
 		style: { "--i": 0 },
@@ -11798,8 +11948,8 @@ function Gn() {
 		})]
 	});
 }
-function Kn({ config: e, regime: t }) {
-	let n = w(), r = ie();
+function tr({ config: e, regime: t }) {
+	let n = T(), r = re();
 	return /* @__PURE__ */ (0, b.jsxs)("details", {
 		className: "diagnostica",
 		children: [/* @__PURE__ */ (0, b.jsx)("summary", { children: "Stato del collegamento" }), /* @__PURE__ */ (0, b.jsxs)("div", {
@@ -11811,7 +11961,7 @@ function Kn({ config: e, regime: t }) {
 					n.amministratore ? " (amministratore)" : ""
 				] }),
 				/* @__PURE__ */ (0, b.jsxs)("span", { children: ["Aggiornamenti: ", r.aggiornamenti] }),
-				/* @__PURE__ */ (0, b.jsxs)("span", { children: ["Entità seguite: ", zn(e).length] }),
+				/* @__PURE__ */ (0, b.jsxs)("span", { children: ["Entità seguite: ", Jn(e).length] }),
 				/* @__PURE__ */ (0, b.jsxs)("span", { children: ["Configurazione: revisione ", e?.rev ?? "—"] }),
 				/* @__PURE__ */ (0, b.jsxs)("span", { children: ["Regime: ", t] }),
 				/* @__PURE__ */ (0, b.jsxs)("span", { children: ["Versione: ", n.versione ?? "—"] })
@@ -11819,21 +11969,21 @@ function Kn({ config: e, regime: t }) {
 		})]
 	});
 }
-function qn() {
-	let e = S(), t = w(), n = re(), { regime: r, inRiposo: i, risveglia: a } = Vn(), [o, s] = (0, l.useState)("casa"), [c, u] = (0, l.useState)(!1), [d, f] = (0, l.useState)(!0);
+function nr() {
+	let e = C(), t = T(), n = ne(), { regime: r, inRiposo: i, risveglia: a } = Xn(), [o, s] = (0, l.useState)("casa"), [c, u] = (0, l.useState)(!1), [d, f] = (0, l.useState)(!0);
 	(0, l.useEffect)(() => {
-		let e = setTimeout(() => f(!1), Rn);
+		let e = setTimeout(() => f(!1), qn);
 		return () => clearTimeout(e);
 	}, []), (0, l.useEffect)(() => {
 		e.collegaConfigurazione();
 	}, [e, t.connesso]), (0, l.useEffect)(() => {
-		e.sottoscrivi(zn(n));
+		e.sottoscrivi(Jn(n));
 	}, [
 		e,
 		n,
 		t.connesso
 	]);
-	let p = Bn(n), m = Object.keys(n?.energia || {}).length > 0, h = (n?.telecamere || []).length > 0;
+	let p = Yn(n), m = Object.keys(n?.energia || {}).length > 0, h = (n?.telecamere || []).length > 0;
 	return (0, l.useEffect)(() => {
 		!h && o === "telecamere" && s("casa"), !m && o === "energia" && s("casa");
 	}, [
@@ -11854,7 +12004,7 @@ function qn() {
 				style: { "--i": 0 },
 				children: [/* @__PURE__ */ (0, b.jsxs)("div", {
 					className: "barra-sinistra",
-					children: [/* @__PURE__ */ (0, b.jsx)(Un, {}), n?.meteo && /* @__PURE__ */ (0, b.jsx)(lt, { entityId: n.meteo })]
+					children: [/* @__PURE__ */ (0, b.jsx)(Qn, {}), n?.meteo && /* @__PURE__ */ (0, b.jsx)(lt, { entityId: n.meteo })]
 				}), /* @__PURE__ */ (0, b.jsxs)("div", {
 					className: "barra-destra",
 					children: [
@@ -11880,7 +12030,7 @@ function qn() {
 							children: "Disconnesso"
 						}),
 						/* @__PURE__ */ (0, b.jsx)(pt, {}),
-						/* @__PURE__ */ (0, b.jsx)(Hn, { onApri: () => u(!0) })
+						/* @__PURE__ */ (0, b.jsx)(Zn, { onApri: () => u(!0) })
 					]
 				})]
 			}),
@@ -11902,7 +12052,7 @@ function qn() {
 				children: [/* @__PURE__ */ (0, b.jsx)("h2", {
 					className: "pannello-titolo",
 					children: "Energia"
-				}), /* @__PURE__ */ (0, b.jsx)(fn, { casa: n })]
+				}), /* @__PURE__ */ (0, b.jsx)(xn, { casa: n })]
 			}) : /* @__PURE__ */ (0, b.jsxs)(b.Fragment, { children: [p && m && /* @__PURE__ */ (0, b.jsxs)("section", {
 				className: "pannello-energia anima-entrata",
 				style: { "--i": 1 },
@@ -11916,14 +12066,14 @@ function qn() {
 			}), /* @__PURE__ */ (0, b.jsxs)("div", {
 				className: "colonna",
 				children: [
-					!p && /* @__PURE__ */ (0, b.jsx)(Gn, {}),
-					p && !n.stanze?.length && (n.luci?.length > 0 || n.prese?.length > 0) && /* @__PURE__ */ (0, b.jsx)(Wn, {
+					!p && /* @__PURE__ */ (0, b.jsx)(er, {}),
+					p && !n.stanze?.length && (n.luci?.length > 0 || n.prese?.length > 0) && /* @__PURE__ */ (0, b.jsx)($n, {
 						titolo: "Illuminazione",
 						indice: 2,
 						espandi: !0,
-						children: /* @__PURE__ */ (0, b.jsx)(ue, { casa: n })
+						children: /* @__PURE__ */ (0, b.jsx)(le, { casa: n })
 					}),
-					n?.persone?.length > 0 && /* @__PURE__ */ (0, b.jsx)(Wn, {
+					n?.persone?.length > 0 && /* @__PURE__ */ (0, b.jsx)($n, {
 						titolo: "In casa",
 						indice: 2,
 						children: /* @__PURE__ */ (0, b.jsx)(Vt, {
@@ -11931,7 +12081,7 @@ function qn() {
 							interattivo: !0
 						})
 					}),
-					p && (n.ingressi?.cancelli?.length > 0 || n.ingressi?.porte?.length > 0) && /* @__PURE__ */ (0, b.jsx)(Wn, {
+					p && (n.ingressi?.cancelli?.length > 0 || n.ingressi?.porte?.length > 0) && /* @__PURE__ */ (0, b.jsx)($n, {
 						titolo: "Ingressi",
 						indice: 3,
 						children: /* @__PURE__ */ (0, b.jsx)(Ee, { casa: n })
@@ -11940,7 +12090,7 @@ function qn() {
 			})] }),
 			/* @__PURE__ */ (0, b.jsx)("footer", {
 				className: "pie-pagina",
-				children: /* @__PURE__ */ (0, b.jsx)(Kn, {
+				children: /* @__PURE__ */ (0, b.jsx)(tr, {
 					config: n,
 					regime: r
 				})
@@ -11952,22 +12102,22 @@ function qn() {
 					compatto: !0
 				})]
 			}),
-			c && /* @__PURE__ */ (0, b.jsx)(Pn, { onChiudi: () => u(!1) }),
+			c && /* @__PURE__ */ (0, b.jsx)(Un, { onChiudi: () => u(!1) }),
 			/* @__PURE__ */ (0, b.jsx)(Ve, {}),
-			i && !c && /* @__PURE__ */ (0, b.jsx)(hn, { onSveglia: a })
+			i && !c && /* @__PURE__ */ (0, b.jsx)(wn, { onSveglia: a })
 		]
 	});
 }
-function Jn({ store: e }) {
-	return /* @__PURE__ */ (0, b.jsx)(ee, {
+function rr({ store: e }) {
+	return /* @__PURE__ */ (0, b.jsx)(S, {
 		store: e,
-		children: /* @__PURE__ */ (0, b.jsx)(qn, {})
+		children: /* @__PURE__ */ (0, b.jsx)(nr, {})
 	});
 }
 //#endregion
 //#region src/hass/store.js
-var Yn = 5e3, Xn = 2e4, Zn = /* @__PURE__ */ new Set(["cover"]);
-function Qn() {
+var ir = 5e3, ar = 2e4, or = /* @__PURE__ */ new Set(["cover"]);
+function sr() {
 	let e = null, t = !1, n = null, r = "/casaos_static", i = /* @__PURE__ */ new Map(), a = /* @__PURE__ */ new Map(), o = /* @__PURE__ */ new Map(), s = /* @__PURE__ */ new Set(), c = null, l = "", u = null, d = null, f = /* @__PURE__ */ new Set(), p = null, m = "casaos_tema";
 	function h() {
 		try {
@@ -11981,11 +12131,11 @@ function Qn() {
 	try {
 		globalThis.localStorage?.getItem(_) === "visibile" && (v = "visibile");
 	} catch {}
-	let y = null, b = !0, x = () => g === "auto" ? b : g === "scuro", ee = 0, S = re(), C = {
+	let y = null, b = !0, x = () => g === "auto" ? b : g === "scuro", S = 0, C = ne(), w = {
 		aggiornamenti: 0,
 		ultimoAggiornamento: null
-	}, te = 0, ne = !1;
-	function re() {
+	}, ee = 0, te = !1;
+	function ne() {
 		return {
 			utente: null,
 			amministratore: !1,
@@ -11999,7 +12149,7 @@ function Qn() {
 			statico: "/casaos_static"
 		};
 	}
-	function w(e) {
+	function T(e) {
 		return [
 			e.utente,
 			e.amministratore,
@@ -12012,14 +12162,14 @@ function Qn() {
 			e.versione
 		].join("|");
 	}
-	function ie() {
+	function re() {
 		for (let e of s) e();
 	}
-	function ae(e) {
+	function ie(e) {
 		let t = a.get(e);
 		if (t) for (let e of t) e();
 	}
-	function oe(e, t) {
+	function ae(e, t) {
 		return {
 			entity_id: e,
 			state: t.s,
@@ -12029,9 +12179,9 @@ function Qn() {
 			context: typeof t.c == "string" ? { id: t.c } : t.c || {}
 		};
 	}
-	function se(e) {
+	function oe(e) {
 		let t = [];
-		if (e.a) for (let [n, r] of Object.entries(e.a)) i.set(n, oe(n, r)), t.push(n);
+		if (e.a) for (let [n, r] of Object.entries(e.a)) i.set(n, ae(n, r)), t.push(n);
 		if (e.c) for (let [n, r] of Object.entries(e.c)) {
 			let e = i.get(n);
 			if (!e) continue;
@@ -12051,10 +12201,10 @@ function Qn() {
 			i.set(n, a), t.push(n);
 		}
 		if (e.r) for (let n of e.r) i.delete(n), t.push(n);
-		for (let e of t) ce(e), ae(e);
-		T();
+		for (let e of t) se(e), ie(e);
+		E();
 	}
-	function ce(e) {
+	function se(e) {
 		let t = o.get(e);
 		if (!t) return;
 		let n = i.get(e)?.context?.id;
@@ -12064,38 +12214,38 @@ function Qn() {
 		}
 		o.delete(e);
 	}
-	function le(e, t, n) {
+	function ce(e, t, n) {
 		let r = i.get(e);
 		r && (o.set(e, {
 			precedente: r,
-			scadenza: Date.now() + (n ? Xn : Yn),
+			scadenza: Date.now() + (n ? ar : ir),
 			contesti: /* @__PURE__ */ new Set()
 		}), i.set(e, {
 			...r,
 			...t,
 			_previsto: !0
-		}), ae(e));
+		}), ie(e));
 	}
-	function ue(e) {
+	function le(e) {
 		let t = o.get(e);
-		t && (i.set(e, t.precedente), o.delete(e), ae(e));
+		t && (i.set(e, t.precedente), o.delete(e), ie(e));
 	}
 	setInterval(() => {
 		let e = Date.now();
-		for (let [t, n] of o) n.scadenza <= e && ue(t);
+		for (let [t, n] of o) n.scadenza <= e && le(t);
 	}, 1e3);
-	function T() {
-		ee += 1, !ne && (ne = !0, te = setTimeout(() => {
-			ne = !1, C = {
-				aggiornamenti: ee,
+	function E() {
+		S += 1, !te && (te = !0, ee = setTimeout(() => {
+			te = !1, w = {
+				aggiornamenti: S,
 				ultimoAggiornamento: /* @__PURE__ */ new Date()
-			}, ie();
+			}, re();
 		}, 1e3));
 	}
-	function E(t) {
+	function D(t) {
 		if (!e?.connection) return;
 		let n = [...t].sort().join(",");
-		(n !== l || u !== e.connection) && (u = e.connection, c &&= (c(), null), l = n, t.length && e.connection.subscribeMessage(se, {
+		(n !== l || u !== e.connection) && (u = e.connection, c &&= (c(), null), l = n, t.length && e.connection.subscribeMessage(oe, {
 			type: "subscribe_entities",
 			entity_ids: t
 		}).then((e) => {
@@ -12104,26 +12254,26 @@ function Qn() {
 			l = "";
 		}));
 	}
-	async function de() {
+	async function ue() {
 		if (!(!e?.connection || p)) {
 			try {
-				d = await e.connection.sendMessagePromise({ type: "casaos/config/get" }), fe();
+				d = await e.connection.sendMessagePromise({ type: "casaos/config/get" }), de();
 			} catch {
-				d = { errore: "La configurazione non è raggiungibile." }, fe();
+				d = { errore: "La configurazione non è raggiungibile." }, de();
 				return;
 			}
 			try {
 				p = await e.connection.subscribeMessage((e) => {
-					d = e, fe();
+					d = e, de();
 				}, { type: "casaos/config/subscribe" });
 			} catch {}
 		}
 	}
-	function fe() {
+	function de() {
 		for (let e of f) e();
 	}
 	return {
-		collegaConfigurazione: de,
+		collegaConfigurazione: ue,
 		configurazione: () => d,
 		iscriviConfig(e) {
 			return f.add(e), () => f.delete(e);
@@ -12152,7 +12302,7 @@ function Qn() {
 				versione: n,
 				statico: r
 			};
-			w(a) !== w(S) && (S = a, ie());
+			T(a) !== T(C) && (C = a, re());
 		},
 		collegaBarraHA(e) {
 			y = e, y(v === "nascosta" ? "always_hidden" : "docked");
@@ -12164,10 +12314,10 @@ function Qn() {
 				try {
 					globalThis.localStorage?.setItem(_, t);
 				} catch {}
-				y?.(t === "nascosta" ? "always_hidden" : "docked"), S = {
-					...S,
+				y?.(t === "nascosta" ? "always_hidden" : "docked"), C = {
+					...C,
 					barraHA: v
-				}, ie();
+				}, re();
 			}
 		},
 		impostaTema(e) {
@@ -12177,27 +12327,27 @@ function Qn() {
 				try {
 					t === "auto" ? globalThis.localStorage?.removeItem(m) : globalThis.localStorage?.setItem(m, t);
 				} catch {}
-				S = {
-					...S,
+				C = {
+					...C,
 					tema: g,
 					scuro: x()
-				}, ie();
+				}, re();
 			}
 		},
 		setNarrow(e) {
-			e !== t && (t = e, S = {
-				...S,
+			e !== t && (t = e, C = {
+				...C,
 				narrow: t
-			}, ie());
+			}, re());
 		},
 		setPannello(e) {
-			n = e?.version ?? n, r = e?.static ?? r, S = {
-				...S,
+			n = e?.version ?? n, r = e?.static ?? r, C = {
+				...C,
 				versione: n,
 				statico: r
 			};
 		},
-		sottoscrivi: E,
+		sottoscrivi: D,
 		entita: (e) => i.get(e),
 		iscriviEntita(e, t) {
 			let n = a.get(e);
@@ -12208,43 +12358,43 @@ function Qn() {
 		iscriviSessione(e) {
 			return s.add(e), () => s.delete(e);
 		},
-		sessione: () => S,
-		attivita: () => C,
+		sessione: () => C,
+		attivita: () => w,
 		hass: () => e,
 		async chiama(t, n, r, i) {
-			let a = [].concat(r?.entity_id ?? []), s = Zn.has(t);
-			if (i) for (let e of a) le(e, i, s);
+			let a = [].concat(r?.entity_id ?? []), s = or.has(t);
+			if (i) for (let e of a) ce(e, i, s);
 			try {
 				let i = await e.callService(t, n, r), s = i?.context?.id;
 				if (s) for (let e of a) o.get(e)?.contesti.add(s);
 				return i;
 			} catch (e) {
-				for (let e of a) ue(e);
+				for (let e of a) le(e);
 				throw e;
 			}
 		},
 		distruggi() {
-			clearTimeout(te), c && c(), c = null, p && p(), p = null, f.clear(), d = null, s.clear(), a.clear(), i.clear(), o.clear(), e = null;
+			clearTimeout(ee), c && c(), c = null, p && p(), p = null, f.clear(), d = null, s.clear(), a.clear(), i.clear(), o.clear(), e = null;
 		}
 	};
 }
 //#endregion
 //#region src/panel.jsx
-var $n = ":host{--cs-scale:1;--cs-tap:44px;--cs-tap-primario:56px;--cs-accent-h:210;--cs-accent-s:100%;--cs-accent:hsl(var(--cs-accent-h) var(--cs-accent-s) 65%);--cs-accent-hover:hsl(var(--cs-accent-h) var(--cs-accent-s) 72%);--cs-accent-quiet:hsl(var(--cs-accent-h) var(--cs-accent-s) 65% / .14);--cs-accent-line:hsl(var(--cs-accent-h) var(--cs-accent-s) 65% / .36);--cs-text-on-accent:#05121f;--cs-bg-base:#0a0e14;--cs-bg-sunken:#070a0f;--cs-surface-1:#121821;--cs-surface-2:#1a2230;--cs-surface-3:#232d3d;--cs-scrim:#06090eb8;--cs-text-1:#eaf0f7;--cs-text-2:#9fb0c3;--cs-text-3:#7c8ea3;--cs-line-1:#ffffff12;--cs-line-2:#ffffff21;--cs-line-strong:#ffffff3d;--cs-on:#ffc24b;--cs-on-quiet:#ffc24b1a;--cs-on-line:#ffc24b4d;--cs-ok:#34d399;--cs-ok-quiet:#34d3991f;--cs-ok-line:#34d39952;--cs-alert:#ff5a6e;--cs-alert-quiet:#ff5a6e1f;--cs-alert-line:#ff5a6e57;--cs-cool:#5bc8ff;--cs-cool-quiet:#5bc8ff1f;--cs-unavail:#55606e;--cs-energy-solar:#f59e0b;--cs-energy-house:#fbbf24;--cs-energy-battery:#34d399;--cs-energy-grid:#5bc8ff;--cs-sp-1:4px;--cs-sp-2:8px;--cs-sp-3:12px;--cs-sp-4:16px;--cs-sp-5:20px;--cs-sp-6:24px;--cs-sp-8:32px;--cs-sp-10:40px;--cs-sp-12:48px;--cs-sp-16:64px;--cs-r-xs:6px;--cs-r-sm:10px;--cs-r-md:16px;--cs-r-lg:20px;--cs-r-xl:28px;--cs-r-full:999px;--cs-el-0:none;--cs-el-1:0 1px 2px #00000047, 0 4px 12px #0000002e;--cs-el-2:0 2px 4px #00000052, 0 10px 28px #0000003d;--cs-el-3:0 4px 8px #0000005c, 0 24px 56px #00000057;--cs-el-focus:0 0 0 3px var(--cs-bg-base), 0 0 0 6px var(--cs-accent);--cs-glass-bg:var(--cs-scrim);--cs-glass-blur:blur(20px) saturate(140%);--cs-font-ui:\"Inter\", system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif;--cs-font-display:\"Syne\", var(--cs-font-ui);--cs-font-numeric:\"Space Mono\", ui-monospace, \"Cascadia Mono\", monospace;--cs-fw-regular:400;--cs-fw-medium:500;--cs-fw-semibold:600;--cs-fw-bold:700;--cs-fw-black:800;--cs-t-hero:clamp(48px, 13vw, calc(74px * var(--cs-scale)));--cs-t-display:calc(32px * var(--cs-scale));--cs-t-title:calc(20px * var(--cs-scale));--cs-t-subtitle:calc(17px * var(--cs-scale));--cs-t-body:calc(15px * var(--cs-scale));--cs-t-label:calc(13px * var(--cs-scale));--cs-t-caption:calc(12px * var(--cs-scale));--cs-t-eyebrow:calc(11px * var(--cs-scale));--cs-t-value:calc(28px * var(--cs-scale));--cs-lh-hero:.92;--cs-lh-display:1.1;--cs-lh-title:1.25;--cs-lh-body:1.5;--cs-lh-tight:1.3;--cs-ls-eyebrow:.08em;--cs-ls-tight:-.015em;--cs-icon-stroke:1.75;--cs-icon-sm:20px;--cs-icon-md:24px;--cs-icon-lg:32px;--cs-icon-xl:44px;--cs-dur-instant:90ms;--cs-dur-fast:.16s;--cs-dur-base:.24s;--cs-dur-slow:.42s;--cs-dur-ambient:.9s;--cs-dur-scene:90s;--cs-stagger:40ms;--cs-ease-out:cubic-bezier(.22, 1, .36, 1);--cs-ease-inout:cubic-bezier(.65, 0, .35, 1);--cs-ease-spring:cubic-bezier(.34, 1.56, .64, 1);--cs-motion:1;--cs-z-base:0;--cs-z-raised:10;--cs-z-sticky:100;--cs-z-dropdown:200;--cs-z-sheet:300;--cs-z-modal:400;--cs-z-toast:500;--cs-z-rest:900;--cs-z-critical:1000;background:var(--cs-bg-base);block-size:100%;color:var(--cs-text-1);font-family:var(--cs-font-ui);font-size:var(--cs-t-body);font-weight:var(--cs-fw-regular);line-height:var(--cs-lh-body);letter-spacing:normal;text-transform:none;font-variant-numeric:tabular-nums;font-feature-settings:\"tnum\" 1, \"cv05\" 1;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;text-size-adjust:100%;--lightningcss-light: ;--lightningcss-dark:initial;color-scheme:dark;overscroll-behavior:contain;display:block}:host([data-theme=light]),.casaos-root[data-theme=light]{--cs-bg-base:#f2f5f8;--cs-bg-sunken:#e7ecf2;--cs-surface-1:#fff;--cs-surface-2:#f4f7fa;--cs-surface-3:#fff;--cs-scrim:#ffffffd1;--cs-text-1:#0e1620;--cs-text-2:#4a5a6b;--cs-text-3:#5d6e82;--cs-text-on-accent:#fff;--cs-line-1:#10182814;--cs-line-2:#10182824;--cs-line-strong:#10182847;--cs-accent:hsl(var(--cs-accent-h) 90% 44%);--cs-accent-hover:hsl(var(--cs-accent-h) 90% 38%);--cs-accent-quiet:hsl(var(--cs-accent-h) 90% 44% / .1);--cs-accent-line:hsl(var(--cs-accent-h) 90% 44% / .28);--cs-on:#8a5300;--cs-on-quiet:#f59e0b24;--cs-on-line:#b46e0052;--cs-ok:#0e7c5a;--cs-ok-quiet:#0e7c5a1a;--cs-ok-line:#0e7c5a4d;--cs-alert:#c42b3c;--cs-alert-quiet:#c42b3c17;--cs-alert-line:#c42b3c4d;--cs-cool:#0a6fa8;--cs-cool-quiet:#0a6fa81a;--cs-unavail:#8a97a6;--cs-el-1:0 1px 2px #1018280d, 0 2px 8px #1018280d;--cs-el-2:0 2px 4px #10182812, 0 8px 20px #10182814;--cs-el-3:0 6px 12px #10182817, 0 20px 48px #10182824;--lightningcss-light:initial;--lightningcss-dark: ;color-scheme:light}:host([data-density=wall]){--cs-scale:1.3;--cs-tap:64px;--cs-tap-primario:80px;--cs-icon-stroke:2}:host([data-density=hand]){--cs-scale:1}@media (pointer:coarse) and (min-width:1000px){:host(:not([data-density])){--cs-scale:1.3;--cs-tap:64px;--cs-tap-primario:80px;--cs-icon-stroke:2}}@media (prefers-reduced-motion:reduce){:host{--cs-motion:0;--cs-dur-instant:1ms;--cs-dur-fast:1ms;--cs-dur-base:1ms;--cs-dur-slow:1ms;--cs-dur-ambient:1ms;--cs-stagger:0s}:host,*,:before,:after{scroll-behavior:auto!important;transition-duration:1ms!important;animation-duration:1ms!important;animation-iteration-count:1!important}}:host([data-motion=ridotto]){--cs-motion:0;--cs-dur-instant:1ms;--cs-dur-fast:1ms;--cs-dur-base:1ms;--cs-dur-slow:1ms;--cs-dur-ambient:1ms;--cs-stagger:0s}:host([data-motion=ridotto]) *,:host([data-motion=ridotto]) :before,:host([data-motion=ridotto]) :after{transition-duration:1ms!important;animation-duration:1ms!important;animation-iteration-count:1!important}*,:before,:after{box-sizing:border-box}.casaos-mount{block-size:100%}.casaos-root{block-size:100%;min-block-size:var(--cs-viewport-h,100dvh);background:var(--cs-bg-base);color:var(--cs-text-1);padding:var(--cs-sp-6);padding-inline:max(var(--cs-sp-6), env(safe-area-inset-left), env(safe-area-inset-right));-webkit-tap-highlight-color:transparent;justify-content:center;align-items:flex-start;padding-block-end:max(var(--cs-sp-6), env(safe-area-inset-bottom));display:flex;container:casaos/inline-size}:host(:focus-visible),.casaos-root :focus-visible{box-shadow:var(--cs-el-focus);border-radius:var(--cs-r-sm);outline:none}.tap-target{min-block-size:var(--cs-tap);min-inline-size:var(--cs-tap);touch-action:manipulation}.casaos-root :where(h1,h2,h3,p,span){overflow-wrap:anywhere}.casaos-root :where(h1,h2,h3){text-wrap:balance}img,svg,video{max-inline-size:100%;display:block}button{font:inherit;color:inherit}.scheda{background:var(--cs-surface-1);border-radius:var(--cs-r-lg);inline-size:100%;max-inline-size:640px;box-shadow:var(--cs-el-1);padding:var(--cs-sp-6);animation:cs-entra var(--cs-dur-slow) var(--cs-ease-out) both;margin-block-start:var(--cs-sp-8)}@keyframes cs-entra{0%{opacity:0;transform:translateY(14px)scale(.985)}to{opacity:1;transform:none}}.testata{justify-content:space-between;align-items:flex-start;gap:var(--cs-sp-4);margin-block-end:var(--cs-sp-4);display:flex}.occhiello{margin:0 0 var(--cs-sp-1);font-family:var(--cs-font-numeric);font-size:var(--cs-t-eyebrow);line-height:var(--cs-lh-tight);letter-spacing:var(--cs-ls-eyebrow);text-transform:uppercase;color:var(--cs-accent)}.testata h1{font-size:var(--cs-t-display);font-weight:var(--cs-fw-bold);letter-spacing:var(--cs-ls-tight);line-height:var(--cs-lh-display);margin:0}.pillola{font-family:var(--cs-font-numeric);font-size:var(--cs-t-caption);font-weight:var(--cs-fw-bold);line-height:var(--cs-lh-tight);letter-spacing:.06em;text-transform:uppercase;padding:var(--cs-sp-1) var(--cs-sp-3);border-radius:var(--cs-r-full);border:1px solid #0000;flex-shrink:0}.pillola[data-stato=ok]{background:var(--cs-ok-quiet);color:var(--cs-ok);border-color:var(--cs-ok-line)}.pillola[data-stato=ko]{background:var(--cs-alert-quiet);color:var(--cs-alert);border-color:var(--cs-alert-line)}.intro{margin:0 0 var(--cs-sp-5);color:var(--cs-text-2);font-size:var(--cs-t-body);line-height:var(--cs-lh-body)}.intro code{font-family:var(--cs-font-numeric);background:var(--cs-surface-2);border:1px solid var(--cs-line-1);border-radius:var(--cs-r-xs);padding:1px var(--cs-sp-1);font-size:.9em}.griglia{border-block-start:1px solid var(--cs-line-1);flex-direction:column;display:flex}.riga{justify-content:space-between;align-items:baseline;gap:var(--cs-sp-4);padding-block:var(--cs-sp-3);border-block-end:1px solid var(--cs-line-1);display:flex}.riga-k{font-size:var(--cs-t-label);color:var(--cs-text-2)}.riga-v{font-family:var(--cs-font-numeric);font-size:var(--cs-t-label);color:var(--cs-text-1);text-align:end;transition:color var(--cs-dur-ambient) var(--cs-ease-out)}.riga-v[data-tono=forte]{font-size:var(--cs-t-subtitle);font-weight:var(--cs-fw-bold)}.riga-v[data-tono=ok]{color:var(--cs-ok)}.pie{font-size:var(--cs-t-label);line-height:var(--cs-lh-body);color:var(--cs-text-3);margin-block-start:var(--cs-sp-5)}@container casaos (width<=600px){.casaos-root{padding:var(--cs-sp-3)}.scheda{padding:var(--cs-sp-4);margin-block-start:var(--cs-sp-3)}}@supports not (container-type:inline-size){@media (max-width:700px){.casaos-root{padding:var(--cs-sp-3)}.scheda{padding:var(--cs-sp-4);margin-block-start:var(--cs-sp-3)}}}\n.casaos-mount{block-size:100%;container:casaos/inline-size}.casaos-root{block-size:var(--cs-viewport-h,100dvh);max-block-size:var(--cs-viewport-h,100dvh);gap:var(--cs-sp-5);grid-template:\"testa testa\"\"stanze stanze\"\"energia colonna\"minmax(0,1fr)\"piede piede\"/minmax(0,1.55fr) minmax(300px,1fr);align-items:stretch;display:grid;position:relative;overflow:hidden;container-type:normal}.intestazione{justify-content:space-between;align-items:baseline;gap:var(--cs-sp-5);border-block-end:1px solid var(--cs-line-1);flex-wrap:wrap;grid-area:testa;padding-block-end:var(--cs-sp-3);display:flex}.ora{align-items:baseline;gap:var(--cs-sp-4);min-inline-size:0;display:flex}.ora-cifre{font-family:var(--cs-font-display);letter-spacing:-.03em;color:var(--cs-text-1);font-variant-numeric:tabular-nums;font-size:clamp(40px,7cqi,76px);font-weight:800;line-height:.86}.ora-data{font-size:var(--cs-t-subtitle);color:var(--cs-text-2);text-transform:lowercase}.barra-sinistra{align-items:baseline;gap:var(--cs-sp-5);flex-wrap:wrap;min-inline-size:0;display:flex}.meteo{align-items:center;gap:var(--cs-sp-3);align-self:flex-end;min-inline-size:0;padding-block-end:.15em;display:flex}.meteo-segno{fill:none;block-size:auto;inline-size:clamp(1.75rem,3.2cqi,2.6rem);stroke:var(--cs-text-2);stroke-width:1.7px;stroke-linecap:round;stroke-linejoin:round;flex:none}.meteo-segno .meteo-caldo{stroke:var(--cs-on)}.meteo-segno .meteo-freddo{stroke:var(--cs-cool)}.meteo-segno .meteo-notte{stroke:var(--cs-text-2)}.meteo-testo{flex-direction:column;gap:.1em;min-inline-size:0;display:flex}.meteo-ora{font-family:var(--cs-font-display);color:var(--cs-text-1);font-variant-numeric:tabular-nums;font-size:clamp(18px,2.4cqi,28px);font-weight:700;line-height:1}.meteo-dettaglio{font-size:var(--cs-t-label);color:var(--cs-text-2);white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.meteo-min{color:var(--cs-cool)}.meteo-max{color:var(--cs-on)}.scelta-tema{padding:var(--cs-sp-2);border:1px solid var(--cs-line-1);color:var(--cs-text-2);cursor:pointer;background:0 0;border-radius:999px;place-items:center;display:inline-grid}.scelta-tema:hover{color:var(--cs-text-1);border-color:var(--cs-line-2,var(--cs-line-1))}.scelta-tema:active{scale:.94}.tema-segno{fill:none;stroke:currentColor;stroke-width:1.7px;stroke-linecap:round;stroke-linejoin:round;block-size:1.35rem;inline-size:1.35rem}.tema-meta,.scelta-tema[data-tema=scuro] .tema-segno{fill:currentColor;stroke:none}@container (width<=640px){.meteo-dettaglio{display:none}}.stato-collegamento{align-items:center;gap:var(--cs-sp-2);font-size:var(--cs-t-label);color:var(--cs-text-2);display:inline-flex}.stato-collegamento:before{content:\"\";background:var(--cs-ok);border-radius:50%;block-size:7px;inline-size:7px}.stato-collegamento[data-stato=ko]{color:var(--cs-alert)}.stato-collegamento[data-stato=ko]:before{background:var(--cs-alert)}.pannello-energia{gap:var(--cs-sp-4);min-block-size:0;padding:var(--cs-sp-5);border-radius:var(--cs-r-xl);background:var(--cs-surface-1);box-shadow:var(--cs-el-1);flex-direction:column;grid-area:energia;min-inline-size:0;display:flex;position:relative;overflow:hidden}.pannello-energia:before{content:\"\";z-index:0;pointer-events:none;background:radial-gradient(42% 42% at 28% 22%, color-mix(in srgb, var(--cs-energy-solar) 22%, transparent), transparent 70%), radial-gradient(46% 46% at 76% 78%, color-mix(in srgb, var(--cs-accent) 18%, transparent), transparent 70%);opacity:.5;animation:deriva var(--cs-dur-scene,90s) var(--cs-ease-inout) infinite alternate;will-change:transform;position:absolute;inset:-20%}@keyframes deriva{0%{transform:translate(-3%,-2%)rotate(-2deg)}to{transform:translate(3%,2%)rotate(2deg)}}.casaos-root[data-regime=strumento] .pannello-energia:before{opacity:.32}.pannello-energia>*{z-index:1;position:relative}.pannello-titolo,.carta-titolo{font-size:var(--cs-t-eyebrow);font-weight:var(--cs-fw-bold);letter-spacing:var(--cs-ls-eyebrow);text-transform:uppercase;color:var(--cs-text-3);margin:0}.energia{align-items:stretch;gap:var(--cs-sp-4);flex:1;grid-template-columns:minmax(0,1fr) minmax(7rem,auto);min-block-size:0;display:grid}.scena-3d{flex:auto;place-items:center;min-block-size:130px;min-inline-size:0;display:grid;position:relative;container:scena/size}.scena-quadro{block-size:min(100cqi,100cqh);inline-size:min(100cqi,100cqh);position:relative}@supports not (inline-size:1cqi){.scena-quadro{block-size:100%;inline-size:100%}}.scena-energia{block-size:100%;inline-size:100%}.sfondo-3d{filter:invert()hue-rotate(180deg)brightness(1.15)saturate(.9);mix-blend-mode:screen;opacity:.92}.casaos-root[data-theme=light] .sfondo-3d{filter:brightness(1.12)contrast(1.03)saturate(.95);mix-blend-mode:darken;opacity:1}.lettura{pointer-events:none;border-radius:var(--cs-r-md);background:color-mix(in srgb, var(--cs-surface-1) 62%, transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);flex-direction:column;gap:1px;max-inline-size:40%;padding:.3em .55em;display:flex;position:absolute}.lettura[data-pos=solare]{inset-block-start:6%;inset-inline-start:0}.lettura[data-pos=casa]{text-align:end;align-items:flex-end;inset-block-start:4%;inset-inline-end:0}.lettura[data-pos=batteria]{inset-block-end:8%;inset-inline-start:0}.lettura[data-pos=rete]{text-align:end;align-items:flex-end;inset-block-end:8%;inset-inline-end:0}.lettura-titolo{font-size:var(--cs-t-eyebrow);letter-spacing:var(--cs-ls-eyebrow);text-transform:uppercase;color:var(--cs-text-3)}.lettura-valore{font-family:var(--cs-font-numeric);font-size:var(--cs-t-value);font-weight:var(--cs-fw-bold);align-items:baseline;gap:5px;line-height:1.05;display:inline-flex}.lettura-unita{font-size:var(--cs-t-label);font-weight:var(--cs-fw-regular);color:var(--cs-text-3)}.lettura-nota{font-size:var(--cs-t-caption);color:var(--cs-text-3)}.lettura[data-tono=solare] .lettura-valore{color:var(--cs-energy-solar)}.lettura[data-tono=casa] .lettura-valore{color:var(--cs-energy-house)}.lettura[data-tono=batteria] .lettura-valore{color:var(--cs-energy-battery)}.lettura[data-tono=rete] .lettura-valore{color:var(--cs-energy-grid)}.flusso-freccia{fill:color-mix(in srgb, var(--flusso-colore) 75%, transparent);offset-distance:40%}.cometa{animation-name:scorri;animation-duration:calc(var(--dur,3s) * var(--fattore-movimento,1));animation-timing-function:linear;animation-iteration-count:infinite}.cometa-testa{fill:color-mix(in srgb, var(--flusso-colore) 35%, white)}.cometa-alone{opacity:.92}.cometa-scia{opacity:.9}@keyframes scorri{0%{offset-distance:0%;opacity:0}12%{opacity:1}88%{opacity:1}to{offset-distance:100%;opacity:0}}.energia-giornata{justify-content:center;gap:var(--cs-sp-4);border-inline-start:1px solid var(--cs-line-1);flex-direction:column;flex:none;min-inline-size:0;padding-inline-start:var(--cs-sp-4);display:flex}.misura{flex-direction:column;gap:2px;min-inline-size:0;display:flex}.misura-k{font-size:var(--cs-t-eyebrow);letter-spacing:var(--cs-ls-eyebrow);text-transform:uppercase;color:var(--cs-text-3)}.misura-barra{block-size:3px;border-radius:var(--cs-r-full);background:var(--cs-surface-3);margin-block-start:var(--cs-sp-2);display:block;overflow:hidden}.misura-barra>span{background:var(--cs-accent);block-size:100%;transition:inline-size var(--cs-dur-ambient) var(--cs-ease-out);display:block}.valore{font-family:var(--cs-font-numeric);color:var(--cs-text-1);align-items:baseline;gap:4px;display:inline-flex}.valore-cifre{font-size:var(--cs-t-value);font-weight:var(--cs-fw-bold);font-variant-numeric:tabular-nums;line-height:1.05}.valore-unita{font-size:var(--cs-t-label);color:var(--cs-text-3)}.misura-v .valore-cifre{font-size:calc(var(--cs-t-value) * .86)}.respira{animation:respiro var(--cs-dur-base) var(--cs-ease-out)}.respira[data-verso=giu]{animation-name:respiro-giu}@keyframes respiro{0%{opacity:.35;transform:translateY(6px)}to{opacity:1;transform:none}}@keyframes respiro-giu{0%{opacity:.35;transform:translateY(-6px)}to{opacity:1;transform:none}}.fascia-stanze{grid-area:stanze;min-inline-size:0}.colonna{justify-content:flex-start;gap:var(--cs-sp-5);flex-direction:column;grid-area:colonna;min-block-size:0;min-inline-size:0;display:flex}.carta{background:var(--cs-surface-1);border-radius:var(--cs-r-lg);box-shadow:var(--cs-el-1);padding:var(--cs-sp-5);gap:var(--cs-sp-4);flex-direction:column;flex:none;min-block-size:0;min-inline-size:0;display:flex}.carta[data-espandi=si]{flex:auto;min-block-size:0}.carta-corpo{gap:var(--cs-sp-4);overscroll-behavior:contain;flex-direction:column;min-block-size:0;min-inline-size:0;display:flex;overflow-y:auto}.casaos-root[data-avvio=si] .anima-entrata{animation:entra .36s var(--cs-ease-out) backwards;animation-delay:calc(.12s + var(--i,0) * var(--cs-stagger,40ms))}@keyframes entra{0%{opacity:0;transform:translateY(14px)scale(.985)}to{opacity:1;transform:none}}.elenco-stanze{gap:var(--cs-sp-5);flex-direction:column;display:flex}.gruppo-titolo{margin:0 0 var(--cs-sp-2);font-size:var(--cs-t-eyebrow);letter-spacing:var(--cs-ls-eyebrow);text-transform:uppercase;font-weight:var(--cs-fw-bold);color:var(--cs-text-3)}.gruppo-corpo{flex-direction:column;gap:1px;display:flex}.voce{justify-content:space-between;align-items:center;gap:var(--cs-sp-3);inline-size:100%;min-block-size:var(--cs-tap);padding:var(--cs-sp-3) var(--cs-sp-3);border-radius:var(--cs-r-sm);text-align:start;cursor:pointer;transition:background var(--cs-dur-fast) var(--cs-ease-out), opacity var(--cs-dur-fast) var(--cs-ease-out);background:0 0;border:0;display:flex;position:relative;overflow:hidden}.voce+.voce{box-shadow:0 -1px 0 var(--cs-line-1)}.voce:hover:not(:disabled){background:var(--cs-surface-2)}.voce:active:not(:disabled){transition-duration:var(--cs-dur-instant);scale:.985}.lampadina{flex-shrink:0;block-size:28px;inline-size:26px;overflow:visible}.lampadina-vetro{fill:none;stroke:var(--cs-text-3);stroke-width:1.6px;stroke-linejoin:round;transition:fill var(--cs-dur-base) var(--cs-ease-out), stroke var(--cs-dur-base) var(--cs-ease-out)}.lampadina-base{fill:none;stroke:var(--cs-text-3);stroke-width:1.6px;stroke-linecap:round;transition:stroke var(--cs-dur-base) var(--cs-ease-out)}.lampadina-alone{fill:var(--cs-on);opacity:0;transform-origin:12px 10px;transition:opacity var(--cs-dur-base) var(--cs-ease-out), scale var(--cs-dur-slow) var(--cs-ease-spring);scale:.4}.lampadina[data-accesa=si] .lampadina-vetro{fill:color-mix(in srgb, var(--cs-on) 82%, transparent);stroke:var(--cs-on)}.lampadina[data-accesa=si] .lampadina-base{stroke:color-mix(in srgb, var(--cs-on) 70%, var(--cs-text-3))}.lampadina[data-accesa=si] .lampadina-alone{opacity:.22;scale:1}.voce[data-stato=on]{background:color-mix(in srgb, var(--cs-on-quiet) calc(40% + 60% * var(--intensita,1)), transparent)}.voce[data-stato=on]:before{content:\"\";pointer-events:none;background:radial-gradient(140px 90px at 26px 50%, color-mix(in srgb, var(--cs-on) 26%, transparent), transparent 72%);animation:sboccia .62s var(--cs-ease-out);position:absolute;inset:0}@keyframes sboccia{0%{opacity:0;transform:scale(.55)}45%{opacity:1}to{opacity:1;transform:none}}.voce[data-stato=on]:after{content:\"\";border-radius:var(--cs-r-full);background:var(--cs-on);inline-size:3px;animation:barra-cresce var(--cs-dur-base) var(--cs-ease-out);position:absolute;inset-block:8px;inset-inline-start:0}@keyframes barra-cresce{0%{transform:scaleY(0)}to{transform:scaleY(1)}}.voce[data-stato=assente]{opacity:.45;cursor:not-allowed}.voce[data-previsto=si]{opacity:.68}.voce-testo{flex-direction:column;flex:1;gap:1px;min-inline-size:0;display:flex}.voce-nome{font-size:var(--cs-t-subtitle);color:var(--cs-text-1)}.voce-stato{font-size:var(--cs-t-label);color:var(--cs-text-3)}.interruttore{border-radius:var(--cs-r-full);background:color-mix(in srgb, var(--cs-text-3) 30%, transparent);block-size:26px;inline-size:44px;transition:background var(--cs-dur-fast) var(--cs-ease-out);flex-shrink:0;position:relative}.interruttore[data-acceso=si]{background:var(--cs-on)}.interruttore[data-off=si]{opacity:.4}.interruttore-pallino{background:var(--cs-surface-1);block-size:20px;inline-size:20px;transition:translate var(--cs-dur-fast) var(--cs-ease-spring);border-radius:50%;position:absolute;inset-block-start:3px;inset-inline-start:3px;box-shadow:0 1px 2px #0000004d}.interruttore[data-acceso=si] .interruttore-pallino{translate:18px}.interruttore[data-acceso=si]{animation:anello .52s var(--cs-ease-out)}@keyframes anello{0%{box-shadow:0 0 0 0 color-mix(in srgb, var(--cs-on) 45%, transparent)}to{box-shadow:0 0 0 12px #0000}}.ingressi{gap:var(--cs-sp-4);flex-direction:column;display:flex}.cancello{justify-content:space-between;align-items:center;gap:var(--cs-sp-3);padding:var(--cs-sp-3) 0;min-block-size:var(--cs-tap);display:flex}.cancello+.cancello{box-shadow:0 -1px 0 var(--cs-line-1)}.conferma{gap:var(--cs-sp-2);display:flex}.btn{min-block-size:var(--cs-tap);padding:0 var(--cs-sp-4);border:1px solid var(--cs-line-2);border-radius:var(--cs-r-full);color:var(--cs-text-1);font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);cursor:pointer;white-space:nowrap;transition:background var(--cs-dur-fast) var(--cs-ease-out), scale var(--cs-dur-instant) var(--cs-ease-out);background:0 0}.btn:hover:not(:disabled){background:var(--cs-surface-2)}.btn:active:not(:disabled){scale:.94}.btn:disabled{opacity:.4;cursor:not-allowed}.btn-conferma{background:var(--cs-accent);color:var(--cs-text-on-accent);border-color:#0000}.btn-conferma:hover:not(:disabled){background:var(--cs-accent-hover)}.porte{gap:var(--cs-sp-2);flex-wrap:wrap;display:flex}.porta{align-items:center;gap:var(--cs-sp-2);padding:var(--cs-sp-2) var(--cs-sp-3);border-radius:var(--cs-r-full);background:var(--cs-surface-2);font-size:var(--cs-t-label);display:inline-flex}.porta[data-stato=aperta]{background:var(--cs-alert-quiet);color:var(--cs-alert)}.porta-segno{background:var(--cs-ok);border-radius:50%;block-size:6px;inline-size:6px}.porta[data-stato=aperta] .porta-segno{background:var(--cs-alert)}.porta[data-stato=assente] .porta-segno{background:var(--cs-unavail)}.pie-pagina{grid-area:piede}.diagnostica{font-size:var(--cs-t-caption);color:var(--cs-text-3)}.diagnostica summary{cursor:pointer;min-block-size:var(--cs-tap);align-items:center;display:flex}.diagnostica-corpo{gap:var(--cs-sp-1) var(--cs-sp-5);font-family:var(--cs-font-numeric);flex-wrap:wrap;padding-block-end:var(--cs-sp-2);display:flex}.testo{color:var(--cs-text-2);margin:0}.testo-secondario{color:var(--cs-text-3);font-size:var(--cs-t-label);margin:0}@container casaos (width<=900px){.casaos-root{gap:var(--cs-sp-4);grid-template:\"testa\"\"stanze\"\"energia\"\"colonna\"\"piede\"/minmax(0,1fr);block-size:auto;max-block-size:none;overflow-y:auto}.colonna{grid-template-rows:auto auto}.carta,.carta-corpo{min-block-size:auto;overflow:visible}.scena-energia{min-block-size:240px}}@container casaos (width<=560px){.casaos-root{padding:var(--cs-sp-3);gap:var(--cs-sp-3)}.pannello-energia,.carta{padding:var(--cs-sp-4)}}@container casaos (width<=900px){.energia{grid-template-rows:minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr)}.energia-giornata{border-inline-start:0;border-block-start:1px solid var(--cs-line-1);flex-flow:wrap;justify-content:space-between;align-items:flex-start;padding-block-start:var(--cs-sp-4);padding-inline-start:0}.misura{flex:6rem}}@supports not (container-type:inline-size){@media (max-width:1000px){.casaos-root{grid-template-columns:minmax(0,1fr);grid-template-areas:\"testa\"\"stanze\"\"energia\"\"colonna\"\"piede\"}}}@media (prefers-reduced-motion:reduce){.pannello-energia:before,.voce[data-stato=on]:before,.interruttore[data-acceso=si]{animation:none}.casaos-root .cometa{--fattore-movimento:1.8;animation-duration:calc(var(--dur,3s) * var(--fattore-movimento))!important;animation-iteration-count:infinite!important}.casaos-root[data-avvio=si] .anima-entrata{animation:none}}.velo-avviso{z-index:var(--cs-z-critical,1000);padding:var(--cs-sp-6);background:var(--cs-scrim,#06090eb8);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);animation:velo-entra var(--cs-dur-base) var(--cs-ease-out);cursor:pointer;place-items:center;display:grid;position:fixed;inset:0}@keyframes velo-entra{0%{opacity:0}to{opacity:1}}.avviso{inline-size:min(440px,100%);padding:var(--cs-sp-8) var(--cs-sp-6) var(--cs-sp-6);border-radius:var(--cs-r-xl);background:var(--cs-surface-1);box-shadow:var(--cs-el-3);text-align:center;animation:avviso-entra var(--cs-dur-slow) var(--cs-ease-spring)}@keyframes avviso-entra{0%{opacity:0;transform:translateY(16px)scale(.94)}to{opacity:1;transform:none}}.scena-cancello{block-size:auto;inline-size:100%;margin-block-end:var(--cs-sp-5)}.cancello-guida{stroke:var(--cs-line-2);stroke-width:2px;stroke-linecap:round}.cancello-pilastri rect{fill:var(--cs-surface-3);stroke:var(--cs-line-2);stroke-width:1.5px}.cancello-passaggio{fill:var(--cs-bg-sunken);opacity:.7}.cancello-anta{animation:anta-apre 3.2s var(--cs-ease-inout) forwards}.cancello-anta[data-chiusura=si]{animation-name:anta-chiude}.anta-telaio{fill:color-mix(in srgb, var(--cs-surface-2) 90%, transparent);stroke:var(--cs-accent);stroke-width:2px}.anta-stecca,.anta-traversa{stroke:color-mix(in srgb, var(--cs-accent) 55%, transparent);stroke-width:1.6px;stroke-linecap:round}@keyframes anta-apre{0%{transform:translate(0)}to{transform:translate(-152px)}}@keyframes anta-chiude{0%{transform:translate(-152px)}to{transform:translate(0)}}.avviso-titolo{font-size:var(--cs-t-title);font-weight:var(--cs-fw-bold);color:var(--cs-text-1);margin:0}.avviso-nome{margin:var(--cs-sp-1) 0 0;font-size:var(--cs-t-body);color:var(--cs-text-2)}.avviso-tempo{block-size:3px;inline-size:100%;border-radius:var(--cs-r-full);background:var(--cs-surface-3);margin-block-start:var(--cs-sp-5);display:block;overflow:hidden}.avviso-tempo>span{background:var(--cs-accent);transform-origin:0;block-size:100%;animation:tempo-cala var(--durata-avviso,6s) linear forwards;display:block}@keyframes tempo-cala{0%{transform:scaleX(1)}to{transform:scaleX(0)}}@media (prefers-reduced-motion:reduce){.velo-avviso .cancello-anta{animation-duration:3.6s!important;animation-iteration-count:1!important}.velo-avviso .avviso-tempo>span{animation-duration:var(--durata-avviso,6s)!important;animation-iteration-count:1!important}}.barra-destra{align-items:center;gap:var(--cs-sp-4);flex-wrap:wrap;display:flex}.viste{border-radius:var(--cs-r-full);background:var(--cs-surface-2);gap:2px;padding:3px;display:flex}.vista{border-radius:var(--cs-r-full);padding:0 var(--cs-sp-4);min-block-size:calc(var(--cs-tap) * .72);color:var(--cs-text-2);font:inherit;font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);cursor:pointer;white-space:nowrap;transition:background var(--cs-dur-fast) var(--cs-ease-out), color var(--cs-dur-fast) var(--cs-ease-out);background:0 0;border:0}.vista:hover{color:var(--cs-text-1)}.vista[data-scelta=si]{background:var(--cs-surface-1);color:var(--cs-text-1);box-shadow:var(--cs-el-1)}.casaos-root[data-vista=telecamere],.casaos-root[data-vista=energia]{grid-template-columns:minmax(0,1fr);grid-template-areas:\"testa\"\"energia\"\"piede\"}.pannello-telecamere{gap:var(--cs-sp-4);min-block-size:0;min-inline-size:0;padding:var(--cs-sp-5);border-radius:var(--cs-r-xl);background:var(--cs-surface-1);box-shadow:var(--cs-el-1);flex-direction:column;grid-area:energia;display:flex;overflow:hidden}.griglia-camere{grid-template-columns:repeat(var(--colonne,3), minmax(0, 1fr));gap:var(--cs-sp-3);flex:1;grid-auto-rows:minmax(0,1fr);min-block-size:0;display:grid}.riquadro-camera{border-radius:var(--cs-r-md);background:var(--cs-bg-sunken);cursor:pointer;min-block-size:0;min-inline-size:0;transition:box-shadow var(--cs-dur-fast) var(--cs-ease-out);border:0;place-items:center;padding:0;display:grid;position:relative;overflow:hidden}.riquadro-camera:hover{box-shadow:var(--cs-el-2)}.riquadro-camera:active{scale:.99}.camera-fotogramma{object-fit:cover;block-size:100%;inline-size:100%;display:block}.camera-assente{font-size:var(--cs-t-label);color:var(--cs-text-3);text-align:center;padding:var(--cs-sp-3)}.camera-riposo{justify-content:center;align-items:center;gap:var(--cs-sp-3);padding:var(--cs-sp-3);background:radial-gradient(ellipse at center, color-mix(in srgb, var(--cs-text-3) 7%, transparent), transparent 70%);flex-direction:column;display:flex}.camera-glifo{fill:none;block-size:auto;inline-size:clamp(2rem,22%,3.25rem);stroke:var(--cs-text-3);stroke-width:2.25px;stroke-linejoin:round;opacity:.75}.camera-glifo-occhio{stroke-width:2px;opacity:.85}.camera-invito{font-size:var(--cs-t-label);color:var(--cs-text-3);text-align:center;letter-spacing:.01em}@container (width<=700px){.camera-invito{display:none}}.riquadro-camera:hover .camera-glifo,.riquadro-camera:focus-visible .camera-glifo{opacity:1;stroke:var(--cs-accent)}.camera-nome{font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);color:#fff;text-shadow:0 1px 3px #000000bf;pointer-events:none;position:absolute;inset-block-end:var(--cs-sp-2);inset-inline-start:var(--cs-sp-3)}.riquadro-camera[data-vuoto=si] .camera-nome{color:var(--cs-text-2);text-shadow:none}.velo-camera{z-index:var(--cs-z-modal,400);padding:var(--cs-sp-5);background:var(--cs-scrim,#06090ed1);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);animation:velo-entra var(--cs-dur-base) var(--cs-ease-out);place-items:center;display:grid;position:fixed;inset:0}.diretta{gap:var(--cs-sp-3);cursor:default;flex-direction:column;max-block-size:100%;inline-size:min(1100px,100%);display:flex}.diretta-immagine{aspect-ratio:16/9;border-radius:var(--cs-r-lg);min-block-size:0;box-shadow:var(--cs-el-3);background:#000;place-items:center;display:grid;position:relative;overflow:hidden}.diretta-video,.diretta-fotogramma{object-fit:contain;background:#000;block-size:100%;inline-size:100%;position:absolute;inset:0}.diretta-video[data-visibile=no]{opacity:0}.diretta-piede{align-items:center;gap:var(--cs-sp-3);display:flex}.diretta-nome{font-size:var(--cs-t-title);font-weight:var(--cs-fw-bold);color:var(--cs-text-1);flex:1;min-inline-size:0}.pastiglia[data-stato=neutro]{background:var(--cs-surface-2);color:var(--cs-text-2)}@container casaos (width<=900px){.casaos-root[data-vista=telecamere],.casaos-root[data-vista=energia]{grid-template-rows:auto}.griglia-camere{grid-auto-rows:minmax(160px,auto)}.riquadro-camera{aspect-ratio:16/9}}.zone{gap:var(--cs-sp-5);grid-template-columns:1.1fr 1fr;min-block-size:0;display:grid}.zona{gap:var(--cs-sp-3);flex-direction:column;min-inline-size:0;display:flex}.zona-titolo{font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--cs-text-3);margin:0}.griglia-stanze{grid-template-columns:repeat(var(--colonne,6), minmax(0, 1fr));gap:var(--cs-sp-2);display:grid}.tessera-stanza{justify-content:center;align-items:center;gap:var(--cs-sp-2);padding:var(--cs-sp-3) 3px;border:1px solid var(--cs-line-1);border-radius:var(--cs-r-md);background:var(--cs-surface-2);min-block-size:0;color:var(--cs-text-2);cursor:pointer;transition:border-color var(--cs-motion,.2s) ease, background-color var(--cs-motion,.2s) ease, color var(--cs-motion,.2s) ease;flex-direction:column;display:flex;position:relative;overflow:hidden}.tessera-stanza:before{content:\"\";pointer-events:none;opacity:var(--intensita,0);background:radial-gradient(125% 95% at 50% -12%, color-mix(in srgb, var(--cs-on) 62%, transparent), color-mix(in srgb, var(--cs-on) 16%, transparent) 55%, transparent 78%);transition:opacity var(--cs-motion,.26s) ease;position:absolute;inset:0}.tessera-stanza[data-accesa=si]{border-color:color-mix(in srgb, var(--cs-on) 70%, transparent);color:var(--cs-text-1);box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--cs-on) 22%, transparent), 0 0 18px -6px color-mix(in srgb, var(--cs-on) 55%, transparent)}.tessera-stanza:hover{border-color:var(--cs-line-2,var(--cs-accent))}.tessera-stanza:active{scale:.97}.segno-stanza{fill:none;stroke:currentColor;stroke-width:1.6px;stroke-linecap:round;stroke-linejoin:round;opacity:.82;block-size:auto;inline-size:clamp(1.7rem,3.4cqi,2.4rem);transition:stroke var(--cs-motion,.26s) ease, opacity var(--cs-motion,.26s) ease;flex:none;position:relative}.segno-nucleo{transition:fill var(--cs-motion,.26s) ease, stroke var(--cs-motion,.26s) ease}.tessera-stanza[data-accesa=si] .segno-stanza,.dettaglio-segno[data-accesa=si] .segno-stanza{stroke:var(--cs-on);opacity:1}.tessera-stanza[data-accesa=si] .segno-nucleo,.dettaglio-segno[data-accesa=si] .segno-nucleo{fill:color-mix(in srgb, var(--cs-on) 26%, transparent);stroke:var(--cs-on)}.tessera-nome{font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);text-align:center;line-height:1.15;font-size:calc(var(--cs-t-label) * .82);-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;position:relative}.tessera-conto{background:var(--cs-on);min-inline-size:1.35em;color:var(--cs-text-on-accent,#05121f);font-size:calc(var(--cs-t-label) * .85);font-weight:var(--cs-fw-bold);font-variant-numeric:tabular-nums;text-align:center;border-radius:999px;padding:.1em .35em;position:absolute;inset-block-start:var(--cs-sp-2);inset-inline-end:var(--cs-sp-2)}.velo-stanza{z-index:var(--cs-z-modal,400);padding:var(--cs-sp-5);background:var(--cs-scrim,#0009);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);place-items:center;display:grid;position:fixed;inset:0}.dettaglio-stanza{gap:var(--cs-sp-4);max-block-size:100%;inline-size:min(100%,62rem);padding:var(--cs-sp-5);border-radius:var(--cs-r-lg);background:var(--cs-surface-1);box-shadow:var(--cs-el-3,var(--cs-el-2));flex-direction:column;min-block-size:0;display:flex}.dettaglio-testa{justify-content:space-between;align-items:center;gap:var(--cs-sp-4);flex-wrap:wrap;display:flex}.dettaglio-identita{align-items:center;gap:var(--cs-sp-4);min-inline-size:0;display:flex}.dettaglio-segno{border-radius:var(--cs-r-md);background:var(--cs-surface-2);block-size:3.4rem;inline-size:3.4rem;color:var(--cs-text-2);flex:none;place-items:center;display:grid}.dettaglio-segno .segno-stanza{inline-size:2.1rem}.dettaglio-nome{font-family:var(--cs-font-display);font-size:var(--cs-t-title);color:var(--cs-text-1);margin:0;font-weight:700}.dettaglio-zona{font-size:var(--cs-t-label);color:var(--cs-text-2)}.dettaglio-azioni{align-items:center;gap:var(--cs-sp-3);display:flex}.dettaglio-corpo{gap:var(--cs-sp-4);grid-template-columns:repeat(4,minmax(0,1fr));min-block-size:0;display:grid}.famiglia{gap:var(--cs-sp-3);flex-direction:column;min-block-size:0;min-inline-size:0;display:flex}.famiglia-titolo{align-items:center;gap:var(--cs-sp-2);border-block-end:1px solid var(--cs-line-1);font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);letter-spacing:.06em;text-transform:uppercase;color:var(--cs-text-3);margin:0;padding-block-end:var(--cs-sp-2);display:flex}.famiglia-conto{background:var(--cs-surface-3,var(--cs-surface-2));color:var(--cs-text-2);font-variant-numeric:tabular-nums;border-radius:999px;padding:0 .4em}.famiglia-corpo{gap:var(--cs-sp-2);overscroll-behavior:contain;flex-direction:column;min-block-size:0;display:flex;overflow-y:auto}.famiglia-vuota{padding:var(--cs-sp-3) 0;font-size:var(--cs-t-label);color:var(--cs-text-3);margin:0;font-style:italic}@container (width<=900px){.zone{grid-template-columns:1fr}.griglia-stanze{grid-template-columns:repeat(auto-fit,minmax(4.6rem,1fr))}}@container (width<=780px){.dettaglio-corpo{grid-template-columns:1fr;overflow-y:auto}.velo-stanza{padding:var(--cs-sp-3)}.famiglia-corpo{overflow:visible}}\n.tasto-rifiuti{align-items:center;gap:var(--cs-sp-4);inline-size:100%;padding:var(--cs-sp-3) var(--cs-sp-4);border:1px solid color-mix(in srgb, var(--tinta) 45%, transparent);border-radius:var(--cs-r-md);background:linear-gradient(100deg, color-mix(in srgb, var(--tinta) 20%, transparent), color-mix(in srgb, var(--tinta) 5%, transparent) 60%, transparent), var(--cs-surface-2);color:var(--cs-text-1);text-align:start;cursor:pointer;display:flex}.tasto-rifiuti:hover{border-color:color-mix(in srgb, var(--tinta) 75%, transparent)}.tasto-rifiuti:active{scale:.99}.rifiuti-segno{block-size:auto;inline-size:clamp(2.4rem,5cqi,3.2rem);stroke:color-mix(in srgb, #000 35%, var(--tinta,#888));stroke-width:1.4px;stroke-linejoin:round;flex:none}.rifiuti-corpo{filter:brightness(1.06)}.rifiuti-coperchio{filter:brightness(.9)}.rifiuti-maniglia,.rifiuti-nervature{fill:none;stroke:#0000004d;stroke-width:1.6px;stroke-linecap:round}.rifiuti-testo{flex-direction:column;gap:.1em;min-inline-size:0;display:flex}.rifiuti-quando{font-size:var(--cs-t-label);letter-spacing:.06em;text-transform:uppercase;color:var(--cs-text-3)}.rifiuti-tipo{font-family:var(--cs-font-display);font-size:var(--cs-t-subtitle);color:var(--cs-text-1);font-weight:700;line-height:1.1}.tasto-rifiuti[data-grande=si]{gap:var(--cs-sp-5);padding:var(--cs-sp-4) var(--cs-sp-5);border-radius:var(--cs-r-lg)}.tasto-rifiuti[data-grande=si] .rifiuti-segno{inline-size:clamp(3.4rem,7vw,5rem)}.tasto-rifiuti[data-grande=si] .rifiuti-tipo{font-size:clamp(1.4rem,3vw,2.2rem)}.velo-rifiuti{z-index:var(--cs-z-modal,400);padding:var(--cs-sp-5);background:var(--cs-scrim,#0009);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);place-items:center;display:grid;position:fixed;inset:0}.settimana-rifiuti{gap:var(--cs-sp-4);max-block-size:100%;inline-size:min(100%,62rem);padding:var(--cs-sp-5);border-radius:var(--cs-r-lg);background:var(--cs-surface-1);box-shadow:var(--cs-el-3,var(--cs-el-2));flex-direction:column;display:flex}.settimana-testa{justify-content:space-between;align-items:flex-start;gap:var(--cs-sp-4);display:flex}.settimana-titolo{font-family:var(--cs-font-display);font-size:var(--cs-t-title);color:var(--cs-text-1);margin:0;font-weight:700}.settimana-sottotitolo{font-size:var(--cs-t-label);color:var(--cs-text-2)}.settimana-corpo{gap:var(--cs-sp-3);overscroll-behavior:contain;grid-template-columns:repeat(4,minmax(0,1fr));min-block-size:0;display:grid;overflow-y:auto}.giorno-rifiuti{padding:var(--cs-sp-3);border-radius:var(--cs-r-md);border:1px solid color-mix(in srgb, var(--tinta,var(--cs-line-1)) 35%, transparent);background:color-mix(in srgb, var(--tinta,transparent) 8%, var(--cs-surface-2));text-align:center;flex-direction:column;align-items:center;gap:4px;display:flex}.giorno-rifiuti[data-vuoto=si]{border-style:dashed;border-color:var(--cs-line-1);background:0 0}.giorno-nome{font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);color:var(--cs-text-1)}.giorno-data{font-size:calc(var(--cs-t-label) * .85);color:var(--cs-text-3);font-variant-numeric:tabular-nums}.giorno-rifiuti .rifiuti-segno{inline-size:2.6rem;margin-block:var(--cs-sp-2)}.giorno-tipo{font-size:calc(var(--cs-t-label) * .95);color:var(--cs-text-2);line-height:1.2}.giorno-niente{color:var(--cs-text-3);margin-block:var(--cs-sp-4);font-style:italic}.settimana-nota{font-size:var(--cs-t-label);color:var(--cs-text-3);margin:0}@container (width<=780px){.settimana-corpo{grid-template-columns:repeat(2,minmax(0,1fr))}}.riposo{z-index:var(--cs-z-rest,900);background:var(--cs-bg-base);color:var(--cs-text-1);grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:center;gap:clamp(1rem,3vw,2.5rem);padding:clamp(1.25rem,4vw,3.5rem);animation:.9s both riposo-entra;display:grid;position:fixed;inset:0;overflow:hidden}@keyframes riposo-entra{0%{opacity:0}to{opacity:1}}.riposo-alone{pointer-events:none;background:radial-gradient(38% 38% at 22% 28%, color-mix(in srgb, var(--cs-energy-solar) 20%, transparent), transparent 70%), radial-gradient(42% 42% at 78% 72%, color-mix(in srgb, var(--cs-accent) 18%, transparent), transparent 72%);animation:40s ease-in-out infinite alternate riposo-deriva;position:absolute;inset:-25%}@keyframes riposo-deriva{0%{transform:translate(-2%,-1.5%)scale(1)}to{transform:translate(2.5%,2%)scale(1.08)}}.riposo-sinistra,.riposo-energia{min-inline-size:0;position:relative}.riposo-sinistra{flex-direction:column;gap:clamp(.75rem,2vw,1.75rem);display:flex}.riposo-ora{gap:var(--cs-sp-2);flex-direction:column;display:flex}.riposo-cifre{font-family:var(--cs-font-display);letter-spacing:-.045em;font-variant-numeric:tabular-nums;color:var(--cs-text-1);font-size:clamp(5rem,16vw,14rem);font-weight:800;line-height:.82}.riposo-duepunti{animation:2s step-end infinite riposo-battito}@keyframes riposo-battito{0%,50%{opacity:1}50.01%,to{opacity:.28}}.riposo-data{color:var(--cs-text-2);text-transform:lowercase;font-size:clamp(1rem,2.2vw,1.7rem)}.riposo-meteo .meteo-segno{inline-size:clamp(2.2rem,4vw,3.4rem)}.riposo-meteo .meteo-ora{font-size:clamp(1.4rem,3vw,2.4rem)}.riposo-meteo .meteo-dettaglio{font-size:clamp(.8rem,1.4vw,1.05rem);display:block}.riposo-rifiuti{max-inline-size:34rem}.riposo-energia{block-size:100%;min-block-size:0;display:flex}.riposo-energia .energia{flex:1;min-block-size:0}.riposo-energia .energia-giornata{border-block-start-color:color-mix(in srgb, var(--cs-text-3) 25%, transparent)}@media (max-width:860px),(orientation:portrait){.riposo{grid-template-rows:auto minmax(0,1fr);grid-template-columns:minmax(0,1fr);align-content:start;align-items:start;gap:clamp(1rem,4vw,2rem)}.riposo-cifre{font-size:clamp(4.5rem,25vw,11rem)}}@media (prefers-reduced-motion:reduce){.riposo-alone,.riposo-duepunti{animation:none!important}}.pastiglie{z-index:var(--cs-z-raised,10);align-items:center;gap:var(--cs-sp-3);display:flex;position:absolute;inset-block-end:var(--cs-sp-4);inset-inline-end:var(--cs-sp-4)}.pastiglia-rifiuti{border:1px solid color-mix(in srgb, #000 25%, var(--tinta));background:var(--tinta);block-size:3.4rem;inline-size:3.4rem;box-shadow:var(--cs-el-2), 0 0 0 4px color-mix(in srgb, var(--tinta) 18%, transparent);cursor:pointer;transition:scale var(--cs-motion,.16s) ease, box-shadow var(--cs-motion,.16s) ease;border-radius:50%;place-items:center;padding:0;display:grid}.pastiglia-rifiuti:hover{box-shadow:var(--cs-el-3,var(--cs-el-2)), 0 0 0 7px color-mix(in srgb, var(--tinta) 22%, transparent)}.pastiglia-rifiuti:active{scale:.94}.rifiuti-simbolo{fill:none;block-size:auto;inline-size:58%;stroke:color-mix(in srgb, #000 72%, var(--tinta));stroke-width:2px;stroke-linecap:round;stroke-linejoin:round}.elenco-persone{gap:var(--cs-sp-3);flex-direction:column;display:flex}.persona{align-items:center;gap:var(--cs-sp-3);min-inline-size:0;display:flex}.persona-volto{background:var(--cs-surface-3,color-mix(in srgb, var(--cs-text-3) 16%, transparent));filter:grayscale(.85);opacity:.65;block-size:clamp(2.6rem,6cqi,3.4rem);inline-size:clamp(2.6rem,6cqi,3.4rem);transition:filter var(--cs-motion,.26s) ease, opacity var(--cs-motion,.26s) ease;border-radius:50%;flex:none;place-items:center;display:grid;position:relative;overflow:visible}.persona[data-casa=si] .persona-volto{filter:none;opacity:1}.persona-foto{object-fit:cover;object-position:50% 22%;border-radius:50%;block-size:100%;inline-size:100%;display:block}.persona-iniziali{font-family:var(--cs-font-display);color:var(--cs-text-2);font-size:.95rem;font-weight:700}.persona-spia{border:2px solid var(--cs-surface-1);background:var(--cs-unavail);border-radius:50%;block-size:.78rem;inline-size:.78rem;position:absolute;inset-block-end:0;inset-inline-end:0}.persona[data-casa=si] .persona-spia{background:var(--cs-ok)}.persona-testo{flex-direction:column;flex:1;gap:1px;min-inline-size:0;display:flex}.persona-nome{font-size:var(--cs-t-body);font-weight:var(--cs-fw-bold);color:var(--cs-text-1);text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.persona-dove{font-size:var(--cs-t-label);color:var(--cs-text-2)}.persona-batteria{align-items:center;gap:var(--cs-sp-2);flex:none;display:flex}.persona-pila{fill:none;block-size:auto;inline-size:1.6rem;stroke:var(--cs-text-3);stroke-width:1.4px}.persona-pila-carica{fill:var(--cs-text-2);stroke:none}.persona-percento{font-size:var(--cs-t-label);color:var(--cs-text-2);font-variant-numeric:tabular-nums;text-align:end;min-inline-size:2.4em}.persona-batteria[data-scarica=si] .persona-pila-carica{fill:var(--cs-alert)}.persona-batteria[data-scarica=si] .persona-percento{color:var(--cs-alert)}.persona-batteria[data-carica=si] .persona-pila-carica{fill:var(--cs-ok)}.persona-batteria[data-carica=si] .persona-percento{color:var(--cs-ok)}.persona-tasto{padding:var(--cs-sp-2) var(--cs-sp-2);border-radius:var(--cs-r-md);color:inherit;text-align:start;cursor:pointer;background:0 0;border:1px solid #0000;align-items:flex-start;margin-inline-start:calc(var(--cs-sp-2) * -1)}.persona-tasto:hover{border-color:var(--cs-line-1);background:var(--cs-surface-2)}.persona-tasto:active{scale:.99}.velo-persona{z-index:var(--cs-z-modal,400);padding:var(--cs-sp-5);background:var(--cs-scrim,#000000a6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);place-items:center;display:grid;position:fixed;inset:0}.scheda-persona{gap:var(--cs-sp-4);inline-size:min(100%,40rem);padding:var(--cs-sp-5);border-radius:var(--cs-r-lg);background:var(--cs-surface-1);box-shadow:var(--cs-el-3,var(--cs-el-2));flex-direction:column;display:flex}.scheda-persona-testa{justify-content:space-between;align-items:center;gap:var(--cs-sp-4);display:flex}.scheda-persona-nome{font-family:var(--cs-font-display);font-size:var(--cs-t-title);color:var(--cs-text-1);margin:0;font-weight:700}.mappa{gap:var(--cs-sp-3);flex-direction:column;display:flex}.mappa-tela{border-radius:var(--cs-r-md);border:1px solid var(--cs-line-1);background:var(--cs-surface-2);block-size:clamp(13rem,42vh,22rem);inline-size:100%;position:relative;overflow:hidden}.mappa-tassello{filter:none;block-size:256px;inline-size:256px;display:block;position:absolute}.casaos-root[data-theme=dark] .mappa-tassello,:host([data-theme=dark]) .mappa-tassello{filter:invert()hue-rotate(180deg)brightness(.88)contrast(.92)saturate(.7)}.mappa-punto{pointer-events:none;place-items:center;display:grid;position:absolute;inset-block-start:50%;inset-inline-start:50%;translate:-50% -50%}.mappa-punto-nucleo{background:var(--cs-accent);border:2px solid #fff;border-radius:50%;block-size:.95rem;inline-size:.95rem;box-shadow:0 1px 4px #00000073}.mappa-punto-alone{background:color-mix(in srgb, var(--cs-accent) 28%, transparent);border-radius:50%;block-size:2.6rem;inline-size:2.6rem;animation:2.6s ease-in-out infinite mappa-respiro;position:absolute}@keyframes mappa-respiro{0%,to{opacity:.9;scale:.75}50%{opacity:.35;scale:1.15}}.mappa-casa{background:var(--cs-surface-1);border:1px solid var(--cs-line-1);pointer-events:none;border-radius:50%;place-items:center;block-size:1.5rem;inline-size:1.5rem;display:grid;position:absolute;translate:-50% -50%}.mappa-casa svg{inline-size:.9rem;fill:var(--cs-text-2)}.mappa-piede{align-items:baseline;gap:var(--cs-sp-3);font-size:var(--cs-t-label);flex-wrap:wrap;display:flex}.mappa-dove{font-weight:var(--cs-fw-bold);color:var(--cs-text-1)}.mappa-distanza{color:var(--cs-text-2)}.mappa-fonte{color:var(--cs-text-3);font-size:calc(var(--cs-t-label) * .85);margin-inline-start:auto}@media (prefers-reduced-motion:reduce){.mappa-punto-alone{animation:none}}.riposo-persone{max-inline-size:34rem}.riposo-persone .persona-volto{block-size:clamp(3rem,5.5vw,4.2rem);inline-size:clamp(3rem,5.5vw,4.2rem)}.riposo-persone .persona-nome{font-size:clamp(1rem,1.9vw,1.4rem)}.riposo-persone .persona-dove,.riposo-persone .persona-percento{font-size:clamp(.8rem,1.3vw,1.05rem)}.riposo-persone .persona-pila{inline-size:2rem}.pastiglia-scorciatoia{border:1px solid var(--cs-line-1);background:var(--cs-surface-2);block-size:3.4rem;inline-size:3.4rem;color:var(--cs-text-2);box-shadow:var(--cs-el-1);cursor:pointer;transition:background-color var(--cs-motion,.2s) ease, border-color var(--cs-motion,.2s) ease, color var(--cs-motion,.2s) ease, box-shadow var(--cs-motion,.2s) ease, scale var(--cs-motion,.16s) ease;border-radius:50%;place-items:center;padding:0;display:grid}.pastiglia-scorciatoia[data-acceso=si]{border-color:color-mix(in srgb, var(--cs-ok) 70%, transparent);background:color-mix(in srgb, var(--cs-ok) 22%, var(--cs-surface-2));color:var(--cs-ok);box-shadow:var(--cs-el-2), 0 0 0 4px color-mix(in srgb, var(--cs-ok) 16%, transparent)}.pastiglia-scorciatoia[data-assente=si]{opacity:.45;border-style:dashed}.pastiglia-scorciatoia[data-previsto=si]{opacity:.75}.pastiglia-scorciatoia:hover{box-shadow:var(--cs-el-2)}.pastiglia-scorciatoia:active{scale:.94}.scorciatoia-segno{fill:none;stroke:currentColor;stroke-width:1.9px;stroke-linecap:round;stroke-linejoin:round;block-size:auto;inline-size:58%}.velo-scorciatoia{z-index:var(--cs-z-modal,400);padding:var(--cs-sp-5);background:var(--cs-scrim,#0009);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);place-items:center;display:grid;position:fixed;inset:0}.scheda-scorciatoia{gap:var(--cs-sp-4);inline-size:min(100%,24rem);padding:var(--cs-sp-5);border-radius:var(--cs-r-lg);background:var(--cs-surface-1);box-shadow:var(--cs-el-3,var(--cs-el-2));flex-direction:column;display:flex}.scheda-scorciatoia-testa{flex-direction:column;gap:2px;display:flex}.scheda-scorciatoia-nome{font-family:var(--cs-font-display);font-size:var(--cs-t-title);color:var(--cs-text-1);margin:0;font-weight:700}.scheda-scorciatoia-stato{font-size:var(--cs-t-label);color:var(--cs-text-2)}.scheda-scorciatoia-stato[data-acceso=si]{color:var(--cs-ok);font-weight:var(--cs-fw-bold)}.scheda-scorciatoia-azioni{gap:var(--cs-sp-3);display:flex}.scheda-scorciatoia-azioni .btn{flex:1}.energia-sezione{gap:var(--cs-sp-4);flex-direction:column;flex:1;min-block-size:0;display:flex}.energia-testa{justify-content:space-between;align-items:center;gap:var(--cs-sp-4);flex-wrap:wrap;display:flex}.legenda{gap:var(--cs-sp-4);font-size:var(--cs-t-label);color:var(--cs-text-2);display:flex}.legenda-voce{align-items:center;gap:var(--cs-sp-2);display:inline-flex}.legenda-voce:before{content:\"\";background:var(--tinta,var(--cs-text-2));border-radius:999px;block-size:3px;inline-size:1.1rem}.energia-grafico{flex:1;min-block-size:9rem;display:flex}.grafico{flex:1;min-block-size:0;inline-size:100%}.grafico-tela{display:block;overflow:visible}.grafico-griglia{stroke:var(--cs-line-1);stroke-width:1px}.grafico-scala-testo,.grafico-asse{fill:var(--cs-text-3);font-size:calc(var(--cs-t-label) * .82);font-variant-numeric:tabular-nums}.grafico-linea{fill:none;stroke-width:2.25px;stroke-linecap:round;stroke-linejoin:round}.grafico-punto{stroke:var(--cs-surface-1);stroke-width:2px}.energia-numeri{gap:var(--cs-sp-3);grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));display:grid}.tessera-energia{padding:var(--cs-sp-3) var(--cs-sp-4);border-radius:var(--cs-r-md);background:var(--cs-surface-2);border:1px solid var(--cs-line-1);flex-direction:column;gap:2px;min-inline-size:0;display:flex}.tessera-titolo{font-size:var(--cs-t-eyebrow);letter-spacing:var(--cs-ls-eyebrow);text-transform:uppercase;color:var(--cs-text-3)}.tessera-valore{font-family:var(--cs-font-numeric);font-size:var(--cs-t-value);font-weight:var(--cs-fw-bold);color:var(--cs-text-1);align-items:baseline;gap:4px;line-height:1.05;display:inline-flex}.tessera-unita{font-size:var(--cs-t-label);font-weight:var(--cs-fw-regular);color:var(--cs-text-3)}.tessera-nota{font-size:calc(var(--cs-t-label) * .9);color:var(--cs-text-3)}.tessera-barra{background:color-mix(in srgb, var(--cs-text-3) 25%, transparent);border-radius:999px;block-size:4px;margin-block:3px;display:block;overflow:hidden}.tessera-barra>span{background:var(--cs-accent);border-radius:999px;block-size:100%;display:block}.tessera-energia[data-tono=produzione] .tessera-valore{color:var(--cs-energy-solar)}.tessera-energia[data-tono=consumo] .tessera-valore{color:var(--cs-text-1)}.tessera-energia[data-tono=prelievo] .tessera-valore{color:var(--cs-energy-grid)}.tessera-energia[data-tono=immissione] .tessera-valore{color:var(--cs-energy-battery)}.tessera-energia[data-tono=produzione] .tessera-barra>span{background:var(--cs-energy-solar)}.tessera-energia[data-tono=consumo] .tessera-barra>span{background:var(--cs-text-2)}.bolletta{gap:var(--cs-sp-2);padding:var(--cs-sp-4);border-radius:var(--cs-r-md);border:1px solid var(--cs-line-1);background:var(--cs-surface-2);flex-direction:column;display:flex}.bolletta-cifre{gap:var(--cs-sp-6,2rem);flex-wrap:wrap;display:flex}.bolletta-voce{flex-direction:column;gap:2px;display:flex}.bolletta-valore{font-family:var(--cs-font-numeric);font-size:var(--cs-t-value);font-weight:var(--cs-fw-bold);color:var(--cs-text-2)}.bolletta-voce[data-forte=si] .bolletta-valore{font-size:calc(var(--cs-t-value) * 1.25);color:var(--cs-text-1)}.bolletta-nota{font-size:calc(var(--cs-t-label) * .9);color:var(--cs-text-3);max-inline-size:none;margin:0}.bolletta-dettaglio{gap:var(--cs-sp-2) var(--cs-sp-4);font-size:var(--cs-t-label);color:var(--cs-text-3);border-inline-start:1px solid var(--cs-line-1);flex-wrap:wrap;align-self:center;max-inline-size:22rem;padding-inline-start:var(--cs-sp-4);display:flex}.bolletta-dettaglio b{color:var(--cs-text-2);font-variant-numeric:tabular-nums}.bolletta-gse{border-block-start:1px solid var(--cs-line-1);font-size:var(--cs-t-label);color:var(--cs-text-2);margin:0;padding-block-start:var(--cs-sp-3)}.bolletta-gse b{color:var(--cs-energy-battery)}@container casaos (width<=900px){.bolletta-dettaglio{border-inline-start:0;max-inline-size:none;padding-inline-start:0}}\n.velo-impostazioni{z-index:var(--cs-z-modal,400);padding:var(--cs-sp-4);background:var(--cs-scrim,#000000a6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);place-items:center;display:grid;position:fixed;inset:0}.impostazioni{gap:var(--cs-sp-4);block-size:min(100%,56rem);inline-size:min(100%,78rem);padding:var(--cs-sp-5);border-radius:var(--cs-r-lg);background:var(--cs-surface-1);box-shadow:var(--cs-el-3,var(--cs-el-2));flex-direction:column;min-block-size:0;display:flex}.imp-testa{justify-content:space-between;align-items:center;gap:var(--cs-sp-4);flex-wrap:wrap;display:flex}.imp-titolo{font-family:var(--cs-font-display);font-size:var(--cs-t-title);color:var(--cs-text-1);margin:0;font-weight:700}.imp-sotto{font-size:var(--cs-t-label);color:var(--cs-text-2)}.imp-azioni{align-items:center;gap:var(--cs-sp-3);display:flex}.imp-errore{padding:var(--cs-sp-3) var(--cs-sp-4);border-radius:var(--cs-r-md);border:1px solid color-mix(in srgb, var(--cs-alert) 45%, transparent);background:color-mix(in srgb, var(--cs-alert) 12%, transparent);color:var(--cs-text-1);font-size:var(--cs-t-label);margin:0}.imp-filtri{align-items:center;gap:var(--cs-sp-3);flex-wrap:wrap;display:flex}.imp-cerca{min-inline-size:0;padding:var(--cs-sp-3) var(--cs-sp-4);border:1px solid var(--cs-line-1);border-radius:var(--cs-r-md);background:var(--cs-surface-2);color:var(--cs-text-1);font:inherit;font-size:var(--cs-t-body);flex:14rem}.imp-cerca::placeholder{color:var(--cs-text-3)}.imp-cerca:focus-visible{outline:2px solid var(--cs-accent);outline-offset:1px}.imp-interruttore{align-items:center;gap:var(--cs-sp-2);font-size:var(--cs-t-label);color:var(--cs-text-2);cursor:pointer;white-space:nowrap;display:inline-flex}.imp-interruttore input{block-size:1.15rem;inline-size:1.15rem;accent-color:var(--cs-accent)}.imp-corpo{overscroll-behavior:contain;gap:var(--cs-sp-2);min-block-size:0;flex-direction:column;flex:1;padding-inline-end:var(--cs-sp-2);display:flex;overflow-y:auto}.riga-dispositivo{align-items:center;gap:var(--cs-sp-3);padding:var(--cs-sp-2) var(--cs-sp-3);border:1px solid var(--cs-line-1);border-radius:var(--cs-r-md);background:var(--cs-surface-2);grid-template-columns:7.5rem minmax(0,1fr) auto auto;display:grid}.riga-dispositivo[data-assegnato=si]{border-inline-start:3px solid var(--cs-ok)}.riga-dominio{font-family:var(--cs-font-mono,monospace);font-size:calc(var(--cs-t-label) * .85);color:var(--cs-text-3);text-align:center;background:var(--cs-surface-3,color-mix(in srgb, var(--cs-text-3) 12%, transparent));white-space:nowrap;text-overflow:ellipsis;border-radius:999px;padding:2px 6px;overflow:hidden}.riga-identita{flex-direction:column;gap:2px;min-inline-size:0;display:flex}.riga-nome{border-radius:var(--cs-r-sm,6px);inline-size:100%;color:var(--cs-text-1);font:inherit;font-size:var(--cs-t-body);font-weight:var(--cs-fw-bold);background:0 0;border:1px solid #0000;padding:4px 6px}.riga-nome:hover:not(:disabled){border-color:var(--cs-line-1)}.riga-nome:focus-visible{outline:2px solid var(--cs-accent);outline-offset:0;background:var(--cs-surface-1)}.riga-id{font-family:var(--cs-font-mono,monospace);font-size:calc(var(--cs-t-label) * .85);color:var(--cs-text-3);text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.riga-scelte{align-items:center;gap:var(--cs-sp-2);display:flex}.riga-select{padding:var(--cs-sp-2) var(--cs-sp-3);border:1px solid var(--cs-line-1);border-radius:var(--cs-r-md);background:var(--cs-surface-1);color:var(--cs-text-1);font:inherit;font-size:var(--cs-t-label);min-inline-size:9rem}.riga-select-piccola{min-inline-size:7.5rem}.riga-select:disabled{opacity:.5}.riga-suggerita{padding:var(--cs-sp-2) var(--cs-sp-3);border:1px dashed color-mix(in srgb, var(--cs-accent) 60%, transparent);border-radius:var(--cs-r-md);background:color-mix(in srgb, var(--cs-accent) 10%, transparent);color:var(--cs-text-1);font-size:var(--cs-t-label);white-space:nowrap;cursor:pointer}.riga-suggerita:hover{background:color-mix(in srgb, var(--cs-accent) 20%, transparent)}.riga-area{font-size:calc(var(--cs-t-label) * .85);color:var(--cs-text-3);white-space:nowrap}.elenco-stanze-imp{gap:var(--cs-sp-5);flex-direction:column;display:flex}.gruppo-stanze{gap:var(--cs-sp-2);flex-direction:column;display:flex}.gruppo-stanze-titolo{font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--cs-text-3);margin:0}.riga-stanza{align-items:center;gap:var(--cs-sp-3);padding:var(--cs-sp-2) var(--cs-sp-3);border:1px solid var(--cs-line-1);border-radius:var(--cs-r-md);background:var(--cs-surface-2);grid-template-columns:minmax(0,1fr) auto auto auto;display:grid}.riga-nuova{background:0 0;border-style:dashed;grid-template-columns:minmax(0,1fr) auto}.riga-conta{font-size:var(--cs-t-label);color:var(--cs-text-3);white-space:nowrap}.btn-quieto{color:var(--cs-text-2)}.btn-quieto:hover:not(:disabled){color:var(--cs-alert);border-color:color-mix(in srgb, var(--cs-alert) 55%, transparent)}.btn-forte{border-color:color-mix(in srgb, var(--cs-accent) 70%, transparent);background:color-mix(in srgb, var(--cs-accent) 18%, transparent)}.btn-forte:disabled{opacity:.45}@container (width<=900px){.riga-dispositivo{grid-template-columns:5rem minmax(0,1fr)}.riga-scelte,.riga-suggerita,.riga-area{grid-column:1/-1}.riga-scelte{flex-wrap:wrap}.riga-select{flex:8rem}.riga-stanza{grid-template-columns:minmax(0,1fr) auto}}.riga-preferenza{grid-template-columns:minmax(0,1fr) auto}.riga-nome-fisso{font-size:var(--cs-t-body);font-weight:var(--cs-fw-bold);color:var(--cs-text-1)}.riga-numero{inline-size:7rem;padding:var(--cs-sp-2) var(--cs-sp-3);border:1px solid var(--cs-line-1);border-radius:var(--cs-r-md);background:var(--cs-surface-1);color:var(--cs-text-1);font:inherit;font-size:var(--cs-t-body);font-variant-numeric:tabular-nums;text-align:end}.riga-numero:focus-visible{outline:2px solid var(--cs-accent);outline-offset:1px}", er = class extends HTMLElement {
+var cr = ":host{--cs-scale:1;--cs-tap:44px;--cs-tap-primario:56px;--cs-accent-h:210;--cs-accent-s:100%;--cs-accent:hsl(var(--cs-accent-h) var(--cs-accent-s) 65%);--cs-accent-hover:hsl(var(--cs-accent-h) var(--cs-accent-s) 72%);--cs-accent-quiet:hsl(var(--cs-accent-h) var(--cs-accent-s) 65% / .14);--cs-accent-line:hsl(var(--cs-accent-h) var(--cs-accent-s) 65% / .36);--cs-text-on-accent:#05121f;--cs-bg-base:#0a0e14;--cs-bg-sunken:#070a0f;--cs-surface-1:#121821;--cs-surface-2:#1a2230;--cs-surface-3:#232d3d;--cs-scrim:#06090eb8;--cs-text-1:#eaf0f7;--cs-text-2:#9fb0c3;--cs-text-3:#7c8ea3;--cs-line-1:#ffffff12;--cs-line-2:#ffffff21;--cs-line-strong:#ffffff3d;--cs-on:#ffc24b;--cs-on-quiet:#ffc24b1a;--cs-on-line:#ffc24b4d;--cs-ok:#34d399;--cs-ok-quiet:#34d3991f;--cs-ok-line:#34d39952;--cs-alert:#ff5a6e;--cs-alert-quiet:#ff5a6e1f;--cs-alert-line:#ff5a6e57;--cs-cool:#5bc8ff;--cs-cool-quiet:#5bc8ff1f;--cs-unavail:#55606e;--cs-energy-solar:#f59e0b;--cs-energy-house:#fbbf24;--cs-energy-battery:#34d399;--cs-energy-grid:#5bc8ff;--cs-sp-1:4px;--cs-sp-2:8px;--cs-sp-3:12px;--cs-sp-4:16px;--cs-sp-5:20px;--cs-sp-6:24px;--cs-sp-8:32px;--cs-sp-10:40px;--cs-sp-12:48px;--cs-sp-16:64px;--cs-r-xs:6px;--cs-r-sm:10px;--cs-r-md:16px;--cs-r-lg:20px;--cs-r-xl:28px;--cs-r-full:999px;--cs-el-0:none;--cs-el-1:0 1px 2px #00000047, 0 4px 12px #0000002e;--cs-el-2:0 2px 4px #00000052, 0 10px 28px #0000003d;--cs-el-3:0 4px 8px #0000005c, 0 24px 56px #00000057;--cs-el-focus:0 0 0 3px var(--cs-bg-base), 0 0 0 6px var(--cs-accent);--cs-glass-bg:var(--cs-scrim);--cs-glass-blur:blur(20px) saturate(140%);--cs-font-ui:\"Inter\", system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif;--cs-font-display:\"Syne\", var(--cs-font-ui);--cs-font-numeric:\"Space Mono\", ui-monospace, \"Cascadia Mono\", monospace;--cs-fw-regular:400;--cs-fw-medium:500;--cs-fw-semibold:600;--cs-fw-bold:700;--cs-fw-black:800;--cs-t-hero:clamp(48px, 13vw, calc(74px * var(--cs-scale)));--cs-t-display:calc(32px * var(--cs-scale));--cs-t-title:calc(20px * var(--cs-scale));--cs-t-subtitle:calc(17px * var(--cs-scale));--cs-t-body:calc(15px * var(--cs-scale));--cs-t-label:calc(13px * var(--cs-scale));--cs-t-caption:calc(12px * var(--cs-scale));--cs-t-eyebrow:calc(11px * var(--cs-scale));--cs-t-value:calc(28px * var(--cs-scale));--cs-lh-hero:.92;--cs-lh-display:1.1;--cs-lh-title:1.25;--cs-lh-body:1.5;--cs-lh-tight:1.3;--cs-ls-eyebrow:.08em;--cs-ls-tight:-.015em;--cs-icon-stroke:1.75;--cs-icon-sm:20px;--cs-icon-md:24px;--cs-icon-lg:32px;--cs-icon-xl:44px;--cs-dur-instant:90ms;--cs-dur-fast:.16s;--cs-dur-base:.24s;--cs-dur-slow:.42s;--cs-dur-ambient:.9s;--cs-dur-scene:90s;--cs-stagger:40ms;--cs-ease-out:cubic-bezier(.22, 1, .36, 1);--cs-ease-inout:cubic-bezier(.65, 0, .35, 1);--cs-ease-spring:cubic-bezier(.34, 1.56, .64, 1);--cs-motion:1;--cs-z-base:0;--cs-z-raised:10;--cs-z-sticky:100;--cs-z-dropdown:200;--cs-z-sheet:300;--cs-z-modal:400;--cs-z-toast:500;--cs-z-rest:900;--cs-z-critical:1000;background:var(--cs-bg-base);block-size:100%;color:var(--cs-text-1);font-family:var(--cs-font-ui);font-size:var(--cs-t-body);font-weight:var(--cs-fw-regular);line-height:var(--cs-lh-body);letter-spacing:normal;text-transform:none;font-variant-numeric:tabular-nums;font-feature-settings:\"tnum\" 1, \"cv05\" 1;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;text-size-adjust:100%;--lightningcss-light: ;--lightningcss-dark:initial;color-scheme:dark;overscroll-behavior:contain;display:block}:host([data-theme=light]),.casaos-root[data-theme=light]{--cs-bg-base:#f2f5f8;--cs-bg-sunken:#e7ecf2;--cs-surface-1:#fff;--cs-surface-2:#f4f7fa;--cs-surface-3:#fff;--cs-scrim:#ffffffd1;--cs-text-1:#0e1620;--cs-text-2:#4a5a6b;--cs-text-3:#5d6e82;--cs-text-on-accent:#fff;--cs-line-1:#10182814;--cs-line-2:#10182824;--cs-line-strong:#10182847;--cs-accent:hsl(var(--cs-accent-h) 90% 44%);--cs-accent-hover:hsl(var(--cs-accent-h) 90% 38%);--cs-accent-quiet:hsl(var(--cs-accent-h) 90% 44% / .1);--cs-accent-line:hsl(var(--cs-accent-h) 90% 44% / .28);--cs-on:#8a5300;--cs-on-quiet:#f59e0b24;--cs-on-line:#b46e0052;--cs-ok:#0e7c5a;--cs-ok-quiet:#0e7c5a1a;--cs-ok-line:#0e7c5a4d;--cs-alert:#c42b3c;--cs-alert-quiet:#c42b3c17;--cs-alert-line:#c42b3c4d;--cs-cool:#0a6fa8;--cs-cool-quiet:#0a6fa81a;--cs-unavail:#8a97a6;--cs-el-1:0 1px 2px #1018280d, 0 2px 8px #1018280d;--cs-el-2:0 2px 4px #10182812, 0 8px 20px #10182814;--cs-el-3:0 6px 12px #10182817, 0 20px 48px #10182824;--lightningcss-light:initial;--lightningcss-dark: ;color-scheme:light}:host([data-density=wall]){--cs-scale:1.3;--cs-tap:64px;--cs-tap-primario:80px;--cs-icon-stroke:2}:host([data-density=hand]){--cs-scale:1}@media (pointer:coarse) and (min-width:1000px){:host(:not([data-density])){--cs-scale:1.3;--cs-tap:64px;--cs-tap-primario:80px;--cs-icon-stroke:2}}@media (prefers-reduced-motion:reduce){:host{--cs-motion:0;--cs-dur-instant:1ms;--cs-dur-fast:1ms;--cs-dur-base:1ms;--cs-dur-slow:1ms;--cs-dur-ambient:1ms;--cs-stagger:0s}:host,*,:before,:after{scroll-behavior:auto!important;transition-duration:1ms!important;animation-duration:1ms!important;animation-iteration-count:1!important}}:host([data-motion=ridotto]){--cs-motion:0;--cs-dur-instant:1ms;--cs-dur-fast:1ms;--cs-dur-base:1ms;--cs-dur-slow:1ms;--cs-dur-ambient:1ms;--cs-stagger:0s}:host([data-motion=ridotto]) *,:host([data-motion=ridotto]) :before,:host([data-motion=ridotto]) :after{transition-duration:1ms!important;animation-duration:1ms!important;animation-iteration-count:1!important}*,:before,:after{box-sizing:border-box}.casaos-mount{block-size:100%}.casaos-root{block-size:100%;min-block-size:var(--cs-viewport-h,100dvh);background:var(--cs-bg-base);color:var(--cs-text-1);padding:var(--cs-sp-6);padding-inline:max(var(--cs-sp-6), env(safe-area-inset-left), env(safe-area-inset-right));-webkit-tap-highlight-color:transparent;justify-content:center;align-items:flex-start;padding-block-end:max(var(--cs-sp-6), env(safe-area-inset-bottom));display:flex;container:casaos/inline-size}:host(:focus-visible),.casaos-root :focus-visible{box-shadow:var(--cs-el-focus);border-radius:var(--cs-r-sm);outline:none}.tap-target{min-block-size:var(--cs-tap);min-inline-size:var(--cs-tap);touch-action:manipulation}.casaos-root :where(h1,h2,h3,p,span){overflow-wrap:anywhere}.casaos-root :where(h1,h2,h3){text-wrap:balance}img,svg,video{max-inline-size:100%;display:block}button{font:inherit;color:inherit}.scheda{background:var(--cs-surface-1);border-radius:var(--cs-r-lg);inline-size:100%;max-inline-size:640px;box-shadow:var(--cs-el-1);padding:var(--cs-sp-6);animation:cs-entra var(--cs-dur-slow) var(--cs-ease-out) both;margin-block-start:var(--cs-sp-8)}@keyframes cs-entra{0%{opacity:0;transform:translateY(14px)scale(.985)}to{opacity:1;transform:none}}.testata{justify-content:space-between;align-items:flex-start;gap:var(--cs-sp-4);margin-block-end:var(--cs-sp-4);display:flex}.occhiello{margin:0 0 var(--cs-sp-1);font-family:var(--cs-font-numeric);font-size:var(--cs-t-eyebrow);line-height:var(--cs-lh-tight);letter-spacing:var(--cs-ls-eyebrow);text-transform:uppercase;color:var(--cs-accent)}.testata h1{font-size:var(--cs-t-display);font-weight:var(--cs-fw-bold);letter-spacing:var(--cs-ls-tight);line-height:var(--cs-lh-display);margin:0}.pillola{font-family:var(--cs-font-numeric);font-size:var(--cs-t-caption);font-weight:var(--cs-fw-bold);line-height:var(--cs-lh-tight);letter-spacing:.06em;text-transform:uppercase;padding:var(--cs-sp-1) var(--cs-sp-3);border-radius:var(--cs-r-full);border:1px solid #0000;flex-shrink:0}.pillola[data-stato=ok]{background:var(--cs-ok-quiet);color:var(--cs-ok);border-color:var(--cs-ok-line)}.pillola[data-stato=ko]{background:var(--cs-alert-quiet);color:var(--cs-alert);border-color:var(--cs-alert-line)}.intro{margin:0 0 var(--cs-sp-5);color:var(--cs-text-2);font-size:var(--cs-t-body);line-height:var(--cs-lh-body)}.intro code{font-family:var(--cs-font-numeric);background:var(--cs-surface-2);border:1px solid var(--cs-line-1);border-radius:var(--cs-r-xs);padding:1px var(--cs-sp-1);font-size:.9em}.griglia{border-block-start:1px solid var(--cs-line-1);flex-direction:column;display:flex}.riga{justify-content:space-between;align-items:baseline;gap:var(--cs-sp-4);padding-block:var(--cs-sp-3);border-block-end:1px solid var(--cs-line-1);display:flex}.riga-k{font-size:var(--cs-t-label);color:var(--cs-text-2)}.riga-v{font-family:var(--cs-font-numeric);font-size:var(--cs-t-label);color:var(--cs-text-1);text-align:end;transition:color var(--cs-dur-ambient) var(--cs-ease-out)}.riga-v[data-tono=forte]{font-size:var(--cs-t-subtitle);font-weight:var(--cs-fw-bold)}.riga-v[data-tono=ok]{color:var(--cs-ok)}.pie{font-size:var(--cs-t-label);line-height:var(--cs-lh-body);color:var(--cs-text-3);margin-block-start:var(--cs-sp-5)}@container casaos (width<=600px){.casaos-root{padding:var(--cs-sp-3)}.scheda{padding:var(--cs-sp-4);margin-block-start:var(--cs-sp-3)}}@supports not (container-type:inline-size){@media (max-width:700px){.casaos-root{padding:var(--cs-sp-3)}.scheda{padding:var(--cs-sp-4);margin-block-start:var(--cs-sp-3)}}}\n.casaos-mount{block-size:100%;container:casaos/inline-size}.casaos-root{block-size:var(--cs-viewport-h,100dvh);max-block-size:var(--cs-viewport-h,100dvh);gap:var(--cs-sp-5);grid-template:\"testa testa\"\"stanze stanze\"\"energia colonna\"minmax(0,1fr)\"piede piede\"/minmax(0,1.55fr) minmax(300px,1fr);align-items:stretch;display:grid;position:relative;overflow:hidden;container-type:normal}.intestazione{justify-content:space-between;align-items:baseline;gap:var(--cs-sp-5);border-block-end:1px solid var(--cs-line-1);flex-wrap:wrap;grid-area:testa;padding-block-end:var(--cs-sp-3);display:flex}.ora{align-items:baseline;gap:var(--cs-sp-4);min-inline-size:0;display:flex}.ora-cifre{font-family:var(--cs-font-display);letter-spacing:-.03em;color:var(--cs-text-1);font-variant-numeric:tabular-nums;font-size:clamp(40px,7cqi,76px);font-weight:800;line-height:.86}.ora-data{font-size:var(--cs-t-subtitle);color:var(--cs-text-2);text-transform:lowercase}.barra-sinistra{align-items:baseline;gap:var(--cs-sp-5);flex-wrap:wrap;min-inline-size:0;display:flex}.meteo{align-items:center;gap:var(--cs-sp-3);align-self:flex-end;min-inline-size:0;padding-block-end:.15em;display:flex}.meteo-segno{fill:none;block-size:auto;inline-size:clamp(1.75rem,3.2cqi,2.6rem);stroke:var(--cs-text-2);stroke-width:1.7px;stroke-linecap:round;stroke-linejoin:round;flex:none}.meteo-segno .meteo-caldo{stroke:var(--cs-on)}.meteo-segno .meteo-freddo{stroke:var(--cs-cool)}.meteo-segno .meteo-notte{stroke:var(--cs-text-2)}.meteo-testo{flex-direction:column;gap:.1em;min-inline-size:0;display:flex}.meteo-ora{font-family:var(--cs-font-display);color:var(--cs-text-1);font-variant-numeric:tabular-nums;font-size:clamp(18px,2.4cqi,28px);font-weight:700;line-height:1}.meteo-dettaglio{font-size:var(--cs-t-label);color:var(--cs-text-2);white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.meteo-min{color:var(--cs-cool)}.meteo-max{color:var(--cs-on)}.scelta-tema{padding:var(--cs-sp-2);border:1px solid var(--cs-line-1);color:var(--cs-text-2);cursor:pointer;background:0 0;border-radius:999px;place-items:center;display:inline-grid}.scelta-tema:hover{color:var(--cs-text-1);border-color:var(--cs-line-2,var(--cs-line-1))}.scelta-tema:active{scale:.94}.tema-segno{fill:none;stroke:currentColor;stroke-width:1.7px;stroke-linecap:round;stroke-linejoin:round;block-size:1.35rem;inline-size:1.35rem}.tema-meta,.scelta-tema[data-tema=scuro] .tema-segno{fill:currentColor;stroke:none}@container (width<=640px){.meteo-dettaglio{display:none}}.stato-collegamento{align-items:center;gap:var(--cs-sp-2);font-size:var(--cs-t-label);color:var(--cs-text-2);display:inline-flex}.stato-collegamento:before{content:\"\";background:var(--cs-ok);border-radius:50%;block-size:7px;inline-size:7px}.stato-collegamento[data-stato=ko]{color:var(--cs-alert)}.stato-collegamento[data-stato=ko]:before{background:var(--cs-alert)}.pannello-energia{gap:var(--cs-sp-4);min-block-size:0;padding:var(--cs-sp-5);border-radius:var(--cs-r-xl);background:var(--cs-surface-1);box-shadow:var(--cs-el-1);flex-direction:column;grid-area:energia;min-inline-size:0;display:flex;position:relative;overflow:hidden}.pannello-energia:before{content:\"\";z-index:0;pointer-events:none;background:radial-gradient(42% 42% at 28% 22%, color-mix(in srgb, var(--cs-energy-solar) 22%, transparent), transparent 70%), radial-gradient(46% 46% at 76% 78%, color-mix(in srgb, var(--cs-accent) 18%, transparent), transparent 70%);opacity:.5;animation:deriva var(--cs-dur-scene,90s) var(--cs-ease-inout) infinite alternate;will-change:transform;position:absolute;inset:-20%}@keyframes deriva{0%{transform:translate(-3%,-2%)rotate(-2deg)}to{transform:translate(3%,2%)rotate(2deg)}}.casaos-root[data-regime=strumento] .pannello-energia:before{opacity:.32}.pannello-energia>*{z-index:1;position:relative}.pannello-titolo,.carta-titolo{font-size:var(--cs-t-eyebrow);font-weight:var(--cs-fw-bold);letter-spacing:var(--cs-ls-eyebrow);text-transform:uppercase;color:var(--cs-text-3);margin:0}.energia{align-items:stretch;gap:var(--cs-sp-4);flex:1;grid-template-columns:minmax(0,1fr) minmax(7rem,auto);min-block-size:0;display:grid}.scena-3d{flex:auto;place-items:center;min-block-size:130px;min-inline-size:0;display:grid;position:relative;container:scena/size}.scena-quadro{block-size:min(100cqi,100cqh);inline-size:min(100cqi,100cqh);position:relative}@supports not (inline-size:1cqi){.scena-quadro{block-size:100%;inline-size:100%}}.scena-energia{block-size:100%;inline-size:100%}.sfondo-3d{filter:invert()hue-rotate(180deg)brightness(1.15)saturate(.9);mix-blend-mode:screen;opacity:.92}.casaos-root[data-theme=light] .sfondo-3d{filter:brightness(1.12)contrast(1.03)saturate(.95);mix-blend-mode:darken;opacity:1}.lettura{pointer-events:none;border-radius:var(--cs-r-md);background:color-mix(in srgb, var(--cs-surface-1) 62%, transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);flex-direction:column;gap:1px;max-inline-size:40%;padding:.3em .55em;display:flex;position:absolute}.lettura[data-pos=solare]{inset-block-start:6%;inset-inline-start:0}.lettura[data-pos=casa]{text-align:end;align-items:flex-end;inset-block-start:4%;inset-inline-end:0}.lettura[data-pos=batteria]{inset-block-end:8%;inset-inline-start:0}.lettura[data-pos=rete]{text-align:end;align-items:flex-end;inset-block-end:8%;inset-inline-end:0}.lettura-titolo{font-size:var(--cs-t-eyebrow);letter-spacing:var(--cs-ls-eyebrow);text-transform:uppercase;color:var(--cs-text-3)}.lettura-valore{font-family:var(--cs-font-numeric);font-size:var(--cs-t-value);font-weight:var(--cs-fw-bold);align-items:baseline;gap:5px;line-height:1.05;display:inline-flex}.lettura-unita{font-size:var(--cs-t-label);font-weight:var(--cs-fw-regular);color:var(--cs-text-3)}.lettura-nota{font-size:var(--cs-t-caption);color:var(--cs-text-3)}.lettura[data-tono=solare] .lettura-valore{color:var(--cs-energy-solar)}.lettura[data-tono=casa] .lettura-valore{color:var(--cs-energy-house)}.lettura[data-tono=batteria] .lettura-valore{color:var(--cs-energy-battery)}.lettura[data-tono=rete] .lettura-valore{color:var(--cs-energy-grid)}.flusso-freccia{fill:color-mix(in srgb, var(--flusso-colore) 75%, transparent);offset-distance:40%}.cometa{animation-name:scorri;animation-duration:calc(var(--dur,3s) * var(--fattore-movimento,1));animation-timing-function:linear;animation-iteration-count:infinite}.cometa-testa{fill:color-mix(in srgb, var(--flusso-colore) 35%, white)}.cometa-alone{opacity:.92}.cometa-scia{opacity:.9}@keyframes scorri{0%{offset-distance:0%;opacity:0}12%{opacity:1}88%{opacity:1}to{offset-distance:100%;opacity:0}}.energia-giornata{justify-content:center;gap:var(--cs-sp-4);border-inline-start:1px solid var(--cs-line-1);flex-direction:column;flex:none;min-inline-size:0;padding-inline-start:var(--cs-sp-4);display:flex}.misura{flex-direction:column;gap:2px;min-inline-size:0;display:flex}.misura-k{font-size:var(--cs-t-eyebrow);letter-spacing:var(--cs-ls-eyebrow);text-transform:uppercase;color:var(--cs-text-3)}.misura-barra{block-size:3px;border-radius:var(--cs-r-full);background:var(--cs-surface-3);margin-block-start:var(--cs-sp-2);display:block;overflow:hidden}.misura-barra>span{background:var(--cs-accent);block-size:100%;transition:inline-size var(--cs-dur-ambient) var(--cs-ease-out);display:block}.valore{font-family:var(--cs-font-numeric);color:var(--cs-text-1);align-items:baseline;gap:4px;display:inline-flex}.valore-cifre{font-size:var(--cs-t-value);font-weight:var(--cs-fw-bold);font-variant-numeric:tabular-nums;line-height:1.05}.valore-unita{font-size:var(--cs-t-label);color:var(--cs-text-3)}.misura-v .valore-cifre{font-size:calc(var(--cs-t-value) * .86)}.respira{animation:respiro var(--cs-dur-base) var(--cs-ease-out)}.respira[data-verso=giu]{animation-name:respiro-giu}@keyframes respiro{0%{opacity:.35;transform:translateY(6px)}to{opacity:1;transform:none}}@keyframes respiro-giu{0%{opacity:.35;transform:translateY(-6px)}to{opacity:1;transform:none}}.fascia-stanze{grid-area:stanze;min-inline-size:0}.colonna{justify-content:flex-start;gap:var(--cs-sp-5);flex-direction:column;grid-area:colonna;min-block-size:0;min-inline-size:0;display:flex}.carta{background:var(--cs-surface-1);border-radius:var(--cs-r-lg);box-shadow:var(--cs-el-1);padding:var(--cs-sp-5);gap:var(--cs-sp-4);flex-direction:column;flex:none;min-block-size:0;min-inline-size:0;display:flex}.carta[data-espandi=si]{flex:auto;min-block-size:0}.carta-corpo{gap:var(--cs-sp-4);overscroll-behavior:contain;flex-direction:column;min-block-size:0;min-inline-size:0;display:flex;overflow-y:auto}.casaos-root[data-avvio=si] .anima-entrata{animation:entra .36s var(--cs-ease-out) backwards;animation-delay:calc(.12s + var(--i,0) * var(--cs-stagger,40ms))}@keyframes entra{0%{opacity:0;transform:translateY(14px)scale(.985)}to{opacity:1;transform:none}}.elenco-stanze{gap:var(--cs-sp-5);flex-direction:column;display:flex}.gruppo-titolo{margin:0 0 var(--cs-sp-2);font-size:var(--cs-t-eyebrow);letter-spacing:var(--cs-ls-eyebrow);text-transform:uppercase;font-weight:var(--cs-fw-bold);color:var(--cs-text-3)}.gruppo-corpo{flex-direction:column;gap:1px;display:flex}.voce{justify-content:space-between;align-items:center;gap:var(--cs-sp-3);inline-size:100%;min-block-size:var(--cs-tap);padding:var(--cs-sp-3) var(--cs-sp-3);border-radius:var(--cs-r-sm);text-align:start;cursor:pointer;transition:background var(--cs-dur-fast) var(--cs-ease-out), opacity var(--cs-dur-fast) var(--cs-ease-out);background:0 0;border:0;display:flex;position:relative;overflow:hidden}.voce+.voce{box-shadow:0 -1px 0 var(--cs-line-1)}.voce:hover:not(:disabled){background:var(--cs-surface-2)}.voce:active:not(:disabled){transition-duration:var(--cs-dur-instant);scale:.985}.lampadina{flex-shrink:0;block-size:28px;inline-size:26px;overflow:visible}.lampadina-vetro{fill:none;stroke:var(--cs-text-3);stroke-width:1.6px;stroke-linejoin:round;transition:fill var(--cs-dur-base) var(--cs-ease-out), stroke var(--cs-dur-base) var(--cs-ease-out)}.lampadina-base{fill:none;stroke:var(--cs-text-3);stroke-width:1.6px;stroke-linecap:round;transition:stroke var(--cs-dur-base) var(--cs-ease-out)}.lampadina-alone{fill:var(--cs-on);opacity:0;transform-origin:12px 10px;transition:opacity var(--cs-dur-base) var(--cs-ease-out), scale var(--cs-dur-slow) var(--cs-ease-spring);scale:.4}.lampadina[data-accesa=si] .lampadina-vetro{fill:color-mix(in srgb, var(--cs-on) 82%, transparent);stroke:var(--cs-on)}.lampadina[data-accesa=si] .lampadina-base{stroke:color-mix(in srgb, var(--cs-on) 70%, var(--cs-text-3))}.lampadina[data-accesa=si] .lampadina-alone{opacity:.22;scale:1}.voce[data-stato=on]{background:color-mix(in srgb, var(--cs-on-quiet) calc(40% + 60% * var(--intensita,1)), transparent)}.voce[data-stato=on]:before{content:\"\";pointer-events:none;background:radial-gradient(140px 90px at 26px 50%, color-mix(in srgb, var(--cs-on) 26%, transparent), transparent 72%);animation:sboccia .62s var(--cs-ease-out);position:absolute;inset:0}@keyframes sboccia{0%{opacity:0;transform:scale(.55)}45%{opacity:1}to{opacity:1;transform:none}}.voce[data-stato=on]:after{content:\"\";border-radius:var(--cs-r-full);background:var(--cs-on);inline-size:3px;animation:barra-cresce var(--cs-dur-base) var(--cs-ease-out);position:absolute;inset-block:8px;inset-inline-start:0}@keyframes barra-cresce{0%{transform:scaleY(0)}to{transform:scaleY(1)}}.voce[data-stato=assente]{opacity:.45;cursor:not-allowed}.voce[data-previsto=si]{opacity:.68}.voce-testo{flex-direction:column;flex:1;gap:1px;min-inline-size:0;display:flex}.voce-nome{font-size:var(--cs-t-subtitle);color:var(--cs-text-1)}.voce-stato{font-size:var(--cs-t-label);color:var(--cs-text-3)}.interruttore{border-radius:var(--cs-r-full);background:color-mix(in srgb, var(--cs-text-3) 30%, transparent);block-size:26px;inline-size:44px;transition:background var(--cs-dur-fast) var(--cs-ease-out);flex-shrink:0;position:relative}.interruttore[data-acceso=si]{background:var(--cs-on)}.interruttore[data-off=si]{opacity:.4}.interruttore-pallino{background:var(--cs-surface-1);block-size:20px;inline-size:20px;transition:translate var(--cs-dur-fast) var(--cs-ease-spring);border-radius:50%;position:absolute;inset-block-start:3px;inset-inline-start:3px;box-shadow:0 1px 2px #0000004d}.interruttore[data-acceso=si] .interruttore-pallino{translate:18px}.interruttore[data-acceso=si]{animation:anello .52s var(--cs-ease-out)}@keyframes anello{0%{box-shadow:0 0 0 0 color-mix(in srgb, var(--cs-on) 45%, transparent)}to{box-shadow:0 0 0 12px #0000}}.ingressi{gap:var(--cs-sp-4);flex-direction:column;display:flex}.cancello{justify-content:space-between;align-items:center;gap:var(--cs-sp-3);padding:var(--cs-sp-3) 0;min-block-size:var(--cs-tap);display:flex}.cancello+.cancello{box-shadow:0 -1px 0 var(--cs-line-1)}.conferma{gap:var(--cs-sp-2);display:flex}.btn{min-block-size:var(--cs-tap);padding:0 var(--cs-sp-4);border:1px solid var(--cs-line-2);border-radius:var(--cs-r-full);color:var(--cs-text-1);font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);cursor:pointer;white-space:nowrap;transition:background var(--cs-dur-fast) var(--cs-ease-out), scale var(--cs-dur-instant) var(--cs-ease-out);background:0 0}.btn:hover:not(:disabled){background:var(--cs-surface-2)}.btn:active:not(:disabled){scale:.94}.btn:disabled{opacity:.4;cursor:not-allowed}.btn-conferma{background:var(--cs-accent);color:var(--cs-text-on-accent);border-color:#0000}.btn-conferma:hover:not(:disabled){background:var(--cs-accent-hover)}.porte{gap:var(--cs-sp-2);flex-wrap:wrap;display:flex}.porta{align-items:center;gap:var(--cs-sp-2);padding:var(--cs-sp-2) var(--cs-sp-3);border-radius:var(--cs-r-full);background:var(--cs-surface-2);font-size:var(--cs-t-label);display:inline-flex}.porta[data-stato=aperta]{background:var(--cs-alert-quiet);color:var(--cs-alert)}.porta-segno{background:var(--cs-ok);border-radius:50%;block-size:6px;inline-size:6px}.porta[data-stato=aperta] .porta-segno{background:var(--cs-alert)}.porta[data-stato=assente] .porta-segno{background:var(--cs-unavail)}.pie-pagina{grid-area:piede}.diagnostica{font-size:var(--cs-t-caption);color:var(--cs-text-3)}.diagnostica summary{cursor:pointer;min-block-size:var(--cs-tap);align-items:center;display:flex}.diagnostica-corpo{gap:var(--cs-sp-1) var(--cs-sp-5);font-family:var(--cs-font-numeric);flex-wrap:wrap;padding-block-end:var(--cs-sp-2);display:flex}.testo{color:var(--cs-text-2);margin:0}.testo-secondario{color:var(--cs-text-3);font-size:var(--cs-t-label);margin:0}@container casaos (width<=900px){.casaos-root{gap:var(--cs-sp-4);grid-template:\"testa\"\"stanze\"\"energia\"\"colonna\"\"piede\"/minmax(0,1fr);block-size:auto;max-block-size:none;overflow-y:auto}.colonna{grid-template-rows:auto auto}.carta,.carta-corpo{min-block-size:auto;overflow:visible}.scena-energia{min-block-size:240px}}@container casaos (width<=560px){.casaos-root{padding:var(--cs-sp-3);gap:var(--cs-sp-3)}.pannello-energia,.carta{padding:var(--cs-sp-4)}}@container casaos (width<=900px){.energia{grid-template-rows:minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr)}.energia-giornata{border-inline-start:0;border-block-start:1px solid var(--cs-line-1);flex-flow:wrap;justify-content:space-between;align-items:flex-start;padding-block-start:var(--cs-sp-4);padding-inline-start:0}.misura{flex:6rem}}@supports not (container-type:inline-size){@media (max-width:1000px){.casaos-root{grid-template-columns:minmax(0,1fr);grid-template-areas:\"testa\"\"stanze\"\"energia\"\"colonna\"\"piede\"}}}@media (prefers-reduced-motion:reduce){.pannello-energia:before,.voce[data-stato=on]:before,.interruttore[data-acceso=si]{animation:none}.casaos-root .cometa{--fattore-movimento:1.8;animation-duration:calc(var(--dur,3s) * var(--fattore-movimento))!important;animation-iteration-count:infinite!important}.casaos-root[data-avvio=si] .anima-entrata{animation:none}}.velo-avviso{z-index:var(--cs-z-critical,1000);padding:var(--cs-sp-6);background:var(--cs-scrim,#06090eb8);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);animation:velo-entra var(--cs-dur-base) var(--cs-ease-out);cursor:pointer;place-items:center;display:grid;position:fixed;inset:0}@keyframes velo-entra{0%{opacity:0}to{opacity:1}}.avviso{inline-size:min(440px,100%);padding:var(--cs-sp-8) var(--cs-sp-6) var(--cs-sp-6);border-radius:var(--cs-r-xl);background:var(--cs-surface-1);box-shadow:var(--cs-el-3);text-align:center;animation:avviso-entra var(--cs-dur-slow) var(--cs-ease-spring)}@keyframes avviso-entra{0%{opacity:0;transform:translateY(16px)scale(.94)}to{opacity:1;transform:none}}.scena-cancello{block-size:auto;inline-size:100%;margin-block-end:var(--cs-sp-5)}.cancello-guida{stroke:var(--cs-line-2);stroke-width:2px;stroke-linecap:round}.cancello-pilastri rect{fill:var(--cs-surface-3);stroke:var(--cs-line-2);stroke-width:1.5px}.cancello-passaggio{fill:var(--cs-bg-sunken);opacity:.7}.cancello-anta{animation:anta-apre 3.2s var(--cs-ease-inout) forwards}.cancello-anta[data-chiusura=si]{animation-name:anta-chiude}.anta-telaio{fill:color-mix(in srgb, var(--cs-surface-2) 90%, transparent);stroke:var(--cs-accent);stroke-width:2px}.anta-stecca,.anta-traversa{stroke:color-mix(in srgb, var(--cs-accent) 55%, transparent);stroke-width:1.6px;stroke-linecap:round}@keyframes anta-apre{0%{transform:translate(0)}to{transform:translate(-152px)}}@keyframes anta-chiude{0%{transform:translate(-152px)}to{transform:translate(0)}}.avviso-titolo{font-size:var(--cs-t-title);font-weight:var(--cs-fw-bold);color:var(--cs-text-1);margin:0}.avviso-nome{margin:var(--cs-sp-1) 0 0;font-size:var(--cs-t-body);color:var(--cs-text-2)}.avviso-tempo{block-size:3px;inline-size:100%;border-radius:var(--cs-r-full);background:var(--cs-surface-3);margin-block-start:var(--cs-sp-5);display:block;overflow:hidden}.avviso-tempo>span{background:var(--cs-accent);transform-origin:0;block-size:100%;animation:tempo-cala var(--durata-avviso,6s) linear forwards;display:block}@keyframes tempo-cala{0%{transform:scaleX(1)}to{transform:scaleX(0)}}@media (prefers-reduced-motion:reduce){.velo-avviso .cancello-anta{animation-duration:3.6s!important;animation-iteration-count:1!important}.velo-avviso .avviso-tempo>span{animation-duration:var(--durata-avviso,6s)!important;animation-iteration-count:1!important}}.barra-destra{align-items:center;gap:var(--cs-sp-4);flex-wrap:wrap;display:flex}.viste{border-radius:var(--cs-r-full);background:var(--cs-surface-2);gap:2px;padding:3px;display:flex}.vista{border-radius:var(--cs-r-full);padding:0 var(--cs-sp-4);min-block-size:calc(var(--cs-tap) * .72);color:var(--cs-text-2);font:inherit;font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);cursor:pointer;white-space:nowrap;transition:background var(--cs-dur-fast) var(--cs-ease-out), color var(--cs-dur-fast) var(--cs-ease-out);background:0 0;border:0}.vista:hover{color:var(--cs-text-1)}.vista[data-scelta=si]{background:var(--cs-surface-1);color:var(--cs-text-1);box-shadow:var(--cs-el-1)}.casaos-root[data-vista=telecamere],.casaos-root[data-vista=energia]{grid-template-columns:minmax(0,1fr);grid-template-areas:\"testa\"\"energia\"\"piede\"}.pannello-telecamere{gap:var(--cs-sp-4);min-block-size:0;min-inline-size:0;padding:var(--cs-sp-5);border-radius:var(--cs-r-xl);background:var(--cs-surface-1);box-shadow:var(--cs-el-1);flex-direction:column;grid-area:energia;display:flex;overflow:hidden}.griglia-camere{grid-template-columns:repeat(var(--colonne,3), minmax(0, 1fr));gap:var(--cs-sp-3);flex:1;grid-auto-rows:minmax(0,1fr);min-block-size:0;display:grid}.riquadro-camera{border-radius:var(--cs-r-md);background:var(--cs-bg-sunken);cursor:pointer;min-block-size:0;min-inline-size:0;transition:box-shadow var(--cs-dur-fast) var(--cs-ease-out);border:0;place-items:center;padding:0;display:grid;position:relative;overflow:hidden}.riquadro-camera:hover{box-shadow:var(--cs-el-2)}.riquadro-camera:active{scale:.99}.camera-fotogramma{object-fit:cover;block-size:100%;inline-size:100%;display:block}.camera-assente{font-size:var(--cs-t-label);color:var(--cs-text-3);text-align:center;padding:var(--cs-sp-3)}.camera-riposo{justify-content:center;align-items:center;gap:var(--cs-sp-3);padding:var(--cs-sp-3);background:radial-gradient(ellipse at center, color-mix(in srgb, var(--cs-text-3) 7%, transparent), transparent 70%);flex-direction:column;display:flex}.camera-glifo{fill:none;block-size:auto;inline-size:clamp(2rem,22%,3.25rem);stroke:var(--cs-text-3);stroke-width:2.25px;stroke-linejoin:round;opacity:.75}.camera-glifo-occhio{stroke-width:2px;opacity:.85}.camera-invito{font-size:var(--cs-t-label);color:var(--cs-text-3);text-align:center;letter-spacing:.01em}@container (width<=700px){.camera-invito{display:none}}.riquadro-camera:hover .camera-glifo,.riquadro-camera:focus-visible .camera-glifo{opacity:1;stroke:var(--cs-accent)}.camera-nome{font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);color:#fff;text-shadow:0 1px 3px #000000bf;pointer-events:none;position:absolute;inset-block-end:var(--cs-sp-2);inset-inline-start:var(--cs-sp-3)}.riquadro-camera[data-vuoto=si] .camera-nome{color:var(--cs-text-2);text-shadow:none}.velo-camera{z-index:var(--cs-z-modal,400);padding:var(--cs-sp-5);background:var(--cs-scrim,#06090ed1);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);animation:velo-entra var(--cs-dur-base) var(--cs-ease-out);place-items:center;display:grid;position:fixed;inset:0}.diretta{gap:var(--cs-sp-3);cursor:default;flex-direction:column;max-block-size:100%;inline-size:min(1100px,100%);display:flex}.diretta-immagine{aspect-ratio:16/9;border-radius:var(--cs-r-lg);min-block-size:0;box-shadow:var(--cs-el-3);background:#000;place-items:center;display:grid;position:relative;overflow:hidden}.diretta-video,.diretta-fotogramma{object-fit:contain;background:#000;block-size:100%;inline-size:100%;position:absolute;inset:0}.diretta-video[data-visibile=no]{opacity:0}.diretta-piede{align-items:center;gap:var(--cs-sp-3);display:flex}.diretta-nome{font-size:var(--cs-t-title);font-weight:var(--cs-fw-bold);color:var(--cs-text-1);flex:1;min-inline-size:0}.pastiglia[data-stato=neutro]{background:var(--cs-surface-2);color:var(--cs-text-2)}@container casaos (width<=900px){.casaos-root[data-vista=telecamere],.casaos-root[data-vista=energia]{grid-template-rows:auto}.griglia-camere{grid-auto-rows:minmax(160px,auto)}.riquadro-camera{aspect-ratio:16/9}}.zone{gap:var(--cs-sp-5);grid-template-columns:1.1fr 1fr;min-block-size:0;display:grid}.zona{gap:var(--cs-sp-3);flex-direction:column;min-inline-size:0;display:flex}.zona-titolo{font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--cs-text-3);margin:0}.griglia-stanze{grid-template-columns:repeat(var(--colonne,6), minmax(0, 1fr));gap:var(--cs-sp-2);display:grid}.tessera-stanza{justify-content:center;align-items:center;gap:var(--cs-sp-2);padding:var(--cs-sp-3) 3px;border:1px solid var(--cs-line-1);border-radius:var(--cs-r-md);background:var(--cs-surface-2);min-block-size:0;color:var(--cs-text-2);cursor:pointer;transition:border-color var(--cs-motion,.2s) ease, background-color var(--cs-motion,.2s) ease, color var(--cs-motion,.2s) ease;flex-direction:column;display:flex;position:relative;overflow:hidden}.tessera-stanza:before{content:\"\";pointer-events:none;opacity:var(--intensita,0);background:radial-gradient(125% 95% at 50% -12%, color-mix(in srgb, var(--cs-on) 62%, transparent), color-mix(in srgb, var(--cs-on) 16%, transparent) 55%, transparent 78%);transition:opacity var(--cs-motion,.26s) ease;position:absolute;inset:0}.tessera-stanza[data-accesa=si]{border-color:color-mix(in srgb, var(--cs-on) 70%, transparent);color:var(--cs-text-1);box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--cs-on) 22%, transparent), 0 0 18px -6px color-mix(in srgb, var(--cs-on) 55%, transparent)}.tessera-stanza:hover{border-color:var(--cs-line-2,var(--cs-accent))}.tessera-stanza:active{scale:.97}.segno-stanza{fill:none;stroke:currentColor;stroke-width:1.6px;stroke-linecap:round;stroke-linejoin:round;opacity:.82;block-size:auto;inline-size:clamp(1.7rem,3.4cqi,2.4rem);transition:stroke var(--cs-motion,.26s) ease, opacity var(--cs-motion,.26s) ease;flex:none;position:relative}.segno-nucleo{transition:fill var(--cs-motion,.26s) ease, stroke var(--cs-motion,.26s) ease}.tessera-stanza[data-accesa=si] .segno-stanza,.dettaglio-segno[data-accesa=si] .segno-stanza{stroke:var(--cs-on);opacity:1}.tessera-stanza[data-accesa=si] .segno-nucleo,.dettaglio-segno[data-accesa=si] .segno-nucleo{fill:color-mix(in srgb, var(--cs-on) 26%, transparent);stroke:var(--cs-on)}.tessera-nome{font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);text-align:center;line-height:1.15;font-size:calc(var(--cs-t-label) * .82);-webkit-hyphens:auto;hyphens:auto;overflow-wrap:break-word;position:relative}.tessera-conto{background:var(--cs-on);min-inline-size:1.35em;color:var(--cs-text-on-accent,#05121f);font-size:calc(var(--cs-t-label) * .85);font-weight:var(--cs-fw-bold);font-variant-numeric:tabular-nums;text-align:center;border-radius:999px;padding:.1em .35em;position:absolute;inset-block-start:var(--cs-sp-2);inset-inline-end:var(--cs-sp-2)}.velo-stanza{z-index:var(--cs-z-modal,400);padding:var(--cs-sp-5);background:var(--cs-scrim,#0009);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);place-items:center;display:grid;position:fixed;inset:0}.dettaglio-stanza{gap:var(--cs-sp-4);max-block-size:100%;inline-size:min(100%,62rem);padding:var(--cs-sp-5);border-radius:var(--cs-r-lg);background:var(--cs-surface-1);box-shadow:var(--cs-el-3,var(--cs-el-2));flex-direction:column;min-block-size:0;display:flex}.dettaglio-testa{justify-content:space-between;align-items:center;gap:var(--cs-sp-4);flex-wrap:wrap;display:flex}.dettaglio-identita{align-items:center;gap:var(--cs-sp-4);min-inline-size:0;display:flex}.dettaglio-segno{border-radius:var(--cs-r-md);background:var(--cs-surface-2);block-size:3.4rem;inline-size:3.4rem;color:var(--cs-text-2);flex:none;place-items:center;display:grid}.dettaglio-segno .segno-stanza{inline-size:2.1rem}.dettaglio-nome{font-family:var(--cs-font-display);font-size:var(--cs-t-title);color:var(--cs-text-1);margin:0;font-weight:700}.dettaglio-zona{font-size:var(--cs-t-label);color:var(--cs-text-2)}.dettaglio-azioni{align-items:center;gap:var(--cs-sp-3);display:flex}.dettaglio-corpo{gap:var(--cs-sp-4);grid-template-columns:repeat(4,minmax(0,1fr));min-block-size:0;display:grid}.famiglia{gap:var(--cs-sp-3);flex-direction:column;min-block-size:0;min-inline-size:0;display:flex}.famiglia-titolo{align-items:center;gap:var(--cs-sp-2);border-block-end:1px solid var(--cs-line-1);font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);letter-spacing:.06em;text-transform:uppercase;color:var(--cs-text-3);margin:0;padding-block-end:var(--cs-sp-2);display:flex}.famiglia-conto{background:var(--cs-surface-3,var(--cs-surface-2));color:var(--cs-text-2);font-variant-numeric:tabular-nums;border-radius:999px;padding:0 .4em}.famiglia-corpo{gap:var(--cs-sp-2);overscroll-behavior:contain;flex-direction:column;min-block-size:0;display:flex;overflow-y:auto}.famiglia-vuota{padding:var(--cs-sp-3) 0;font-size:var(--cs-t-label);color:var(--cs-text-3);margin:0;font-style:italic}@container (width<=900px){.zone{grid-template-columns:1fr}.griglia-stanze{grid-template-columns:repeat(auto-fit,minmax(4.6rem,1fr))}}@container (width<=780px){.dettaglio-corpo{grid-template-columns:1fr;overflow-y:auto}.velo-stanza{padding:var(--cs-sp-3)}.famiglia-corpo{overflow:visible}}\n.tasto-rifiuti{align-items:center;gap:var(--cs-sp-4);inline-size:100%;padding:var(--cs-sp-3) var(--cs-sp-4);border:1px solid color-mix(in srgb, var(--tinta) 45%, transparent);border-radius:var(--cs-r-md);background:linear-gradient(100deg, color-mix(in srgb, var(--tinta) 20%, transparent), color-mix(in srgb, var(--tinta) 5%, transparent) 60%, transparent), var(--cs-surface-2);color:var(--cs-text-1);text-align:start;cursor:pointer;display:flex}.tasto-rifiuti:hover{border-color:color-mix(in srgb, var(--tinta) 75%, transparent)}.tasto-rifiuti:active{scale:.99}.rifiuti-segno{block-size:auto;inline-size:clamp(2.4rem,5cqi,3.2rem);stroke:color-mix(in srgb, #000 35%, var(--tinta,#888));stroke-width:1.4px;stroke-linejoin:round;flex:none}.rifiuti-corpo{filter:brightness(1.06)}.rifiuti-coperchio{filter:brightness(.9)}.rifiuti-maniglia,.rifiuti-nervature{fill:none;stroke:#0000004d;stroke-width:1.6px;stroke-linecap:round}.rifiuti-testo{flex-direction:column;gap:.1em;min-inline-size:0;display:flex}.rifiuti-quando{font-size:var(--cs-t-label);letter-spacing:.06em;text-transform:uppercase;color:var(--cs-text-3)}.rifiuti-tipo{font-family:var(--cs-font-display);font-size:var(--cs-t-subtitle);color:var(--cs-text-1);font-weight:700;line-height:1.1}.tasto-rifiuti[data-grande=si]{gap:var(--cs-sp-5);padding:var(--cs-sp-4) var(--cs-sp-5);border-radius:var(--cs-r-lg)}.tasto-rifiuti[data-grande=si] .rifiuti-segno{inline-size:clamp(3.4rem,7vw,5rem)}.tasto-rifiuti[data-grande=si] .rifiuti-tipo{font-size:clamp(1.4rem,3vw,2.2rem)}.velo-rifiuti{z-index:var(--cs-z-modal,400);padding:var(--cs-sp-5);background:var(--cs-scrim,#0009);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);place-items:center;display:grid;position:fixed;inset:0}.settimana-rifiuti{gap:var(--cs-sp-4);max-block-size:100%;inline-size:min(100%,62rem);padding:var(--cs-sp-5);border-radius:var(--cs-r-lg);background:var(--cs-surface-1);box-shadow:var(--cs-el-3,var(--cs-el-2));flex-direction:column;display:flex}.settimana-testa{justify-content:space-between;align-items:flex-start;gap:var(--cs-sp-4);display:flex}.settimana-titolo{font-family:var(--cs-font-display);font-size:var(--cs-t-title);color:var(--cs-text-1);margin:0;font-weight:700}.settimana-sottotitolo{font-size:var(--cs-t-label);color:var(--cs-text-2)}.settimana-corpo{gap:var(--cs-sp-3);overscroll-behavior:contain;grid-template-columns:repeat(4,minmax(0,1fr));min-block-size:0;display:grid;overflow-y:auto}.giorno-rifiuti{padding:var(--cs-sp-3);border-radius:var(--cs-r-md);border:1px solid color-mix(in srgb, var(--tinta,var(--cs-line-1)) 35%, transparent);background:color-mix(in srgb, var(--tinta,transparent) 8%, var(--cs-surface-2));text-align:center;flex-direction:column;align-items:center;gap:4px;display:flex}.giorno-rifiuti[data-vuoto=si]{border-style:dashed;border-color:var(--cs-line-1);background:0 0}.giorno-nome{font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);color:var(--cs-text-1)}.giorno-data{font-size:calc(var(--cs-t-label) * .85);color:var(--cs-text-3);font-variant-numeric:tabular-nums}.giorno-rifiuti .rifiuti-segno{inline-size:2.6rem;margin-block:var(--cs-sp-2)}.giorno-tipo{font-size:calc(var(--cs-t-label) * .95);color:var(--cs-text-2);line-height:1.2}.giorno-niente{color:var(--cs-text-3);margin-block:var(--cs-sp-4);font-style:italic}.settimana-nota{font-size:var(--cs-t-label);color:var(--cs-text-3);margin:0}@container (width<=780px){.settimana-corpo{grid-template-columns:repeat(2,minmax(0,1fr))}}.riposo{z-index:var(--cs-z-rest,900);background:var(--cs-bg-base);color:var(--cs-text-1);grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:center;gap:clamp(1rem,3vw,2.5rem);padding:clamp(1.25rem,4vw,3.5rem);animation:.9s both riposo-entra;display:grid;position:fixed;inset:0;overflow:hidden}@keyframes riposo-entra{0%{opacity:0}to{opacity:1}}.riposo-alone{pointer-events:none;background:radial-gradient(38% 38% at 22% 28%, color-mix(in srgb, var(--cs-energy-solar) 20%, transparent), transparent 70%), radial-gradient(42% 42% at 78% 72%, color-mix(in srgb, var(--cs-accent) 18%, transparent), transparent 72%);animation:40s ease-in-out infinite alternate riposo-deriva;position:absolute;inset:-25%}@keyframes riposo-deriva{0%{transform:translate(-2%,-1.5%)scale(1)}to{transform:translate(2.5%,2%)scale(1.08)}}.riposo-sinistra,.riposo-energia{min-inline-size:0;position:relative}.riposo-sinistra{flex-direction:column;gap:clamp(.75rem,2vw,1.75rem);display:flex}.riposo-ora{gap:var(--cs-sp-2);flex-direction:column;display:flex}.riposo-cifre{font-family:var(--cs-font-display);letter-spacing:-.045em;font-variant-numeric:tabular-nums;color:var(--cs-text-1);font-size:clamp(5rem,16vw,14rem);font-weight:800;line-height:.82}.riposo-duepunti{animation:2s step-end infinite riposo-battito}@keyframes riposo-battito{0%,50%{opacity:1}50.01%,to{opacity:.28}}.riposo-data{color:var(--cs-text-2);text-transform:lowercase;font-size:clamp(1rem,2.2vw,1.7rem)}.riposo-meteo .meteo-segno{inline-size:clamp(2.2rem,4vw,3.4rem)}.riposo-meteo .meteo-ora{font-size:clamp(1.4rem,3vw,2.4rem)}.riposo-meteo .meteo-dettaglio{font-size:clamp(.8rem,1.4vw,1.05rem);display:block}.riposo-rifiuti{max-inline-size:34rem}.riposo-energia{block-size:100%;min-block-size:0;display:flex}.riposo-energia .energia{flex:1;min-block-size:0}.riposo-energia .energia-giornata{border-block-start-color:color-mix(in srgb, var(--cs-text-3) 25%, transparent)}@media (max-width:860px),(orientation:portrait){.riposo{grid-template-rows:auto minmax(0,1fr);grid-template-columns:minmax(0,1fr);align-content:start;align-items:start;gap:clamp(1rem,4vw,2rem)}.riposo-cifre{font-size:clamp(4.5rem,25vw,11rem)}}@media (prefers-reduced-motion:reduce){.riposo-alone,.riposo-duepunti{animation:none!important}}.pastiglie{z-index:var(--cs-z-raised,10);align-items:center;gap:var(--cs-sp-3);display:flex;position:absolute;inset-block-end:var(--cs-sp-4);inset-inline-end:var(--cs-sp-4)}.pastiglia-rifiuti{border:1px solid color-mix(in srgb, #000 25%, var(--tinta));background:var(--tinta);block-size:3.4rem;inline-size:3.4rem;box-shadow:var(--cs-el-2), 0 0 0 4px color-mix(in srgb, var(--tinta) 18%, transparent);cursor:pointer;transition:scale var(--cs-motion,.16s) ease, box-shadow var(--cs-motion,.16s) ease;border-radius:50%;place-items:center;padding:0;display:grid}.pastiglia-rifiuti:hover{box-shadow:var(--cs-el-3,var(--cs-el-2)), 0 0 0 7px color-mix(in srgb, var(--tinta) 22%, transparent)}.pastiglia-rifiuti:active{scale:.94}.rifiuti-simbolo{fill:none;block-size:auto;inline-size:58%;stroke:color-mix(in srgb, #000 72%, var(--tinta));stroke-width:2px;stroke-linecap:round;stroke-linejoin:round}.elenco-persone{gap:var(--cs-sp-3);flex-direction:column;display:flex}.persona{align-items:center;gap:var(--cs-sp-3);min-inline-size:0;display:flex}.persona-volto{background:var(--cs-surface-3,color-mix(in srgb, var(--cs-text-3) 16%, transparent));filter:grayscale(.85);opacity:.65;block-size:clamp(2.6rem,6cqi,3.4rem);inline-size:clamp(2.6rem,6cqi,3.4rem);transition:filter var(--cs-motion,.26s) ease, opacity var(--cs-motion,.26s) ease;border-radius:50%;flex:none;place-items:center;display:grid;position:relative;overflow:visible}.persona[data-casa=si] .persona-volto{filter:none;opacity:1}.persona-foto{object-fit:cover;object-position:50% 22%;border-radius:50%;block-size:100%;inline-size:100%;display:block}.persona-iniziali{font-family:var(--cs-font-display);color:var(--cs-text-2);font-size:.95rem;font-weight:700}.persona-spia{border:2px solid var(--cs-surface-1);background:var(--cs-unavail);border-radius:50%;block-size:.78rem;inline-size:.78rem;position:absolute;inset-block-end:0;inset-inline-end:0}.persona[data-casa=si] .persona-spia{background:var(--cs-ok)}.persona-testo{flex-direction:column;flex:1;gap:1px;min-inline-size:0;display:flex}.persona-nome{font-size:var(--cs-t-body);font-weight:var(--cs-fw-bold);color:var(--cs-text-1);text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.persona-dove{font-size:var(--cs-t-label);color:var(--cs-text-2)}.persona-batteria{align-items:center;gap:var(--cs-sp-2);flex:none;display:flex}.persona-pila{fill:none;block-size:auto;inline-size:1.6rem;stroke:var(--cs-text-3);stroke-width:1.4px}.persona-pila-carica{fill:var(--cs-text-2);stroke:none}.persona-percento{font-size:var(--cs-t-label);color:var(--cs-text-2);font-variant-numeric:tabular-nums;text-align:end;min-inline-size:2.4em}.persona-batteria[data-scarica=si] .persona-pila-carica{fill:var(--cs-alert)}.persona-batteria[data-scarica=si] .persona-percento{color:var(--cs-alert)}.persona-batteria[data-carica=si] .persona-pila-carica{fill:var(--cs-ok)}.persona-batteria[data-carica=si] .persona-percento{color:var(--cs-ok)}.persona-tasto{padding:var(--cs-sp-2) var(--cs-sp-2);border-radius:var(--cs-r-md);color:inherit;text-align:start;cursor:pointer;background:0 0;border:1px solid #0000;align-items:flex-start;margin-inline-start:calc(var(--cs-sp-2) * -1)}.persona-tasto:hover{border-color:var(--cs-line-1);background:var(--cs-surface-2)}.persona-tasto:active{scale:.99}.velo-persona{z-index:var(--cs-z-modal,400);padding:var(--cs-sp-5);background:var(--cs-scrim,#000000a6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);place-items:center;display:grid;position:fixed;inset:0}.scheda-persona{gap:var(--cs-sp-4);inline-size:min(100%,40rem);padding:var(--cs-sp-5);border-radius:var(--cs-r-lg);background:var(--cs-surface-1);box-shadow:var(--cs-el-3,var(--cs-el-2));flex-direction:column;display:flex}.scheda-persona-testa{justify-content:space-between;align-items:center;gap:var(--cs-sp-4);display:flex}.scheda-persona-nome{font-family:var(--cs-font-display);font-size:var(--cs-t-title);color:var(--cs-text-1);margin:0;font-weight:700}.mappa{gap:var(--cs-sp-3);flex-direction:column;display:flex}.mappa-tela{border-radius:var(--cs-r-md);border:1px solid var(--cs-line-1);background:var(--cs-surface-2);block-size:clamp(13rem,42vh,22rem);inline-size:100%;position:relative;overflow:hidden}.mappa-tassello{filter:none;block-size:256px;inline-size:256px;display:block;position:absolute}.casaos-root[data-theme=dark] .mappa-tassello,:host([data-theme=dark]) .mappa-tassello{filter:invert()hue-rotate(180deg)brightness(.88)contrast(.92)saturate(.7)}.mappa-punto{pointer-events:none;place-items:center;display:grid;position:absolute;inset-block-start:50%;inset-inline-start:50%;translate:-50% -50%}.mappa-punto-nucleo{background:var(--cs-accent);border:2px solid #fff;border-radius:50%;block-size:.95rem;inline-size:.95rem;box-shadow:0 1px 4px #00000073}.mappa-punto-alone{background:color-mix(in srgb, var(--cs-accent) 28%, transparent);border-radius:50%;block-size:2.6rem;inline-size:2.6rem;animation:2.6s ease-in-out infinite mappa-respiro;position:absolute}@keyframes mappa-respiro{0%,to{opacity:.9;scale:.75}50%{opacity:.35;scale:1.15}}.mappa-casa{background:var(--cs-surface-1);border:1px solid var(--cs-line-1);pointer-events:none;border-radius:50%;place-items:center;block-size:1.5rem;inline-size:1.5rem;display:grid;position:absolute;translate:-50% -50%}.mappa-casa svg{inline-size:.9rem;fill:var(--cs-text-2)}.mappa-piede{align-items:baseline;gap:var(--cs-sp-3);font-size:var(--cs-t-label);flex-wrap:wrap;display:flex}.mappa-dove{font-weight:var(--cs-fw-bold);color:var(--cs-text-1)}.mappa-distanza{color:var(--cs-text-2)}.mappa-fonte{color:var(--cs-text-3);font-size:calc(var(--cs-t-label) * .85);margin-inline-start:auto}@media (prefers-reduced-motion:reduce){.mappa-punto-alone{animation:none}}.riposo-persone{max-inline-size:34rem}.riposo-persone .persona-volto{block-size:clamp(3rem,5.5vw,4.2rem);inline-size:clamp(3rem,5.5vw,4.2rem)}.riposo-persone .persona-nome{font-size:clamp(1rem,1.9vw,1.4rem)}.riposo-persone .persona-dove,.riposo-persone .persona-percento{font-size:clamp(.8rem,1.3vw,1.05rem)}.riposo-persone .persona-pila{inline-size:2rem}.pastiglia-scorciatoia{border:1px solid var(--cs-line-1);background:var(--cs-surface-2);block-size:3.4rem;inline-size:3.4rem;color:var(--cs-text-2);box-shadow:var(--cs-el-1);cursor:pointer;transition:background-color var(--cs-motion,.2s) ease, border-color var(--cs-motion,.2s) ease, color var(--cs-motion,.2s) ease, box-shadow var(--cs-motion,.2s) ease, scale var(--cs-motion,.16s) ease;border-radius:50%;place-items:center;padding:0;display:grid}.pastiglia-scorciatoia[data-acceso=si]{border-color:color-mix(in srgb, var(--cs-ok) 70%, transparent);background:color-mix(in srgb, var(--cs-ok) 22%, var(--cs-surface-2));color:var(--cs-ok);box-shadow:var(--cs-el-2), 0 0 0 4px color-mix(in srgb, var(--cs-ok) 16%, transparent)}.pastiglia-scorciatoia[data-assente=si]{opacity:.45;border-style:dashed}.pastiglia-scorciatoia[data-previsto=si]{opacity:.75}.pastiglia-scorciatoia:hover{box-shadow:var(--cs-el-2)}.pastiglia-scorciatoia:active{scale:.94}.scorciatoia-segno{fill:none;stroke:currentColor;stroke-width:1.9px;stroke-linecap:round;stroke-linejoin:round;block-size:auto;inline-size:58%}.velo-scorciatoia{z-index:var(--cs-z-modal,400);padding:var(--cs-sp-5);background:var(--cs-scrim,#0009);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);place-items:center;display:grid;position:fixed;inset:0}.scheda-scorciatoia{gap:var(--cs-sp-4);inline-size:min(100%,24rem);padding:var(--cs-sp-5);border-radius:var(--cs-r-lg);background:var(--cs-surface-1);box-shadow:var(--cs-el-3,var(--cs-el-2));flex-direction:column;display:flex}.scheda-scorciatoia-testa{flex-direction:column;gap:2px;display:flex}.scheda-scorciatoia-nome{font-family:var(--cs-font-display);font-size:var(--cs-t-title);color:var(--cs-text-1);margin:0;font-weight:700}.scheda-scorciatoia-stato{font-size:var(--cs-t-label);color:var(--cs-text-2)}.scheda-scorciatoia-stato[data-acceso=si]{color:var(--cs-ok);font-weight:var(--cs-fw-bold)}.scheda-scorciatoia-azioni{gap:var(--cs-sp-3);display:flex}.scheda-scorciatoia-azioni .btn{flex:1}.energia-sezione{gap:var(--cs-sp-4);flex-direction:column;flex:1;min-block-size:0;display:flex}.energia-testa{justify-content:space-between;align-items:center;gap:var(--cs-sp-4);flex-wrap:wrap;display:flex}.legenda{gap:var(--cs-sp-4);font-size:var(--cs-t-label);color:var(--cs-text-2);display:flex}.legenda-voce{align-items:center;gap:var(--cs-sp-2);display:inline-flex}.legenda-voce:before{content:\"\";background:var(--tinta,var(--cs-text-2));border-radius:999px;block-size:3px;inline-size:1.1rem}.energia-grafico{flex:1;min-block-size:9rem;display:flex}.grafico{flex:1;min-block-size:0;inline-size:100%}.grafico-tela{display:block;overflow:visible}.grafico-griglia{stroke:var(--cs-line-1);stroke-width:1px}.grafico-scala-testo,.grafico-asse{fill:var(--cs-text-3);font-size:calc(var(--cs-t-label) * .82);font-variant-numeric:tabular-nums}.grafico-linea{fill:none;stroke-width:2.25px;stroke-linecap:round;stroke-linejoin:round}.grafico-punto{stroke:var(--cs-surface-1);stroke-width:2px}.energia-numeri{gap:var(--cs-sp-3);grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));display:grid}.tessera-energia{padding:var(--cs-sp-3) var(--cs-sp-4);border-radius:var(--cs-r-md);background:var(--cs-surface-2);border:1px solid var(--cs-line-1);flex-direction:column;gap:2px;min-inline-size:0;display:flex}.tessera-titolo{font-size:var(--cs-t-eyebrow);letter-spacing:var(--cs-ls-eyebrow);text-transform:uppercase;color:var(--cs-text-3)}.tessera-valore{font-family:var(--cs-font-numeric);font-size:var(--cs-t-value);font-weight:var(--cs-fw-bold);color:var(--cs-text-1);align-items:baseline;gap:4px;line-height:1.05;display:inline-flex}.tessera-unita{font-size:var(--cs-t-label);font-weight:var(--cs-fw-regular);color:var(--cs-text-3)}.tessera-nota{font-size:calc(var(--cs-t-label) * .9);color:var(--cs-text-3)}.tessera-barra{background:color-mix(in srgb, var(--cs-text-3) 25%, transparent);border-radius:999px;block-size:4px;margin-block:3px;display:block;overflow:hidden}.tessera-barra>span{background:var(--cs-accent);border-radius:999px;block-size:100%;display:block}.tessera-energia[data-tono=produzione] .tessera-valore{color:var(--cs-energy-solar)}.tessera-energia[data-tono=consumo] .tessera-valore{color:var(--cs-text-1)}.tessera-energia[data-tono=prelievo] .tessera-valore{color:var(--cs-energy-grid)}.tessera-energia[data-tono=immissione] .tessera-valore{color:var(--cs-energy-battery)}.tessera-energia[data-tono=produzione] .tessera-barra>span{background:var(--cs-energy-solar)}.tessera-energia[data-tono=consumo] .tessera-barra>span{background:var(--cs-text-2)}.bolletta{gap:var(--cs-sp-2);padding:var(--cs-sp-4);border-radius:var(--cs-r-md);border:1px solid var(--cs-line-1);background:var(--cs-surface-2);flex-direction:column;display:flex}.bolletta-cifre{gap:var(--cs-sp-6,2rem);flex-wrap:wrap;display:flex}.bolletta-voce{flex-direction:column;gap:2px;display:flex}.bolletta-valore{font-family:var(--cs-font-numeric);font-size:var(--cs-t-value);font-weight:var(--cs-fw-bold);color:var(--cs-text-2)}.bolletta-voce[data-forte=si] .bolletta-valore{font-size:calc(var(--cs-t-value) * 1.25);color:var(--cs-text-1)}.bolletta-nota{font-size:calc(var(--cs-t-label) * .9);color:var(--cs-text-3);max-inline-size:none;margin:0}.bolletta-dettaglio{gap:var(--cs-sp-2) var(--cs-sp-4);font-size:var(--cs-t-label);color:var(--cs-text-3);border-inline-start:1px solid var(--cs-line-1);flex-wrap:wrap;align-self:center;max-inline-size:22rem;padding-inline-start:var(--cs-sp-4);display:flex}.bolletta-dettaglio b{color:var(--cs-text-2);font-variant-numeric:tabular-nums}.bolletta-gse{border-block-start:1px solid var(--cs-line-1);font-size:var(--cs-t-label);color:var(--cs-text-2);margin:0;padding-block-start:var(--cs-sp-3)}.bolletta-gse b{color:var(--cs-energy-battery)}@container casaos (width<=900px){.bolletta-dettaglio{border-inline-start:0;max-inline-size:none;padding-inline-start:0}}.energia-comandi{align-items:center;gap:var(--cs-sp-4);flex-wrap:wrap;display:flex}.periodo{align-items:center;gap:var(--cs-sp-2);display:flex}.periodo-nome{text-align:center;min-inline-size:9.5rem;font-size:var(--cs-t-body);font-weight:var(--cs-fw-bold);color:var(--cs-text-1);text-transform:none}.periodo-nome:first-letter{text-transform:uppercase}.periodo-freccia{border:1px solid var(--cs-line-1);block-size:2.2rem;inline-size:2.2rem;color:var(--cs-text-2);cursor:pointer;background:0 0;border-radius:50%;padding:0;font-size:1.2rem;line-height:1}.periodo-freccia:hover:not(:disabled){color:var(--cs-text-1);background:var(--cs-surface-2)}.periodo-freccia:disabled{opacity:.3;cursor:default}.periodo-calendario{border:1px solid var(--cs-line-1);border-radius:var(--cs-r-md);block-size:2.2rem;inline-size:2.2rem;color:var(--cs-text-2);cursor:pointer;place-items:center;display:grid;position:relative}.periodo-calendario:hover{color:var(--cs-text-1);background:var(--cs-surface-2)}.periodo-calendario svg{fill:none;stroke:currentColor;stroke-width:1.7px;stroke-linecap:round;inline-size:1.2rem}.periodo-calendario circle{fill:currentColor;stroke:none}.periodo-campo{opacity:0;cursor:pointer;block-size:100%;inline-size:100%;font:inherit;color-scheme:inherit;border:0;padding:0;position:absolute;inset:0}\n.velo-impostazioni{z-index:var(--cs-z-modal,400);padding:var(--cs-sp-4);background:var(--cs-scrim,#000000a6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);place-items:center;display:grid;position:fixed;inset:0}.impostazioni{gap:var(--cs-sp-4);block-size:min(100%,56rem);inline-size:min(100%,78rem);padding:var(--cs-sp-5);border-radius:var(--cs-r-lg);background:var(--cs-surface-1);box-shadow:var(--cs-el-3,var(--cs-el-2));flex-direction:column;min-block-size:0;display:flex}.imp-testa{justify-content:space-between;align-items:center;gap:var(--cs-sp-4);flex-wrap:wrap;display:flex}.imp-titolo{font-family:var(--cs-font-display);font-size:var(--cs-t-title);color:var(--cs-text-1);margin:0;font-weight:700}.imp-sotto{font-size:var(--cs-t-label);color:var(--cs-text-2)}.imp-azioni{align-items:center;gap:var(--cs-sp-3);display:flex}.imp-errore{padding:var(--cs-sp-3) var(--cs-sp-4);border-radius:var(--cs-r-md);border:1px solid color-mix(in srgb, var(--cs-alert) 45%, transparent);background:color-mix(in srgb, var(--cs-alert) 12%, transparent);color:var(--cs-text-1);font-size:var(--cs-t-label);margin:0}.imp-filtri{align-items:center;gap:var(--cs-sp-3);flex-wrap:wrap;display:flex}.imp-cerca{min-inline-size:0;padding:var(--cs-sp-3) var(--cs-sp-4);border:1px solid var(--cs-line-1);border-radius:var(--cs-r-md);background:var(--cs-surface-2);color:var(--cs-text-1);font:inherit;font-size:var(--cs-t-body);flex:14rem}.imp-cerca::placeholder{color:var(--cs-text-3)}.imp-cerca:focus-visible{outline:2px solid var(--cs-accent);outline-offset:1px}.imp-interruttore{align-items:center;gap:var(--cs-sp-2);font-size:var(--cs-t-label);color:var(--cs-text-2);cursor:pointer;white-space:nowrap;display:inline-flex}.imp-interruttore input{block-size:1.15rem;inline-size:1.15rem;accent-color:var(--cs-accent)}.imp-corpo{overscroll-behavior:contain;gap:var(--cs-sp-2);min-block-size:0;flex-direction:column;flex:1;padding-inline-end:var(--cs-sp-2);display:flex;overflow-y:auto}.riga-dispositivo{align-items:center;gap:var(--cs-sp-3);padding:var(--cs-sp-2) var(--cs-sp-3);border:1px solid var(--cs-line-1);border-radius:var(--cs-r-md);background:var(--cs-surface-2);grid-template-columns:7.5rem minmax(0,1fr) auto auto;display:grid}.riga-dispositivo[data-assegnato=si]{border-inline-start:3px solid var(--cs-ok)}.riga-dominio{font-family:var(--cs-font-mono,monospace);font-size:calc(var(--cs-t-label) * .85);color:var(--cs-text-3);text-align:center;background:var(--cs-surface-3,color-mix(in srgb, var(--cs-text-3) 12%, transparent));white-space:nowrap;text-overflow:ellipsis;border-radius:999px;padding:2px 6px;overflow:hidden}.riga-identita{flex-direction:column;gap:2px;min-inline-size:0;display:flex}.riga-nome{border-radius:var(--cs-r-sm,6px);inline-size:100%;color:var(--cs-text-1);font:inherit;font-size:var(--cs-t-body);font-weight:var(--cs-fw-bold);background:0 0;border:1px solid #0000;padding:4px 6px}.riga-nome:hover:not(:disabled){border-color:var(--cs-line-1)}.riga-nome:focus-visible{outline:2px solid var(--cs-accent);outline-offset:0;background:var(--cs-surface-1)}.riga-id{font-family:var(--cs-font-mono,monospace);font-size:calc(var(--cs-t-label) * .85);color:var(--cs-text-3);text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.riga-scelte{align-items:center;gap:var(--cs-sp-2);display:flex}.riga-select{padding:var(--cs-sp-2) var(--cs-sp-3);border:1px solid var(--cs-line-1);border-radius:var(--cs-r-md);background:var(--cs-surface-1);color:var(--cs-text-1);font:inherit;font-size:var(--cs-t-label);min-inline-size:9rem}.riga-select-piccola{min-inline-size:7.5rem}.riga-select:disabled{opacity:.5}.riga-suggerita{padding:var(--cs-sp-2) var(--cs-sp-3);border:1px dashed color-mix(in srgb, var(--cs-accent) 60%, transparent);border-radius:var(--cs-r-md);background:color-mix(in srgb, var(--cs-accent) 10%, transparent);color:var(--cs-text-1);font-size:var(--cs-t-label);white-space:nowrap;cursor:pointer}.riga-suggerita:hover{background:color-mix(in srgb, var(--cs-accent) 20%, transparent)}.riga-area{font-size:calc(var(--cs-t-label) * .85);color:var(--cs-text-3);white-space:nowrap}.elenco-stanze-imp{gap:var(--cs-sp-5);flex-direction:column;display:flex}.gruppo-stanze{gap:var(--cs-sp-2);flex-direction:column;display:flex}.gruppo-stanze-titolo{font-size:var(--cs-t-label);font-weight:var(--cs-fw-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--cs-text-3);margin:0}.riga-stanza{align-items:center;gap:var(--cs-sp-3);padding:var(--cs-sp-2) var(--cs-sp-3);border:1px solid var(--cs-line-1);border-radius:var(--cs-r-md);background:var(--cs-surface-2);grid-template-columns:minmax(0,1fr) auto auto auto;display:grid}.riga-nuova{background:0 0;border-style:dashed;grid-template-columns:minmax(0,1fr) auto}.riga-conta{font-size:var(--cs-t-label);color:var(--cs-text-3);white-space:nowrap}.btn-quieto{color:var(--cs-text-2)}.btn-quieto:hover:not(:disabled){color:var(--cs-alert);border-color:color-mix(in srgb, var(--cs-alert) 55%, transparent)}.btn-forte{border-color:color-mix(in srgb, var(--cs-accent) 70%, transparent);background:color-mix(in srgb, var(--cs-accent) 18%, transparent)}.btn-forte:disabled{opacity:.45}@container (width<=900px){.riga-dispositivo{grid-template-columns:5rem minmax(0,1fr)}.riga-scelte,.riga-suggerita,.riga-area{grid-column:1/-1}.riga-scelte{flex-wrap:wrap}.riga-select{flex:8rem}.riga-stanza{grid-template-columns:minmax(0,1fr) auto}}.riga-preferenza{grid-template-columns:minmax(0,1fr) auto}.riga-nome-fisso{font-size:var(--cs-t-body);font-weight:var(--cs-fw-bold);color:var(--cs-text-1)}.riga-numero{inline-size:7rem;padding:var(--cs-sp-2) var(--cs-sp-3);border:1px solid var(--cs-line-1);border-radius:var(--cs-r-md);background:var(--cs-surface-1);color:var(--cs-text-1);font:inherit;font-size:var(--cs-t-body);font-variant-numeric:tabular-nums;text-align:end}.riga-numero:focus-visible{outline:2px solid var(--cs-accent);outline-offset:1px}", lr = class extends HTMLElement {
 	constructor() {
-		super(), this._store = Qn(), this._root = null, this._montato = !1, this._smontaggio = 0;
+		super(), this._store = sr(), this._root = null, this._montato = !1, this._smontaggio = 0;
 	}
 	connectedCallback() {
 		if (clearTimeout(this._smontaggio), !this.shadowRoot) {
 			let e = this.attachShadow({ mode: "open" }), t = document.createElement("style");
-			t.textContent = $n;
+			t.textContent = cr;
 			let n = document.createElement("div");
 			n.className = "casaos-mount", e.append(t, n);
 		}
 		this._osservatore || (this._osservatore = new ResizeObserver(([e]) => {
 			let t = e.contentRect.height;
 			t > 0 && this.style.setProperty("--cs-viewport-h", `${Math.round(t)}px`);
-		}), this._osservatore.observe(this)), this._root ||= (0, u.createRoot)(this.shadowRoot.querySelector(".casaos-mount")), this._montato ||= (this._root.render(/* @__PURE__ */ (0, b.jsx)(Jn, { store: this._store })), !0), this._store.collegaBarraHA((e) => {
+		}), this._osservatore.observe(this)), this._root ||= (0, u.createRoot)(this.shadowRoot.querySelector(".casaos-mount")), this._montato ||= (this._root.render(/* @__PURE__ */ (0, b.jsx)(rr, { store: this._store })), !0), this._store.collegaBarraHA((e) => {
 			this.dispatchEvent(new CustomEvent("hass-dock-sidebar", {
 				detail: { dock: e },
 				bubbles: !0,
@@ -12260,7 +12410,7 @@ var $n = ":host{--cs-scale:1;--cs-tap:44px;--cs-tap-primario:56px;--cs-accent-h:
 			let e = this._root;
 			this._root = null, this._montato = !1, queueMicrotask(() => e.unmount());
 		}
-		this._store.distruggi(), this._store = Qn();
+		this._store.distruggi(), this._store = sr();
 	}
 	set hass(e) {
 		this._store.collega(e);
@@ -12275,5 +12425,5 @@ var $n = ":host{--cs-scale:1;--cs-tap:44px;--cs-tap-primario:56px;--cs-accent-h:
 		this._store.setPannello(e?.config);
 	}
 };
-customElements.get("casaos-panel") || customElements.define("casaos-panel", er);
+customElements.get("casaos-panel") || customElements.define("casaos-panel", lr);
 //#endregion
