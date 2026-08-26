@@ -10864,7 +10864,7 @@ function xn({ casa: e }) {
 			/* @__PURE__ */ (0, b.jsx)("div", {
 				className: "energia-grafico",
 				children: s ? /* @__PURE__ */ (0, b.jsx)(yn, {
-					punti: tn(s.punti, r),
+					punti: tn(s.punti, r, a),
 					vista: r
 				}) : /* @__PURE__ */ (0, b.jsx)("p", {
 					className: "testo-secondario",
