@@ -136,7 +136,17 @@ def valida(config: Any) -> dict[str, Any]:
     if tariffe is not None:
         if not isinstance(tariffe, dict):
             raise ErroreConfigurazione("tariffe: atteso un oggetto")
-        for chiave in ("acquisto", "vendita", "quota_fissa"):
+        for chiave in (
+            "energia",
+            "rete",
+            "accisa",
+            "iva",
+            "quota_fissa",
+            "quota_potenza",
+            "potenza_impegnata",
+            "canone_tv",
+            "vendita",
+        ):
             valore = tariffe.get(chiave)
             if valore is not None and not isinstance(valore, (int, float)):
                 raise ErroreConfigurazione(f"tariffe.{chiave}: atteso un numero")
